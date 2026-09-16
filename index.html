@@ -189,6 +189,22 @@
             color: #524646;
             margin-bottom: 20px;
         }
+        .little-something {
+    display: inline-block;
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    color: #524646;
+}
+
+.choose-intro {
+    display: inline-block;
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: clamp(44px, 5.5vw, 64px);
+    font-weight: 500;
+    line-height: 1;
+    color: #1c1c1c;
+}
 
         .intro h2 {
             font-size: clamp(44px, 5.5vw, 64px);
@@ -216,15 +232,23 @@
         ================================================== */
 
         .personal-section {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 30px 25px 120px;
-        }
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    max-width: 1200px;
+    margin: 0 auto;
+
+    padding: 100px 25px 120px;
+}
 
         .personal-header {
-            text-align: center;
-            margin-bottom: 65px;
-        }
+    text-align: center;
+    margin-bottom: 65px;
+    padding-top: 30px;
+}
 
         .personal-header h2 {
             font-size: clamp(44px, 5vw, 64px);
@@ -1712,6 +1736,18 @@
         <br><br>
 
         Now it's our turn to celebrate you.
+
+        <br><br>
+
+        <span class="little-something">
+            A LITTLE SOMETHING FROM US
+        </span>
+
+        <br>
+
+        <span class="choose-intro">
+            Okay, now you get to choose.
+        </span>
 
         <br><br>
 
