@@ -77,28 +77,46 @@
         ================================================== */
 
         .cover {
-            min-height: 100vh;
+    min-height: 100vh;
+    position: relative;
 
-            background:
-                linear-gradient(
-                    rgba(0, 0, 0, 0.35),
-                    rgba(0, 0, 0, 0.48)
-                ),
-                url("images/cover.jpg") center center / cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-            display: flex;
-            align-items: center;
-            justify-content: center;
+    text-align: center;
+    color: white;
 
-            text-align: center;
-            color: white;
+    padding: 40px 20px;
+    overflow: hidden;
+}
 
-            padding: 40px 20px;
-        }
+.cover::before {
+    content: "";
+    position: absolute;
+    inset: 0;
 
-        .cover-content {
-            max-width: 900px;
-        }
+    background: url("images/cover.jpg") center center / cover no-repeat;
+    opacity: 0.5;
+
+    z-index: 0;
+}
+
+.cover::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background: rgba(0, 0, 0, 0.2);
+
+    z-index: 0;
+}
+
+.cover-content {
+    position: relative;
+    z-index: 1;
+    max-width: 900px;
+}
 
         .cover-small {
             font-size: 11px;
