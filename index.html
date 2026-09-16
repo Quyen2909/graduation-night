@@ -174,21 +174,49 @@
            INTRO
         ================================================== */
 
-        .intro {
-            max-width: 900px;
-            margin: auto;
-            padding: 115px 25px 95px;
-            text-align: center;
-        }
+        ..intro {
+    max-width: 900px;
+    margin: auto;
+    padding: 115px 25px 95px;
+    text-align: center;
+}
 
-        .section-eyebrow {
-            font-size: 24px;
-            font-weight: 500;
-            letter-spacing: 2.5px;
-            text-transform: uppercase;
-            color: #524646;
-            margin-bottom: 20px;
-        }
+.intro-part-one {
+    margin-bottom: 180px;
+}
+
+.intro-part-two {
+    margin-bottom: 0;
+}
+
+/* SMALL EYEBROW TEXT */
+.section-eyebrow {
+    font-size: 24px;
+    font-weight: 500;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: #524646;
+    margin-bottom: 20px;
+}
+
+/* BIG TITLE */
+.intro h2 {
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: clamp(44px, 5.5vw, 64px);
+    font-weight: 500;
+    line-height: 1;
+    color: #1c1c1c;
+    margin: 0 0 30px;
+}
+
+/* SMALL BODY TEXT */
+.intro p {
+    max-width: 680px;
+    margin: auto;
+    font-size: 15px;
+    line-height: 1.9;
+    color: #666;
+}
         .little-something {
     display: inline-block;
     font-size: 24px;
@@ -1718,43 +1746,51 @@
 
 <section class="intro reveal">
 
-    <div class="section-eyebrow">
-        For the graduate
+    <!-- PART 1 -->
+    <div class="intro-part intro-part-one">
+
+        <div class="section-eyebrow">
+            For the graduate
+        </div>
+
+        <h2>
+            You did it.
+        </h2>
+
+        <p>
+            After all the late nights, deadlines, little victories
+            and everything in between,
+            <br>
+
+            You made it! Yayy!!
+
+            <br><br>
+
+            Now it's our turn to celebrate you.
+
+            <br><br>
+
+            So… where are we celebrating?
+        </p>
+
     </div>
 
-    <h2>
-        You did it.
-    </h2>
 
-    <p>
-        After all the late nights, deadlines, little victories
-        and everything in between,
-        <br>
+    <!-- BIG SPACE / TRANSITION -->
 
-        You made it! Yayy!!
 
-        <br><br>
+    <!-- PART 2 -->
+    <div class="intro-part intro-part-two">
 
-        Now it's our turn to celebrate you.
-
-        <br><br>
-
-        <strong>
-            So… where are we celebrating?
-        </strong>
-
-        <br><br>
-
-        <span class="little-something">
+        <div class="section-eyebrow">
             A LITTLE SOMETHING FROM US
-        </span>
+        </div>
 
-        <br>
-
-        <span class="choose-intro">
+        <h2>
             Aukiee, now you get to choose.
-        </span>
-    </p>
+        </h2>
+
+    </div>
 
 </section>
 
