@@ -1,0 +1,2914 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Your Graduation Night</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@400;500;600&display=swap"
+        rel="stylesheet"
+    >
+
+    <style>
+
+        /* ==================================================
+           GLOBAL
+        ================================================== */
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            background: #f5f1eb;
+            color: #1c1c1c;
+            font-family: "Montserrat", Arial, sans-serif;
+            font-size: 15px;
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        button,
+        input {
+            font-family: "Montserrat", Arial, sans-serif;
+        }
+
+        h1,
+        h2,
+        h3,
+        .subtitle,
+        .ticket-title,
+        .letter-title {
+            font-family: "Cormorant Garamond", Georgia, serif;
+        }
+
+
+        /* ==================================================
+           SCROLL ANIMATION
+        ================================================== */
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition:
+                opacity 0.8s ease,
+                transform 0.8s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+
+        /* ==================================================
+           COVER
+        ================================================== */
+
+        .cover {
+            min-height: 100vh;
+
+            background:
+                linear-gradient(
+                    rgba(0, 0, 0, 0.35),
+                    rgba(0, 0, 0, 0.48)
+                ),
+                url("images/cover.jpg") center center / cover no-repeat;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+            color: white;
+
+            padding: 40px 20px;
+        }
+
+        .cover-content {
+            max-width: 900px;
+        }
+
+        .cover-small {
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 28px;
+        }
+
+        .cover h1 {
+            font-size: clamp(52px, 7.5vw, 92px);
+            font-weight: 500;
+            line-height: 0.9;
+            margin: 0 0 30px;
+            letter-spacing: -1.5px;
+        }
+
+        .cover-subtitle {
+            font-family: "Cormorant Garamond", Georgia, serif;
+            font-size: clamp(20px, 2.2vw, 26px);
+            font-style: italic;
+            margin-bottom: 45px;
+        }
+
+        .cover-arrow {
+            font-size: 22px;
+            animation: floating 2s infinite ease-in-out;
+        }
+
+        @keyframes floating {
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(8px);
+            }
+        }
+
+
+        /* ==================================================
+           INTRO
+        ================================================== */
+
+        .intro {
+            max-width: 900px;
+            margin: auto;
+            padding: 115px 25px 95px;
+            text-align: center;
+        }
+
+        .section-eyebrow {
+            font-size: 10px;
+            font-weight: 500;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: #999;
+            margin-bottom: 20px;
+        }
+
+        .intro h2 {
+            font-size: clamp(44px, 5.5vw, 64px);
+            font-weight: 500;
+            line-height: 1;
+            margin: 0 0 30px;
+        }
+
+        .intro p {
+            max-width: 680px;
+            margin: auto;
+            font-size: 15px;
+            line-height: 1.9;
+            color: #666;
+        }
+
+        .intro p strong {
+            font-weight: 500;
+            color: #222;
+        }
+
+
+        /* ==================================================
+           WHY I PICKED THESE FOUR
+        ================================================== */
+
+        .personal-section {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px 25px 120px;
+        }
+
+        .personal-header {
+            text-align: center;
+            margin-bottom: 65px;
+        }
+
+        .personal-header h2 {
+            font-size: clamp(42px, 5vw, 60px);
+            font-weight: 500;
+            line-height: 1;
+            margin: 0 0 20px;
+        }
+
+        .personal-header p {
+            max-width: 620px;
+            margin: auto;
+            color: #777;
+            font-size: 14px;
+        }
+
+        .personal-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1px;
+            background: #d7d0c7;
+            border: 1px solid #d7d0c7;
+        }
+
+        .personal-card {
+            background: #f5f1eb;
+            padding: 40px 35px;
+        }
+
+        .personal-number {
+            font-size: 10px;
+            letter-spacing: 2px;
+            color: #999;
+            margin-bottom: 18px;
+        }
+
+        .personal-card h3 {
+            font-size: 34px;
+            font-weight: 500;
+            margin: 0 0 12px;
+        }
+
+        .personal-card p {
+            color: #777;
+            font-size: 13px;
+            line-height: 1.8;
+            margin: 0;
+        }
+
+
+        /* ==================================================
+           FOUR NIGHTS PREVIEW
+        ================================================== */
+
+        .four-nights {
+            background: #ebe5dc;
+            padding: 105px 25px;
+        }
+
+        .four-nights-inner {
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .four-nights-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .four-nights-header h2 {
+            font-size: clamp(44px, 5vw, 62px);
+            font-weight: 500;
+            margin: 0;
+            line-height: 1;
+        }
+
+        .night-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 35px;
+        }
+
+        .night-card {
+            text-align: center;
+        }
+
+        .night-number {
+            font-size: 10px;
+            letter-spacing: 2px;
+            color: #999;
+            margin-bottom: 15px;
+        }
+
+        .night-card h3 {
+            font-size: 30px;
+            font-weight: 500;
+            margin: 0 0 8px;
+        }
+
+        .night-card p {
+            margin: 0;
+            font-size: 12px;
+            color: #777;
+            line-height: 1.7;
+        }
+
+
+        /* ==================================================
+           RESTAURANTS
+        ================================================== */
+
+        .restaurants {
+            max-width: 1200px;
+            margin: auto;
+            padding: 120px 20px 40px;
+        }
+
+        .restaurant {
+            margin-bottom: 170px;
+        }
+
+        .restaurant-image-wrapper {
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .restaurant-image {
+            width: 100%;
+            height: 620px;
+            display: block;
+            object-fit: cover;
+            transition: transform 0.7s ease;
+        }
+
+        .restaurant-image-wrapper:hover .restaurant-image {
+            transform: scale(1.015);
+        }
+
+        /* SECOND IMAGE */
+
+        .restaurant-image-secondary {
+            width: 100%;
+            height: 420px;
+            display: block;
+            object-fit: cover;
+            margin-top: 55px;
+            transition: transform 0.7s ease;
+        }
+
+        .restaurant-image-secondary:hover {
+            transform: scale(1.01);
+        }
+
+        .restaurant-info {
+            padding: 35px 5px 0;
+        }
+
+        .option-number {
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 2.5px;
+            color: #999;
+            margin-bottom: 12px;
+        }
+
+        .restaurant h3 {
+            font-size: clamp(48px, 5.5vw, 68px);
+            font-weight: 500;
+            margin: 0;
+            line-height: 0.95;
+            letter-spacing: -0.5px;
+        }
+
+        .subtitle {
+            font-size: 23px;
+            font-weight: 400;
+            font-style: italic;
+            margin-top: 12px;
+            color: #444;
+        }
+
+        .restaurant-description {
+            max-width: 720px;
+            font-size: 14px;
+            line-height: 1.9;
+            color: #666;
+            margin-top: 25px;
+        }
+
+        .mood {
+            margin-top: 18px;
+            font-size: 10px;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #777;
+        }
+
+
+        /* ==================================================
+           WHAT THE NIGHT FEELS LIKE
+        ================================================== */
+
+        .feeling-box {
+            margin-top: 50px;
+            padding: 38px 35px;
+            background: #ebe5dc;
+            border-left: 2px solid #999;
+        }
+
+        .feeling-label {
+            font-size: 10px;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #999;
+            margin-bottom: 12px;
+        }
+
+        .feeling-box p {
+            margin: 0;
+            max-width: 750px;
+            font-family: "Cormorant Garamond", Georgia, serif;
+            font-size: 24px;
+            line-height: 1.4;
+            color: #333;
+        }
+
+
+        /* ==================================================
+           RESTAURANT DETAILS
+        ================================================== */
+
+        .restaurant-details {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+            padding: 28px 0;
+            border-top: 1px solid #d7d0c7;
+            border-bottom: 1px solid #d7d0c7;
+        }
+
+        .detail-item {
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+        }
+
+        .detail-label {
+            font-size: 10px;
+            font-weight: 500;
+            letter-spacing: 2px;
+            color: #999;
+            text-transform: uppercase;
+        }
+
+        .detail-value {
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 1.7;
+            color: #333;
+        }
+
+        .detail-rating {
+            font-size: 14px;
+            letter-spacing: 1px;
+        }
+
+        .location-button {
+            display: inline-block;
+            width: fit-content;
+            margin-top: 12px;
+            padding: 9px 15px;
+            border: 1px solid #bbb;
+            color: #444;
+            text-decoration: none;
+            font-size: 10px;
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            transition:
+                background 0.25s ease,
+                color 0.25s ease,
+                border-color 0.25s ease;
+        }
+
+        .location-button:hover {
+            background: #222;
+            color: white;
+            border-color: #222;
+        }
+
+
+        /* ==================================================
+           MENU
+        ================================================== */
+
+        .menu-section {
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid #d7d0c7;
+        }
+
+        .menu-title {
+            font-size: 10px;
+            font-weight: 500;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .menu-note {
+            font-size: 13px;
+            color: #777;
+            margin-bottom: 22px;
+        }
+
+        .menu-button {
+            display: inline-block;
+            margin-top: 5px;
+            padding: 12px 21px;
+            border: 1px solid #222;
+            color: #222;
+            text-decoration: none;
+            font-size: 10px;
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            transition:
+                background 0.25s ease,
+                color 0.25s ease;
+        }
+
+        .menu-button:hover {
+            background: #222;
+            color: white;
+        }
+
+
+        /* ==================================================
+           SAVE THE DATE
+        ================================================== */
+
+        .booking-section {
+            max-width: 760px;
+            margin: 40px auto 120px;
+            padding: 75px 35px;
+            border-top: 1px solid #d7d0c7;
+            border-bottom: 1px solid #d7d0c7;
+            text-align: center;
+        }
+
+        .booking-section h2 {
+            font-size: clamp(40px, 5vw, 58px);
+            font-weight: 500;
+            line-height: 1;
+            margin: 0 0 15px;
+        }
+
+        .booking-description {
+            color: #777;
+            font-size: 14px;
+            margin-bottom: 40px;
+        }
+
+        .save-the-date {
+            margin-bottom: 45px;
+        }
+
+        .save-the-date-line {
+            width: 50px;
+            height: 1px;
+            background: #999;
+            margin: 0 auto 20px;
+        }
+
+        .save-the-date-title {
+            font-size: 10px;
+            font-weight: 500;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #999;
+        }
+
+        .booking-fields {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+            text-align: left;
+        }
+
+        .booking-field {
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+        }
+
+        .booking-field label {
+            font-size: 10px;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #888;
+        }
+
+        .booking-field input {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid #cfc8bf;
+            background: rgba(255, 255, 255, 0.25);
+            color: #222;
+            font-size: 14px;
+            outline: none;
+            border-radius: 0;
+            transition: border-color 0.25s ease;
+        }
+
+        .booking-field input:focus {
+            border-color: #222;
+        }
+
+        .booking-hint {
+            margin-top: 20px;
+            font-family: "Cormorant Garamond", Georgia, serif;
+            font-size: 17px;
+            font-style: italic;
+            color: #999;
+        }
+
+
+        /* ==================================================
+           CHOOSE SECTION
+        ================================================== */
+
+        .choose-section {
+            background: #1c1c1c;
+            color: white;
+            padding: 120px 25px;
+            text-align: center;
+        }
+
+        .choose-small {
+            font-size: 10px;
+            font-weight: 500;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            margin-bottom: 22px;
+            color: #999;
+        }
+
+        .choose-section h2 {
+            font-size: clamp(46px, 6vw, 70px);
+            font-weight: 500;
+            line-height: 0.95;
+            margin: 0 0 22px;
+        }
+
+        .choose-description {
+            max-width: 600px;
+            margin: 0 auto 45px;
+            color: #aaa;
+            font-size: 14px;
+            line-height: 1.9;
+        }
+
+        .choice-buttons {
+            max-width: 700px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 14px;
+        }
+
+        .choice-button {
+            background: transparent;
+            border: 1px solid #666;
+            color: white;
+            padding: 19px 15px;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition:
+                background 0.25s ease,
+                color 0.25s ease,
+                border-color 0.25s ease;
+        }
+
+        .choice-button:hover {
+            background: white;
+            color: #1c1c1c;
+            border-color: white;
+        }
+
+        .choice-button.selected {
+            background: white;
+            color: #1c1c1c;
+            border-color: white;
+        }
+
+
+        /* ==================================================
+           CONFIRM AREA
+        ================================================== */
+
+        .confirm-area {
+            display: none;
+            max-width: 650px;
+            margin: 55px auto 0;
+            padding: 45px 30px;
+            border: 1px solid #555;
+        }
+
+        .confirm-small {
+            font-size: 10px;
+            font-weight: 500;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: #888;
+            margin-bottom: 16px;
+        }
+
+        .confirm-area h3 {
+            font-size: 42px;
+            font-weight: 500;
+            margin: 0 0 22px;
+        }
+
+        .confirm-details {
+            font-size: 14px;
+            color: #bbb;
+            line-height: 2.1;
+        }
+
+        .confirm-details strong {
+            color: white;
+            font-weight: 500;
+        }
+
+        .confirm-button {
+            margin-top: 28px;
+            padding: 16px 32px;
+            border: 1px solid white;
+            background: white;
+            color: #1c1c1c;
+            font-size: 10px;
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+
+        .confirm-button:hover {
+            background: transparent;
+            color: white;
+        }
+
+        .change-choice {
+            display: block;
+            margin: 18px auto 0;
+            background: none;
+            border: none;
+            color: #888;
+            font-size: 10px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            cursor: pointer;
+        }
+
+        .change-choice:hover {
+            color: white;
+        }
+
+
+        /* ==================================================
+           SUCCESS MESSAGE
+        ================================================== */
+
+        .success-message {
+            display: none;
+            max-width: 650px;
+            margin: 55px auto 0;
+        }
+
+        .success-message h3 {
+            font-size: 42px;
+            font-weight: 500;
+            margin: 0 0 22px;
+        }
+
+        .success-message > p {
+            color: #bbb;
+            line-height: 1.9;
+        }
+
+
+        /* ==================================================
+           DIGITAL TICKET
+        ================================================== */
+
+        .ticket {
+            display: none;
+            max-width: 650px;
+            margin: 60px auto 0;
+            background: #f5f1eb;
+            color: #1c1c1c;
+            position: relative;
+            text-align: left;
+        }
+
+        .ticket-top {
+            padding: 42px 40px 35px;
+            text-align: center;
+            border-bottom: 1px dashed #aaa;
+        }
+
+        .ticket-label {
+            font-size: 9px;
+            font-weight: 500;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #999;
+            margin-bottom: 18px;
+        }
+
+        .ticket-title {
+            font-size: 48px;
+            font-weight: 500;
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+
+        .ticket-subtitle {
+            font-family: "Cormorant Garamond", Georgia, serif;
+            font-size: 22px;
+            font-style: italic;
+            color: #555;
+        }
+
+        .ticket-middle {
+            padding: 30px 40px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+
+        .ticket-detail-label {
+            font-size: 9px;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #999;
+            margin-bottom: 5px;
+        }
+
+        .ticket-detail-value {
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        .ticket-bottom {
+            padding: 25px 40px 30px;
+            border-top: 1px dashed #aaa;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .admit {
+            font-size: 9px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #999;
+        }
+
+        .ticket-heart {
+            font-family: "Cormorant Garamond", Georgia, serif;
+            font-size: 26px;
+        }
+
+
+        /* ==================================================
+           ONE LAST THING
+        ================================================== */
+
+        .last-section {
+            max-width: 850px;
+            margin: auto;
+            padding: 140px 25px;
+            text-align: center;
+        }
+
+        .letter-title {
+            font-size: clamp(46px, 5vw, 64px);
+            font-weight: 500;
+            line-height: 1;
+            margin: 0 0 35px;
+        }
+
+        .letter {
+            max-width: 650px;
+            margin: auto;
+            font-family: "Cormorant Garamond", Georgia, serif;
+            font-size: 23px;
+            line-height: 1.65;
+            color: #555;
+        }
+
+        .letter-signature {
+            margin-top: 40px;
+            font-family: "Cormorant Garamond", Georgia, serif;
+            font-size: 25px;
+            font-style: italic;
+        }
+
+        .final-line {
+            margin-top: 75px;
+            font-size: 10px;
+            font-weight: 500;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #999;
+        }
+
+
+        /* ==================================================
+           FOOTER
+        ================================================== */
+
+        footer {
+            padding: 30px 20px 45px;
+            text-align: center;
+            color: #aaa;
+            font-size: 9px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+
+        /* ==================================================
+           MOBILE
+        ================================================== */
+
+        @media (max-width: 700px) {
+
+            .cover {
+                min-height: 90vh;
+            }
+
+            .cover-small {
+                font-size: 9px;
+                letter-spacing: 2.5px;
+                margin-bottom: 22px;
+            }
+
+            .cover h1 {
+                font-size: clamp(48px, 15vw, 68px);
+                letter-spacing: -1px;
+                margin-bottom: 25px;
+            }
+
+            .cover-subtitle {
+                font-size: 20px;
+            }
+
+
+            /* Intro */
+
+            .intro {
+                padding: 85px 20px 75px;
+            }
+
+            .intro h2 {
+                font-size: 48px;
+            }
+
+            .intro p {
+                font-size: 14px;
+                line-height: 1.85;
+            }
+
+
+            /* Personal */
+
+            .personal-section {
+                padding: 0 20px 85px;
+            }
+
+            .personal-header {
+                margin-bottom: 40px;
+            }
+
+            .personal-header h2 {
+                font-size: 46px;
+            }
+
+            .personal-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .personal-card {
+                padding: 32px 25px;
+            }
+
+            .personal-card h3 {
+                font-size: 31px;
+            }
+
+
+            /* Four nights */
+
+            .four-nights {
+                padding: 80px 20px;
+            }
+
+            .four-nights-header {
+                margin-bottom: 45px;
+            }
+
+            .four-nights-header h2 {
+                font-size: 48px;
+            }
+
+            .night-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 40px 20px;
+            }
+
+            .night-card h3 {
+                font-size: 27px;
+            }
+
+
+            /* Restaurants */
+
+            .restaurants {
+                padding: 80px 15px 20px;
+            }
+
+            .restaurant {
+                margin-bottom: 110px;
+            }
+
+            .restaurant-image {
+                height: 430px;
+            }
+
+            .restaurant-image-secondary {
+                height: 320px;
+                margin-top: 40px;
+            }
+
+            .restaurant-info {
+                padding-top: 26px;
+            }
+
+            .restaurant h3 {
+                font-size: 54px;
+            }
+
+            .subtitle {
+                font-size: 22px;
+            }
+
+            .restaurant-description {
+                font-size: 14px;
+                line-height: 1.85;
+            }
+
+            .mood {
+                font-size: 9px;
+                letter-spacing: 1.8px;
+            }
+
+
+            /* Feeling */
+
+            .feeling-box {
+                padding: 30px 24px;
+                margin-top: 40px;
+            }
+
+            .feeling-box p {
+                font-size: 21px;
+            }
+
+
+            /* Details */
+
+            .restaurant-details {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                padding: 25px 0;
+            }
+
+            .detail-label {
+                font-size: 9px;
+                letter-spacing: 1.8px;
+            }
+
+            .detail-value {
+                font-size: 14px;
+            }
+
+            .location-button {
+                font-size: 9px;
+            }
+
+
+            /* Menu */
+
+            .menu-title {
+                font-size: 9px;
+            }
+
+            .menu-note {
+                font-size: 12px;
+            }
+
+            .menu-button {
+                font-size: 9px;
+            }
+
+
+            /* Booking */
+
+            .booking-section {
+                margin: 0 15px 80px;
+                padding: 55px 20px;
+            }
+
+            .booking-section h2 {
+                font-size: 43px;
+            }
+
+            .booking-description {
+                font-size: 13px;
+            }
+
+            .booking-fields {
+                grid-template-columns: 1fr;
+            }
+
+
+            /* Choice */
+
+            .choose-section {
+                padding: 90px 20px;
+            }
+
+            .choose-section h2 {
+                font-size: 50px;
+            }
+
+            .choose-description {
+                font-size: 13px;
+            }
+
+            .choice-buttons {
+                grid-template-columns: 1fr;
+            }
+
+            .choice-button {
+                font-size: 10px;
+                letter-spacing: 1.8px;
+            }
+
+
+            /* Confirm */
+
+            .confirm-area {
+                padding: 38px 20px;
+            }
+
+            .confirm-area h3 {
+                font-size: 38px;
+            }
+
+            .confirm-details {
+                font-size: 13px;
+            }
+
+
+            /* Ticket */
+
+            .ticket-top {
+                padding: 35px 25px 30px;
+            }
+
+            .ticket-title {
+                font-size: 42px;
+            }
+
+            .ticket-middle {
+                padding: 25px;
+                gap: 22px;
+            }
+
+            .ticket-bottom {
+                padding: 22px 25px 27px;
+            }
+
+
+            /* Letter */
+
+            .last-section {
+                padding: 100px 20px;
+            }
+
+            .letter-title {
+                font-size: 48px;
+            }
+
+            .letter {
+                font-size: 21px;
+            }
+
+            .final-line {
+                margin-top: 55px;
+                font-size: 9px;
+                letter-spacing: 2px;
+            }
+
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+<!-- ==================================================
+     COVER
+================================================== -->
+
+<section class="cover">
+
+    <div class="cover-content">
+
+        <div class="cover-small">
+            A Graduation Celebration
+        </div>
+
+        <h1>
+            YOUR<br>
+            GRADUATION<br>
+            NIGHT
+        </h1>
+
+        <div class="cover-subtitle">
+            One graduation. Four ways to celebrate.
+        </div>
+
+        <div class="cover-arrow">
+            ↓
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ==================================================
+     INTRO
+================================================== -->
+
+<section class="intro reveal">
+
+    <div class="section-eyebrow">
+        For the graduate
+    </div>
+
+    <h2>
+        You did it.
+    </h2>
+
+    <p>
+        After all the late nights, deadlines, little victories
+        and everything in between — now it's time to celebrate.
+
+        <br><br>
+
+        So here's the only decision you need to make tonight:
+
+        <br><br>
+
+        <strong>
+            Where should your graduation story begin?
+        </strong>
+    </p>
+
+</section>
+
+
+
+<!-- ==================================================
+     WHY I PICKED THESE FOUR
+================================================== -->
+
+<section class="personal-section reveal">
+
+    <div class="personal-header">
+
+        <div class="section-eyebrow">
+            A little something I planned
+        </div>
+
+        <h2>
+            Why I picked these four.
+        </h2>
+
+        <p>
+            I didn't want to just send you a restaurant list.
+            I wanted you to have a few different versions of the night
+            to choose from.
+        </p>
+
+    </div>
+
+
+    <div class="personal-grid">
+
+        <div class="personal-card">
+
+            <div class="personal-number">
+                01 — FOR THE FOODIE
+            </div>
+
+            <h3>
+                A beautiful dinner.
+            </h3>
+
+            <p>
+                For a night where the food gets to be part of the story,
+                the details matter, and we can actually sit down and enjoy
+                the moment.
+            </p>
+
+        </div>
+
+
+        <div class="personal-card">
+
+            <div class="personal-number">
+                02 — FOR THE MOOD
+            </div>
+
+            <h3>
+                Something a little different.
+            </h3>
+
+            <p>
+                For when graduation calls for somewhere stylish,
+                atmospheric and just a little more memorable than
+                an ordinary dinner.
+            </p>
+
+        </div>
+
+
+        <div class="personal-card">
+
+            <div class="personal-number">
+                03 — FOR THE NIGHT
+            </div>
+
+            <h3>
+                Dinner, drinks, city lights.
+            </h3>
+
+            <p>
+                For the version of the night that starts with dinner
+                and somehow turns into stories, photos and staying out
+                a little later than planned.
+            </p>
+
+        </div>
+
+
+        <div class="personal-card">
+
+            <div class="personal-number">
+                04 — FOR THE MOMENT
+            </div>
+
+            <h3>
+                Make it a big one.
+            </h3>
+
+            <p>
+                Because graduation only happens once.
+                Maybe this is the night that deserves a little drama.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ==================================================
+     FOUR NIGHTS
+================================================== -->
+
+<section class="four-nights reveal">
+
+    <div class="four-nights-inner">
+
+        <div class="four-nights-header">
+
+            <div class="section-eyebrow">
+                Choose your mood
+            </div>
+
+            <h2>
+                The Four Nights
+            </h2>
+
+        </div>
+
+
+        <div class="night-grid">
+
+            <div class="night-card">
+
+                <div class="night-number">
+                    01
+                </div>
+
+                <h3>
+                    Omakase
+                </h3>
+
+                <p>
+                    Intimate.<br>
+                    Elegant.<br>
+                    Food-focused.
+                </p>
+
+            </div>
+
+
+            <div class="night-card">
+
+                <div class="night-number">
+                    02
+                </div>
+
+                <h3>
+                    Mystery
+                </h3>
+
+                <p>
+                    Chic.<br>
+                    Mysterious.<br>
+                    Cinematic.
+                </p>
+
+            </div>
+
+
+            <div class="night-card">
+
+                <div class="night-number">
+                    03
+                </div>
+
+                <h3>
+                    City Lights
+                </h3>
+
+                <p>
+                    Fun.<br>
+                    Social.<br>
+                    Late-night.
+                </p>
+
+            </div>
+
+
+            <div class="night-card">
+
+                <div class="night-number">
+                    04
+                </div>
+
+                <h3>
+                    Main Character
+                </h3>
+
+                <p>
+                    Grand.<br>
+                    Romantic.<br>
+                    Unforgettable.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ==================================================
+     RESTAURANTS
+================================================== -->
+
+<section class="restaurants">
+
+
+<!-- ==================================================
+     ITADAKI
+================================================== -->
+
+<article class="restaurant reveal">
+
+    <!-- IMAGE 1 -->
+
+    <div class="restaurant-image-wrapper">
+
+        <img
+            class="restaurant-image"
+            src="images/itadaki/itadaki-1.jpg"
+            alt="ITADAKI"
+        >
+
+    </div>
+
+
+    <div class="restaurant-info">
+
+        <div class="option-number">
+            OPTION 01
+        </div>
+
+        <h3>
+            ITADAKI
+        </h3>
+
+        <div class="subtitle">
+            The Omakase Night
+        </div>
+
+        <p class="restaurant-description">
+            An intimate evening for people who appreciate
+            beautiful food, thoughtful details and a slower pace.
+
+            <br><br>
+
+            This is the night for sitting close, talking for hours,
+            and letting the food become part of the celebration.
+        </p>
+
+        <div class="mood">
+            Intimate · Elegant · Food-focused
+        </div>
+
+
+        <div class="feeling-box">
+
+            <div class="feeling-label">
+                What the night feels like
+            </div>
+
+            <p>
+                Slow conversations, beautiful plates,
+                a few glasses of something good,
+                and nowhere else we need to be.
+            </p>
+
+        </div>
+
+
+        <!-- IMAGE 2 -->
+
+        <img
+            class="restaurant-image-secondary"
+            src="images/itadaki/itadaki-2.jpg"
+            alt="ITADAKI interior"
+        >
+
+
+        <div class="restaurant-details">
+
+            <div class="detail-item">
+
+                <span class="detail-label">
+                    Address
+                </span>
+
+                <span class="detail-value">
+                    16 Ngo Van Nam, District 1, Ho Chi Minh City
+                </span>
+
+                <a
+                    class="location-button"
+                    href="https://maps.app.goo.gl/u16HPqx2iFANEbwJ7?g_st=iz"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    View Location ↗
+                </a>
+
+            </div>
+
+
+            <div class="detail-item">
+
+                <span class="detail-label">
+                    Opening Hours
+                </span>
+
+                <span class="detail-value">
+                    11:30 AM — 3:00 PM
+                    <br>
+                    6:00 PM — 11:00 PM
+                </span>
+
+            </div>
+
+
+            <div class="detail-item">
+
+                <span class="detail-label">
+                    Rating
+                </span>
+
+                <span class="detail-value detail-rating">
+                    ★ 4.9 / 5
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="menu-section">
+
+            <div class="menu-title">
+                THE MENU
+            </div>
+
+            <div class="menu-note">
+                Take a look at the full menu before making your choice.
+            </div>
+
+            <a
+                class="menu-button"
+                href="images/itadaki/itadaki-menu.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                VIEW MENU ↗
+            </a>
+
+        </div>
+
+    </div>
+
+</article>
+
+
+
+<!-- ==================================================
+     NOIRE
+================================================== -->
+
+<article class="restaurant reveal">
+
+    <!-- IMAGE 1 -->
+
+    <div class="restaurant-image-wrapper">
+
+        <img
+            class="restaurant-image"
+            src="images/noire/noire-1.webp"
+            alt="NOIRE"
+        >
+
+    </div>
+
+
+    <div class="restaurant-info">
+
+        <div class="option-number">
+            OPTION 02
+        </div>
+
+        <h3>
+            NOIRE
+        </h3>
+
+        <div class="subtitle">
+            The Mystery Night
+        </div>
+
+        <p class="restaurant-description">
+            Dark, stylish and a little mysterious.
+
+            <br><br>
+
+            The kind of place where the lighting is low,
+            the conversation gets interesting,
+            and the night feels like a scene from a movie.
+        </p>
+
+        <div class="mood">
+            Chic · Mysterious · Cinematic
+        </div>
+
+
+        <div class="feeling-box">
+
+            <div class="feeling-label">
+                What the night feels like
+            </div>
+
+            <p>
+                Dim lights, dressed-up energy,
+                good conversation and the feeling
+                that tonight is slightly different.
+            </p>
+
+        </div>
+
+
+        <!-- IMAGE 2 -->
+
+        <img
+            class="restaurant-image-secondary"
+            src="images/noire/noire-2.webp"
+            alt="NOIRE interior"
+        >
+
+
+        <div class="restaurant-details">
+
+            <div class="detail-item">
+
+                <span class="detail-label">
+                    Address
+                </span>
+
+                <span class="detail-value">
+                    259 Điện Biên Phủ, Xuân Hòa,
+                    Hồ Chí Minh 70000, Vietnam
+                </span>
+
+                <a
+                    class="location-button"
+                    href="https://maps.app.goo.gl/Y3z1dccHrsqJyhYA8?g_st=ic"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    View Location ↗
+                </a>
+
+            </div>
+
+
+            <div class="detail-item">
+
+                <span class="detail-label">
+                    Opening Hours
+                </span>
+
+                <span class="detail-value">
+                    11:00 AM — 2:00 PM
+                    <br>
+                    5:00 PM — 11:00 PM
+                </span>
+
+            </div>
+
+
+            <div class="detail-item">
+
+                <span class="detail-label">
+                    Rating
+                </span>
+
+                <span class="detail-value detail-rating">
+                    ★ 4.9 / 5
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="menu-section">
+
+            <div class="menu-title">
+                THE MENU
+            </div>
+
+            <div class="menu-note">
+                Take a look at the full menu before making your choice.
+            </div>
+
+            <a
+                class="menu-button"
+                href="images/noire/noire-menu.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                VIEW MENU ↗
+            </a>
+
+        </div>
+
+    </div>
+
+</article>
+
+
+
+<!-- ==================================================
+     DARCY
+================================================== -->
+
+<article class="restaurant reveal">
+
+    <!-- IMAGE 1 -->
+
+    <div class="restaurant-image-wrapper">
+
+        <img
+            class="restaurant-image"
+            src="images/darcy/darcy-1.jpg"
+            alt="DARCY"
+        >
+
+    </div>
+
+
+    <div class="restaurant-info">
+
+        <div class="option-number">
+            OPTION 03
+        </div>
+
+        <h3>
+            DARCY
+        </h3>
+
+        <div class="subtitle">
+            The City Lights Night
+        </div>
+
+        <p class="restaurant-description">
+            A little louder, a little brighter,
+            and made for a night that doesn't want to end early.
+
+            <br><br>
+
+            Think city lights, good drinks, music,
+            photos and the kind of conversation that keeps going.
+        </p>
+
+        <div class="mood">
+            Fun · Social · City lights
+        </div>
+
+
+        <div class="feeling-box">
+
+            <div class="feeling-label">
+                What the night feels like
+            </div>
+
+            <p>
+                Start with dinner, stay for drinks,
+                take too many photos,
+                and see where the night takes us.
+            </p>
+
+        </div>
+
+
+        <!-- IMAGE 2 -->
+
+        <img
+            class="restaurant-image-secondary"
+            src="images/darcy/darcy-2.jpg"
+            alt="DARCY interior"
+        >
+
+
+        <div class="restaurant-details">
+
+            <div class="detail-item">
+
+                <span class="detail-label">
+                    Address
+                </span>
+
+                <span class="detail-value">
+                    43 Nguyen Hue, District 1, Ho Chi Minh City
+                </span>
+
+                <a
+                    class="location-button"
+                    href="https://www.google.com/maps?q=Darcy+Fine+Bar,+43+Nguyễn+Huệ,+Sài+Gòn,+Hồ+Chí+Minh"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    View Location ↗
+                </a>
+
+            </div>
+
+
+            <div class="detail-item">
+
+                <span class="detail-label">
+                    Opening Hours
+                </span>
+
+                <span class="detail-value">
+                    11:00 AM — 3:00 PM
+                    <br>
+                    6:00 PM — 1:00 AM
+                </span>
+
+            </div>
+
+
+            <div class="detail-item">
+
+                <span class="detail-label">
+                    Rating
+                </span>
+
+                <span class="detail-value detail-rating">
+                    ★ 4.6 / 5
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="menu-section">
+
+            <div class="menu-title">
+                THE MENU
+            </div>
+
+            <div class="menu-note">
+                Take a look at the full menu before making your choice.
+            </div>
+
+            <a
+                class="menu-button"
+                href="images/darcy/darcy-menu.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                VIEW MENU ↗
+            </a>
+
+        </div>
+
+    </div>
+
+</article>
+
+
+
+<!-- ==================================================
+     ICON CRUISE
+================================================== -->
+
+<article class="restaurant reveal">
+
+    <!-- IMAGE 1 -->
+
+    <div class="restaurant-image-wrapper">
+
+        <img
+            class="restaurant-image"
+            src="images/icon/icon-1.webp"
+            alt="ICON CRUISE"
+        >
+
+    </div>
+
+
+    <div class="restaurant-info">
+
+        <div class="option-number">
+            OPTION 04
+        </div>
+
+        <h3>
+            ICON CRUISE
+        </h3>
+
+        <div class="subtitle">
+            The Main Character Night
+        </div>
+
+        <p class="restaurant-description">
+            Dinner on the water, city lights all around,
+            and a night that feels bigger than an ordinary dinner.
+
+            <br><br>
+
+            If graduation deserves a little drama,
+            this is the option.
+        </p>
+
+        <div class="mood">
+            Grand · Romantic · Unforgettable
+        </div>
+
+
+        <div class="feeling-box">
+
+            <div class="feeling-label">
+                What the night feels like
+            </div>
+
+            <p>
+                City lights on the water,
+                dinner with a view,
+                and the kind of night you'll probably
+                remember for a long time.
+            </p>
+
+        </div>
+
+
+        <!-- IMAGE 2 -->
+
+        <img
+            class="restaurant-image-secondary"
+            src="images/icon/icon-2.webp"
+            alt="ICON CRUISE"
+        >
+
+
+        <div class="restaurant-details">
+
+            <div class="detail-item">
+
+                <span class="detail-label">
+                    Address
+                </span>
+
+                <span class="detail-value">
+                    5 Đ. Nguyễn Tất Thành, Xóm Chiếu,
+                    Hồ Chí Minh 700000, Vietnam
+                </span>
+
+                <a
+                    class="location-button"
+                    href="https://maps.app.goo.gl/NgearxZQYaJzMoat5?g_st=iz"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    View Location ↗
+                </a>
+
+            </div>
+
+
+            <div class="detail-item">
+
+                <span class="detail-label">
+                    Opening Hours
+                </span>
+
+                <span class="detail-value">
+                    5:00 PM — 11:30 PM
+                </span>
+
+            </div>
+
+
+            <div class="detail-item">
+
+                <span class="detail-label">
+                    Rating
+                </span>
+
+                <span class="detail-value detail-rating">
+                    ★ 4.8 / 5
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="menu-section">
+
+            <div class="menu-title">
+                THE MENU
+            </div>
+
+            <div class="menu-note">
+                Take a look at the full menu before making your choice.
+            </div>
+
+            <a
+                class="menu-button"
+                href="images/icon/icon-menu.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                VIEW MENU ↗
+            </a>
+
+        </div>
+
+    </div>
+
+</article>
+
+
+</section>
+
+
+
+<!-- ==================================================
+     DATE & TIME
+================================================== -->
+
+<section class="booking-section reveal">
+
+    <div class="save-the-date">
+
+        <div class="save-the-date-line"></div>
+
+        <div class="save-the-date-title">
+            Save the date
+        </div>
+
+    </div>
+
+
+    <h2>
+        When should we celebrate?
+    </h2>
+
+    <p class="booking-description">
+        Pick a date and time for your graduation night.
+    </p>
+
+
+    <div class="booking-fields">
+
+        <div class="booking-field">
+
+            <label for="date">
+                Date
+            </label>
+
+            <input
+                type="date"
+                id="date"
+                required
+            >
+
+        </div>
+
+
+        <div class="booking-field">
+
+            <label for="time">
+                Time
+            </label>
+
+            <input
+                type="time"
+                id="time"
+                required
+            >
+
+        </div>
+
+    </div>
+
+
+    <div class="booking-hint">
+        Don't worry — we can always adjust the details later. ♡
+    </div>
+
+</section>
+
+
+
+<!-- ==================================================
+     CHOOSE
+================================================== -->
+
+<section class="choose-section">
+
+    <div class="choose-small">
+        The final decision
+    </div>
+
+    <h2>
+        What's your night?
+    </h2>
+
+    <p class="choose-description">
+        You've seen the options.
+        <br>
+        You've picked the date.
+        <br>
+        Now choose the version of the night you'd like to remember.
+        <br><br>
+        ♡
+    </p>
+
+
+    <div class="choice-buttons">
+
+        <button
+            class="choice-button"
+            onclick="chooseRestaurant('ITADAKI', this)"
+        >
+            ITADAKI
+        </button>
+
+
+        <button
+            class="choice-button"
+            onclick="chooseRestaurant('NOIRE', this)"
+        >
+            NOIRE
+        </button>
+
+
+        <button
+            class="choice-button"
+            onclick="chooseRestaurant('DARCY', this)"
+        >
+            DARCY
+        </button>
+
+
+        <button
+            class="choice-button"
+            onclick="chooseRestaurant('ICON CRUISE', this)"
+        >
+            ICON CRUISE
+        </button>
+
+    </div>
+
+
+
+    <!-- CONFIRM -->
+
+    <div
+        id="confirmArea"
+        class="confirm-area"
+    >
+
+        <div class="confirm-small">
+            Your graduation night
+        </div>
+
+        <h3>
+            Almost a date. ♡
+        </h3>
+
+        <div
+            id="confirmDetails"
+            class="confirm-details"
+        >
+        </div>
+
+        <button
+            class="confirm-button"
+            onclick="confirmNight()"
+        >
+            CONFIRM MY NIGHT ♡
+        </button>
+
+        <button
+            class="change-choice"
+            onclick="changeChoice()"
+        >
+            ← Change my choice
+        </button>
+
+    </div>
+
+
+
+    <!-- SUCCESS -->
+
+    <div
+        id="successMessage"
+        class="success-message"
+    >
+
+        <div class="confirm-small">
+            It's official
+        </div>
+
+        <h3>
+            It's a date. ♡
+        </h3>
+
+        <p id="successText">
+        </p>
+
+
+        <!-- DIGITAL TICKET -->
+
+        <div
+            id="ticket"
+            class="ticket"
+        >
+
+            <div class="ticket-top">
+
+                <div class="ticket-label">
+                    Graduation Night
+                </div>
+
+                <div
+                    id="ticketRestaurant"
+                    class="ticket-title"
+                >
+                    ITADAKI
+                </div>
+
+                <div
+                    id="ticketSubtitle"
+                    class="ticket-subtitle"
+                >
+                    The Omakase Night
+                </div>
+
+            </div>
+
+
+            <div class="ticket-middle">
+
+                <div>
+
+                    <div class="ticket-detail-label">
+                        Date
+                    </div>
+
+                    <div
+                        id="ticketDate"
+                        class="ticket-detail-value"
+                    >
+                    </div>
+
+                </div>
+
+
+                <div>
+
+                    <div class="ticket-detail-label">
+                        Time
+                    </div>
+
+                    <div
+                        id="ticketTime"
+                        class="ticket-detail-value"
+                    >
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="ticket-bottom">
+
+                <div class="admit">
+                    Admit two
+                </div>
+
+                <div class="ticket-heart">
+                    ♡
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ==================================================
+     ONE LAST THING
+================================================== -->
+
+<section class="last-section reveal">
+
+    <div class="section-eyebrow">
+        One last thing
+    </div>
+
+    <h2 class="letter-title">
+        Before the night begins...
+    </h2>
+
+    <div class="letter">
+
+        You worked hard for this moment.
+
+        <br><br>
+
+        So whatever you choose,
+        I hope we don't spend the whole night talking about
+        deadlines, assignments or how tired we are.
+
+        <br><br>
+
+        Tonight is just for celebrating you,
+        laughing too much,
+        eating something good,
+        taking too many pictures,
+        and making one more memory before the next chapter begins.
+
+        <br><br>
+
+        You deserve a really good night.
+
+    </div>
+
+
+    <div class="letter-signature">
+        See you at dinner. ♡
+    </div>
+
+
+    <div class="final-line">
+        One graduation · One night · One memory
+    </div>
+
+</section>
+
+
+
+<!-- ==================================================
+     FOOTER
+================================================== -->
+
+<footer>
+    Made for your graduation night ♡
+</footer>
+
+
+
+<!-- ==================================================
+     JAVASCRIPT
+================================================== -->
+
+<script>
+
+    /* ==================================================
+       VARIABLES
+    ================================================== */
+
+    let selectedRestaurant = "";
+
+
+    /* ==================================================
+       RESTAURANT SUBTITLES
+    ================================================== */
+
+    const restaurantSubtitles = {
+
+        "ITADAKI":
+            "The Omakase Night",
+
+        "NOIRE":
+            "The Mystery Night",
+
+        "DARCY":
+            "The City Lights Night",
+
+        "ICON CRUISE":
+            "The Main Character Night"
+
+    };
+
+
+    /* ==================================================
+       SET MINIMUM DATE
+    ================================================== */
+
+    const dateInput =
+        document.getElementById("date");
+
+    const today =
+        new Date();
+
+    const year =
+        today.getFullYear();
+
+    const month =
+        String(today.getMonth() + 1)
+            .padStart(2, "0");
+
+    const day =
+        String(today.getDate())
+            .padStart(2, "0");
+
+    dateInput.min =
+        `${year}-${month}-${day}`;
+
+
+    /* ==================================================
+       FORMAT DATE
+    ================================================== */
+
+    function formatDate(date) {
+
+        const dateObject =
+            new Date(date + "T00:00:00");
+
+        return dateObject.toLocaleDateString(
+            "en-US",
+            {
+                month: "long",
+                day: "numeric",
+                year: "numeric"
+            }
+        );
+    }
+
+
+    /* ==================================================
+       FORMAT TIME
+    ================================================== */
+
+    function formatTime(time) {
+
+        const timeObject =
+            new Date(
+                "1970-01-01T" + time
+            );
+
+        return timeObject.toLocaleTimeString(
+            "en-US",
+            {
+                hour: "numeric",
+                minute: "2-digit"
+            }
+        );
+    }
+
+
+    /* ==================================================
+       CHOOSE RESTAURANT
+    ================================================== */
+
+    function chooseRestaurant(name, button) {
+
+        const date =
+            document.getElementById("date").value;
+
+        const time =
+            document.getElementById("time").value;
+
+
+        /* Check date */
+
+        if (!date) {
+
+            alert(
+                "Please choose a date first. ♡"
+            );
+
+            dateInput.focus();
+
+            return;
+        }
+
+
+        /* Check time */
+
+        if (!time) {
+
+            alert(
+                "Please choose a time first. ♡"
+            );
+
+            document
+                .getElementById("time")
+                .focus();
+
+            return;
+        }
+
+
+        /* Save restaurant */
+
+        selectedRestaurant =
+            name;
+
+
+        /* Remove previous selection */
+
+        document
+            .querySelectorAll(".choice-button")
+            .forEach(function(btn) {
+
+                btn.classList.remove("selected");
+
+            });
+
+
+        /* Highlight selected button */
+
+        button.classList.add("selected");
+
+
+        /* Format */
+
+        const formattedDate =
+            formatDate(date);
+
+        const formattedTime =
+            formatTime(time);
+
+
+        /* Show confirmation */
+
+        const confirmArea =
+            document.getElementById(
+                "confirmArea"
+            );
+
+        const confirmDetails =
+            document.getElementById(
+                "confirmDetails"
+            );
+
+
+        confirmDetails.innerHTML =
+
+            "📅 <strong>" +
+            formattedDate +
+            "</strong>" +
+
+            "<br>" +
+
+            "🕰 <strong>" +
+            formattedTime +
+            "</strong>" +
+
+            "<br>" +
+
+            "🍽 <strong>" +
+            name +
+            "</strong>";
+
+
+        confirmArea.style.display =
+            "block";
+
+
+        /* Hide old success */
+
+        document
+            .getElementById("successMessage")
+            .style.display = "none";
+
+
+        /* Scroll */
+
+        confirmArea.scrollIntoView({
+            behavior: "smooth",
+            block: "center"
+        });
+
+    }
+
+
+    /* ==================================================
+       CHANGE CHOICE
+    ================================================== */
+
+    function changeChoice() {
+
+        document
+            .getElementById("confirmArea")
+            .style.display = "none";
+
+
+        document
+            .querySelectorAll(".choice-button")
+            .forEach(function(btn) {
+
+                btn.classList.remove("selected");
+
+            });
+
+
+        selectedRestaurant = "";
+
+    }
+
+
+    /* ==================================================
+       CONFIRM NIGHT
+    ================================================== */
+
+    function confirmNight() {
+
+        const date =
+            document.getElementById("date").value;
+
+        const time =
+            document.getElementById("time").value;
+
+
+        /* Safety check */
+
+        if (
+            !date ||
+            !time ||
+            !selectedRestaurant
+        ) {
+
+            alert(
+                "Please choose your date, time and restaurant. ♡"
+            );
+
+            return;
+        }
+
+
+        /* Format */
+
+        const formattedDate =
+            formatDate(date);
+
+        const formattedTime =
+            formatTime(time);
+
+
+        /* Hide confirmation */
+
+        document
+            .getElementById("confirmArea")
+            .style.display = "none";
+
+
+        /* Show success */
+
+        const message =
+            document.getElementById(
+                "successMessage"
+            );
+
+        const text =
+            document.getElementById(
+                "successText"
+            );
+
+
+        text.innerHTML =
+
+            "You chose <strong>" +
+            selectedRestaurant +
+            "</strong>." +
+
+            "<br><br>" +
+
+            "📅 " +
+            formattedDate +
+
+            "<br>" +
+
+            "🕰 " +
+            formattedTime +
+
+            "<br><br>" +
+
+            "Now just show up " +
+            "and let us celebrate you. ♡";
+
+
+        message.style.display =
+            "block";
+
+
+        /* ==================================================
+           DIGITAL TICKET
+        ================================================== */
+
+        document
+            .getElementById("ticketRestaurant")
+            .textContent =
+            selectedRestaurant;
+
+
+        document
+            .getElementById("ticketSubtitle")
+            .textContent =
+            restaurantSubtitles[
+                selectedRestaurant
+            ];
+
+
+        document
+            .getElementById("ticketDate")
+            .textContent =
+            formattedDate;
+
+
+        document
+            .getElementById("ticketTime")
+            .textContent =
+            formattedTime;
+
+
+        document
+            .getElementById("ticket")
+            .style.display =
+            "block";
+
+
+        /* Scroll */
+
+        message.scrollIntoView({
+            behavior: "smooth",
+            block: "center"
+        });
+
+
+        /* ==================================================
+           CURRENT DATA
+           Later this can be sent to Google Apps Script
+        ================================================== */
+
+        console.log({
+
+            date: date,
+
+            time: time,
+
+            restaurant:
+                selectedRestaurant
+
+        });
+
+    }
+
+
+    /* ==================================================
+       SCROLL REVEAL
+    ================================================== */
+
+    const revealElements =
+        document.querySelectorAll(".reveal");
+
+
+    const observer =
+        new IntersectionObserver(
+
+            function(entries) {
+
+                entries.forEach(
+                    function(entry) {
+
+                        if (
+                            entry.isIntersecting
+                        ) {
+
+                            entry.target
+                                .classList
+                                .add("visible");
+
+                        }
+
+                    }
+                );
+
+            },
+
+            {
+                threshold: 0.12
+            }
+
+        );
+
+
+    revealElements.forEach(
+        function(element) {
+
+            observer.observe(element);
+
+        }
+    );
+
+</script>
+
+
+</body>
+</html>
