@@ -1,7 +1,9 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -77,54 +79,54 @@
         ================================================== */
 
         .cover {
-    min-height: 100vh;
-    position: relative;
+            min-height: 100vh;
+            position: relative;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
 
-    text-align: center;
-    color: white;
+            text-align: center;
+            color: white;
 
-    padding: 40px 20px;
-    overflow: hidden;
-}
+            padding: 40px 20px;
+            overflow: hidden;
+        }
 
-.cover::before {
-    content: "";
-    position: absolute;
-    inset: 0;
+        .cover::before {
+            content: "";
+            position: absolute;
+            inset: 0;
 
-    background: url("images/cover.jpg") center center / cover no-repeat;
-    opacity: 0.3;
+            background: url("images/cover.jpg") center center / cover no-repeat;
+            opacity: 0.3;
 
-    z-index: 0;
-}
+            z-index: 0;
+        }
 
-.cover::after {
-    content: "";
-    position: absolute;
-    inset: 0;
+        .cover::after {
+            content: "";
+            position: absolute;
+            inset: 0;
 
-    background: rgba(0, 0, 0, 0.6);
+            background: rgba(0, 0, 0, 0.6);
 
-    z-index: 0;
-}
+            z-index: 0;
+        }
 
-.cover-content {
-    position: relative;
-    z-index: 1;
-    max-width: 900px;
-}
+        .cover-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+        }
 
         .cover-small {
-    font-size: 26px;
-    font-weight: 300;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    margin-bottom: 28px;
-}
+            font-size: 26px;
+            font-weight: 300;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 28px;
+        }
 
         .cover h1 {
             font-size: clamp(52px, 7.5vw, 92px);
@@ -132,6 +134,14 @@
             line-height: 0.9;
             margin: 0 0 30px;
             letter-spacing: -1.5px;
+        }
+
+        .cover h1 span {
+            display: block;
+        }
+
+        .cover h1 span:first-child {
+            margin-bottom: 50px;
         }
 
         .cover-subtitle {
@@ -146,22 +156,17 @@
             animation: floating 2s infinite ease-in-out;
         }
 
-        .cover h1 span {
-    display: block;
-}
-
-.cover h1 span:first-child {
-    margin-bottom: 50px;
-}
-
         @keyframes floating {
-            0%, 100% {
+
+            0%,
+            100% {
                 transform: translateY(0);
             }
 
             50% {
                 transform: translateY(8px);
             }
+
         }
 
 
@@ -207,262 +212,367 @@
 
 
         /* ==================================================
-           WHY I PICKED THESE FOUR
+           THIS OR THAT
         ================================================== */
 
-       <!-- ==================================================
-     THIS OR THAT
-================================================== -->
+        .personal-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px 25px 120px;
+        }
+
+        .personal-header {
+            text-align: center;
+            margin-bottom: 65px;
+        }
+
+        .personal-header h2 {
+            font-size: clamp(44px, 5vw, 64px);
+            font-weight: 500;
+            line-height: 1;
+            margin: 0 0 25px;
+        }
+
+        .personal-header p {
+            max-width: 680px;
+            margin: auto;
+
+            font-family: "Cormorant Garamond", Georgia, serif;
+            font-size: 22px;
+            line-height: 1.8;
+            font-weight: 400;
+            color: #666;
+        }
+
+        .personal-header p strong {
+            font-weight: 600;
+            color: #222;
+        }
+
+
+        /* ==================================================
+           FOOD CHOICE
+        ================================================== */
+
+        .food-choice {
+            display: grid;
+            grid-template-columns: 1fr 80px 1fr;
+            min-height: 500px;
+            position: relative;
+        }
+
+        .food-card {
+            position: relative;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            min-height: 500px;
+
+            background: #ebe5dc;
+
+            border: 1px solid #d7d0c7;
+
+            cursor: pointer;
+            overflow: hidden;
+
+            transition:
+                transform 0.4s ease,
+                background 0.4s ease,
+                box-shadow 0.4s ease;
+        }
+
+        .food-card:first-child {
+            border-right: none;
+        }
+
+        .food-card:last-child {
+            border-left: none;
+        }
+
+        .food-card:hover {
+            background: #e2dbd1;
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+        }
+
+        .food-card-content {
+            text-align: center;
+            padding: 50px 30px;
+        }
+
+        .food-label {
+            font-size: 11px;
+            letter-spacing: 4px;
+            color: #999;
+            margin-bottom: 25px;
+        }
+
+        .food-card h3 {
+            font-family: "Cormorant Garamond", Georgia, serif;
+            font-size: clamp(48px, 6vw, 78px);
+            font-weight: 500;
+            line-height: 0.9;
+            margin: 0 0 30px;
+        }
 
-<section class="personal-section reveal">
+        .food-card p {
+            max-width: 350px;
+            margin: 0 auto 35px;
 
-    <div class="personal-header">
+            font-family: "Cormorant Garamond", Georgia, serif;
+            font-size: 23px;
+            line-height: 1.4;
+            color: #555;
+        }
 
-        <div class="section-eyebrow">
-            THIS 🫵 OR THAT 👉?
-        </div>
+        .food-hint {
+            font-size: 9px;
+            font-weight: 500;
+            letter-spacing: 2.5px;
+            color: #999;
+        }
 
-        <h2>
-            Choose wisely…
-        </h2>
 
-        <p>
-            Your celebration depends on it 👀
-        </p>
+        /* ==================================================
+           OR
+        ================================================== */
 
-    </div>
+        .food-or {
+            display: flex;
+            align-items: center;
+            justify-content: center;
 
+            position: relative;
+            z-index: 3;
 
-    <div class="food-choice">
+            font-family: "Cormorant Garamond", Georgia, serif;
+            font-size: 22px;
+            font-style: italic;
 
-        <!-- THIS -->
-        <div
-            class="food-card"
-            onclick="showFoodOptions('western')"
-        >
+            color: #777;
+            background: #f5f1eb;
+        }
 
-            <div class="food-card-content">
+        .food-or::before,
+        .food-or::after {
+            content: "";
 
-                <div class="food-label">
-                    THIS
-                </div>
+            position: absolute;
 
-                <h3>
-                    WESTERN
-                </h3>
+            width: 1px;
+            height: 150px;
 
-                <p>
-                    Dinner, drinks,<br>
-                    city lights &amp; a little drama.
-                </p>
+            background: #d7d0c7;
+        }
 
-                <div class="food-hint">
-                    TAP TO EXPLORE
-                </div>
+        .food-or::before {
+            top: 0;
+        }
 
-            </div>
+        .food-or::after {
+            bottom: 0;
+        }
 
-        </div>
 
+        /* ==================================================
+           FOOD OPTIONS
+        ================================================== */
 
-        <!-- OR -->
-        <div class="food-or">
-            OR
-        </div>
+        .food-options {
+            display: none;
 
+            margin-top: 55px;
 
-        <!-- THAT -->
-        <div
-            class="food-card"
-            onclick="showFoodOptions('japanese')"
-        >
+            padding: 45px 0;
 
-            <div class="food-card-content">
+            border-top: 1px solid #d7d0c7;
+            border-bottom: 1px solid #d7d0c7;
 
-                <div class="food-label">
-                    THAT
-                </div>
+            animation: foodOptionsIn 0.5s ease;
+        }
 
-                <h3>
-                    JAPANESE
-                </h3>
+        .food-options.active {
+            display: block;
+        }
 
-                <p>
-                    Intimate food,<br>
-                    beautiful details &amp; good conversation.
-                </p>
+        @keyframes foodOptionsIn {
 
-                <div class="food-hint">
-                    TAP TO EXPLORE
-                </div>
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
 
-            </div>
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
 
-        </div>
+        }
 
-    </div>
+        .food-options-header {
+            text-align: center;
+            margin-bottom: 35px;
+        }
 
+        .food-options-header span {
+            display: block;
 
-    <!-- ==================================================
-         WESTERN OPTIONS
-    ================================================== -->
+            font-size: 9px;
+            font-weight: 500;
+            letter-spacing: 3px;
 
-    <div
-        id="westernOptions"
-        class="food-options"
-    >
+            color: #999;
 
-        <div class="food-options-header">
+            margin-bottom: 12px;
+        }
 
-            <span>
-                THIS ONE?
-            </span>
+        .food-options-header h3 {
+            font-family: "Cormorant Garamond", Georgia, serif;
 
-            <h3>
-                The Western Nights
-            </h3>
+            font-size: 42px;
+            font-weight: 500;
 
-            <p>
-                Two ways to make the celebration a little bigger.
-            </p>
+            margin: 0 0 8px;
+        }
 
-        </div>
+        .food-options-header p {
+            font-size: 13px;
+            color: #777;
+            margin: 0;
+        }
 
+        .food-options-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1px;
 
-        <div class="food-options-grid">
+            background: #d7d0c7;
 
-            <a
-                href="#darcy"
-                class="food-option"
-            >
+            border: 1px solid #d7d0c7;
+        }
 
-                <span class="food-option-number">
-                    01
-                </span>
+        .food-option {
+            display: flex;
+            flex-direction: column;
 
-                <h4>
-                    DARCY
-                </h4>
+            min-height: 220px;
 
-                <p>
-                    The City Lights Night
-                </p>
+            padding: 40px 35px;
 
-                <span class="food-option-arrow">
-                    EXPLORE ↘
-                </span>
+            background: #f5f1eb;
 
-            </a>
+            color: #1c1c1c;
 
+            text-decoration: none;
 
-            <a
-                href="#icon-cruise"
-                class="food-option"
-            >
+            transition:
+                background 0.3s ease,
+                transform 0.3s ease;
+        }
 
-                <span class="food-option-number">
-                    02
-                </span>
+        .food-option:hover {
+            background: #ebe5dc;
+        }
 
-                <h4>
-                    ICON CRUISE
-                </h4>
+        .food-option-number {
+            font-size: 9px;
+            letter-spacing: 2px;
+            color: #999;
 
-                <p>
-                    The Main Character Night
-                </p>
+            margin-bottom: 22px;
+        }
 
-                <span class="food-option-arrow">
-                    EXPLORE ↘
-                </span>
+        .food-option h4 {
+            font-family: "Cormorant Garamond", Georgia, serif;
 
-            </a>
+            font-size: 40px;
+            font-weight: 500;
 
-        </div>
+            margin: 0 0 5px;
+        }
 
-    </div>
+        .food-option p {
+            font-family: "Cormorant Garamond", Georgia, serif;
 
+            font-size: 19px;
+            font-style: italic;
 
-    <!-- ==================================================
-         JAPANESE OPTIONS
-    ================================================== -->
+            color: #666;
 
-    <div
-        id="japaneseOptions"
-        class="food-options"
-    >
+            margin: 0 0 30px;
+        }
 
-        <div class="food-options-header">
+        .food-option-arrow {
+            margin-top: auto;
 
-            <span>
-                THAT ONE?
-            </span>
+            font-size: 9px;
+            font-weight: 500;
+            letter-spacing: 2px;
 
-            <h3>
-                The Japanese Nights
-            </h3>
+            color: #888;
+        }
 
-            <p>
-                Two ways to celebrate with beautiful food and good company.
-            </p>
 
-        </div>
+        /* ==================================================
+           FOUR NIGHTS
+        ================================================== */
 
+        .four-nights {
+            padding: 100px 25px 120px;
+            background: #ebe5dc;
+        }
 
-        <div class="food-options-grid">
+        .four-nights-inner {
+            max-width: 1100px;
+            margin: auto;
+        }
 
-            <a
-                href="#itadaki"
-                class="food-option"
-            >
+        .four-nights-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
 
-                <span class="food-option-number">
-                    01
-                </span>
+        .four-nights-header h2 {
+            font-family: "Cormorant Garamond", Georgia, serif;
+            font-size: clamp(44px, 5vw, 64px);
+            font-weight: 500;
+            margin: 0;
+        }
 
-                <h4>
-                    ITADAKI
-                </h4>
+        .night-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
 
-                <p>
-                    The Omakase Night
-                </p>
+        .night-card {
+            padding: 35px 20px;
+            border-top: 1px solid #cfc7bd;
+        }
 
-                <span class="food-option-arrow">
-                    EXPLORE ↘
-                </span>
+        .night-number {
+            font-size: 10px;
+            letter-spacing: 2px;
+            color: #999;
+            margin-bottom: 20px;
+        }
 
-            </a>
+        .night-card h3 {
+            font-family: "Cormorant Garamond", Georgia, serif;
+            font-size: 34px;
+            font-weight: 500;
+            margin: 0 0 15px;
+        }
 
+        .night-card p {
+            font-family: "Cormorant Garamond", Georgia, serif;
+            font-size: 18px;
+            line-height: 1.6;
+            color: #666;
+        }
 
-            <a
-                href="#noire"
-                class="food-option"
-            >
-
-                <span class="food-option-number">
-                    02
-                </span>
-
-                <h4>
-                    NOIRE
-                </h4>
-
-                <p>
-                    The Mystery Night
-                </p>
-
-                <span class="food-option-arrow">
-                    EXPLORE ↘
-                </span>
-
-            </a>
-
-        </div>
-
-    </div>
-
-</section>
 
         /* ==================================================
            RESTAURANTS
@@ -476,6 +586,7 @@
 
         .restaurant {
             margin-bottom: 170px;
+            scroll-margin-top: 40px;
         }
 
         .restaurant-image-wrapper {
@@ -494,8 +605,6 @@
         .restaurant-image-wrapper:hover .restaurant-image {
             transform: scale(1.015);
         }
-
-        /* SECOND IMAGE */
 
         .restaurant-image-secondary {
             width: 100%;
@@ -557,7 +666,7 @@
 
 
         /* ==================================================
-           WHAT THE NIGHT FEELS LIKE
+           FEELING BOX
         ================================================== */
 
         .feeling-box {
@@ -579,6 +688,7 @@
         .feeling-box p {
             margin: 0;
             max-width: 750px;
+
             font-family: "Cormorant Garamond", Georgia, serif;
             font-size: 24px;
             line-height: 1.4;
@@ -594,8 +704,10 @@
             display: grid;
             grid-template-columns: repeat(3, minmax(0, 1fr));
             gap: 25px;
+
             margin-top: 40px;
             padding: 28px 0;
+
             border-top: 1px solid #d7d0c7;
             border-bottom: 1px solid #d7d0c7;
         }
@@ -629,15 +741,20 @@
         .location-button {
             display: inline-block;
             width: fit-content;
+
             margin-top: 12px;
             padding: 9px 15px;
+
             border: 1px solid #bbb;
+
             color: #444;
             text-decoration: none;
+
             font-size: 10px;
             font-weight: 500;
             letter-spacing: 1.5px;
             text-transform: uppercase;
+
             transition:
                 background 0.25s ease,
                 color 0.25s ease,
@@ -677,15 +794,20 @@
 
         .menu-button {
             display: inline-block;
+
             margin-top: 5px;
             padding: 12px 21px;
+
             border: 1px solid #222;
+
             color: #222;
             text-decoration: none;
+
             font-size: 10px;
             font-weight: 500;
             letter-spacing: 1.5px;
             text-transform: uppercase;
+
             transition:
                 background 0.25s ease,
                 color 0.25s ease;
@@ -704,9 +826,12 @@
         .booking-section {
             max-width: 760px;
             margin: 40px auto 120px;
+
             padding: 75px 35px;
+
             border-top: 1px solid #d7d0c7;
             border-bottom: 1px solid #d7d0c7;
+
             text-align: center;
         }
 
@@ -766,12 +891,17 @@
         .booking-field input {
             width: 100%;
             padding: 14px;
+
             border: 1px solid #cfc8bf;
+
             background: rgba(255, 255, 255, 0.25);
             color: #222;
+
             font-size: 14px;
+
             outline: none;
             border-radius: 0;
+
             transition: border-color 0.25s ease;
         }
 
@@ -781,21 +911,25 @@
 
         .booking-hint {
             margin-top: 20px;
+
             font-family: "Cormorant Garamond", Georgia, serif;
             font-size: 17px;
             font-style: italic;
+
             color: #999;
         }
 
 
         /* ==================================================
-           CHOOSE SECTION
+           FINAL CHOOSE SECTION
         ================================================== */
 
         .choose-section {
             background: #1c1c1c;
             color: white;
+
             padding: 120px 25px;
+
             text-align: center;
         }
 
@@ -804,7 +938,9 @@
             font-weight: 500;
             letter-spacing: 2.5px;
             text-transform: uppercase;
+
             margin-bottom: 22px;
+
             color: #999;
         }
 
@@ -812,12 +948,15 @@
             font-size: clamp(46px, 6vw, 70px);
             font-weight: 500;
             line-height: 0.95;
+
             margin: 0 0 22px;
         }
 
         .choose-description {
             max-width: 600px;
+
             margin: 0 auto 45px;
+
             color: #aaa;
             font-size: 14px;
             line-height: 1.9;
@@ -825,21 +964,30 @@
 
         .choice-buttons {
             max-width: 700px;
+
             margin: auto;
+
             display: grid;
             grid-template-columns: repeat(2, minmax(0, 1fr));
+
             gap: 14px;
         }
 
         .choice-button {
             background: transparent;
+
             border: 1px solid #666;
+
             color: white;
+
             padding: 19px 15px;
+
             font-size: 11px;
             font-weight: 500;
             letter-spacing: 2px;
+
             cursor: pointer;
+
             transition:
                 background 0.25s ease,
                 color 0.25s ease,
@@ -865,9 +1013,12 @@
 
         .confirm-area {
             display: none;
+
             max-width: 650px;
+
             margin: 55px auto 0;
             padding: 45px 30px;
+
             border: 1px solid #555;
         }
 
@@ -876,13 +1027,16 @@
             font-weight: 500;
             letter-spacing: 2.5px;
             text-transform: uppercase;
+
             color: #888;
+
             margin-bottom: 16px;
         }
 
         .confirm-area h3 {
             font-size: 42px;
             font-weight: 500;
+
             margin: 0 0 22px;
         }
 
@@ -899,15 +1053,21 @@
 
         .confirm-button {
             margin-top: 28px;
+
             padding: 16px 32px;
+
             border: 1px solid white;
+
             background: white;
             color: #1c1c1c;
+
             font-size: 10px;
             font-weight: 500;
             letter-spacing: 1.5px;
             text-transform: uppercase;
+
             cursor: pointer;
+
             transition: all 0.25s ease;
         }
 
@@ -918,13 +1078,18 @@
 
         .change-choice {
             display: block;
+
             margin: 18px auto 0;
+
             background: none;
             border: none;
+
             color: #888;
+
             font-size: 10px;
             letter-spacing: 1.5px;
             text-transform: uppercase;
+
             cursor: pointer;
         }
 
@@ -939,13 +1104,16 @@
 
         .success-message {
             display: none;
+
             max-width: 650px;
+
             margin: 55px auto 0;
         }
 
         .success-message h3 {
             font-size: 42px;
             font-weight: 500;
+
             margin: 0 0 22px;
         }
 
@@ -961,17 +1129,24 @@
 
         .ticket {
             display: none;
+
             max-width: 650px;
+
             margin: 60px auto 0;
+
             background: #f5f1eb;
             color: #1c1c1c;
+
             position: relative;
+
             text-align: left;
         }
 
         .ticket-top {
             padding: 42px 40px 35px;
+
             text-align: center;
+
             border-bottom: 1px dashed #aaa;
         }
 
@@ -980,7 +1155,9 @@
             font-weight: 500;
             letter-spacing: 3px;
             text-transform: uppercase;
+
             color: #999;
+
             margin-bottom: 18px;
         }
 
@@ -988,20 +1165,25 @@
             font-size: 48px;
             font-weight: 500;
             line-height: 1;
+
             margin-bottom: 8px;
         }
 
         .ticket-subtitle {
             font-family: "Cormorant Garamond", Georgia, serif;
+
             font-size: 22px;
             font-style: italic;
+
             color: #555;
         }
 
         .ticket-middle {
             padding: 30px 40px;
+
             display: grid;
             grid-template-columns: 1fr 1fr;
+
             gap: 25px;
         }
 
@@ -1010,7 +1192,9 @@
             font-weight: 500;
             letter-spacing: 2px;
             text-transform: uppercase;
+
             color: #999;
+
             margin-bottom: 5px;
         }
 
@@ -1021,7 +1205,9 @@
 
         .ticket-bottom {
             padding: 25px 40px 30px;
+
             border-top: 1px dashed #aaa;
+
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -1031,6 +1217,7 @@
             font-size: 9px;
             letter-spacing: 2px;
             text-transform: uppercase;
+
             color: #999;
         }
 
@@ -1046,8 +1233,11 @@
 
         .last-section {
             max-width: 850px;
+
             margin: auto;
+
             padding: 140px 25px;
+
             text-align: center;
         }
 
@@ -1055,31 +1245,40 @@
             font-size: clamp(46px, 5vw, 64px);
             font-weight: 500;
             line-height: 1;
+
             margin: 0 0 35px;
         }
 
         .letter {
             max-width: 650px;
+
             margin: auto;
+
             font-family: "Cormorant Garamond", Georgia, serif;
+
             font-size: 23px;
             line-height: 1.65;
+
             color: #555;
         }
 
         .letter-signature {
             margin-top: 40px;
+
             font-family: "Cormorant Garamond", Georgia, serif;
+
             font-size: 25px;
             font-style: italic;
         }
 
         .final-line {
             margin-top: 75px;
+
             font-size: 10px;
             font-weight: 500;
             letter-spacing: 3px;
             text-transform: uppercase;
+
             color: #999;
         }
 
@@ -1090,8 +1289,11 @@
 
         footer {
             padding: 30px 20px 45px;
+
             text-align: center;
+
             color: #aaa;
+
             font-size: 9px;
             letter-spacing: 2px;
             text-transform: uppercase;
@@ -1120,6 +1322,10 @@
                 margin-bottom: 25px;
             }
 
+            .cover h1 span:first-child {
+                margin-bottom: 35px;
+            }
+
             .cover-subtitle {
                 font-size: 20px;
             }
@@ -1141,10 +1347,10 @@
             }
 
 
-            /* Personal */
+            /* This or That */
 
             .personal-section {
-                padding: 0 20px 85px;
+                padding: 20px 20px 85px;
             }
 
             .personal-header {
@@ -1155,416 +1361,74 @@
                 font-size: 46px;
             }
 
-            /* ==================================================
-   THIS OR THAT
-================================================== */
-
-.personal-section {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 30px 25px 120px;
-}
-
-.personal-header {
-    text-align: center;
-    margin-bottom: 65px;
-}
-
-.personal-header h2 {
-    font-size: clamp(44px, 5vw, 64px);
-    font-weight: 500;
-    line-height: 1;
-    margin: 0 0 18px;
-}
-
-.personal-header p {
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 22px;
-    line-height: 1.8;
-    font-weight: 400;
-}
-
-.personal-header p strong {
-    font-weight: 600;
-}
-
-
-/* ==================================================
-   TWO CHOICES
-================================================== */
-
-.food-choice {
-    display: grid;
-    grid-template-columns: 1fr 80px 1fr;
-    min-height: 500px;
-    position: relative;
-}
-
-
-/* CARD */
-
-.food-card {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    min-height: 500px;
-
-    background: #ebe5dc;
-
-    border: 1px solid #d7d0c7;
-
-    cursor: pointer;
-
-    overflow: hidden;
-
-    transition:
-        transform 0.4s ease,
-        background 0.4s ease,
-        box-shadow 0.4s ease;
-}
-
-.food-card:first-child {
-    border-right: none;
-}
-
-.food-card:last-child {
-    border-left: none;
-}
-
-.food-card:hover {
-    background: #e2dbd1;
-    transform: translateY(-5px);
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
-}
-
-
-/* CARD CONTENT */
-
-.food-card-content {
-    text-align: center;
-    padding: 50px 30px;
-}
-
-.food-label {
-    font-size: 11px;
-    letter-spacing: 4px;
-    color: #999;
-    margin-bottom: 25px;
-}
-
-.food-card h3 {
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: clamp(48px, 6vw, 78px);
-    font-weight: 500;
-    line-height: 0.9;
-    margin: 0 0 30px;
-}
-
-.food-card p {
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 23px;
-    line-height: 1.4;
-    color: #555;
-    margin: 0 0 35px;
-}
-
-.food-hint {
-    font-size: 9px;
-    font-weight: 500;
-    letter-spacing: 2.5px;
-    color: #999;
-}
-
-
-/* ==================================================
-   OR
-================================================== */
-
-.food-or {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    position: relative;
-    z-index: 3;
-
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 22px;
-    font-style: italic;
-
-    color: #777;
-
-    background: #f5f1eb;
-}
-
-.food-or::before,
-.food-or::after {
-    content: "";
-
-    position: absolute;
-
-    width: 1px;
-    height: 150px;
-
-    background: #d7d0c7;
-}
-
-.food-or::before {
-    top: 0;
-}
-
-.food-or::after {
-    bottom: 0;
-}
-
-
-/* ==================================================
-   RESTAURANT OPTIONS
-================================================== */
-
-.food-options {
-    display: none;
-
-    margin-top: 55px;
-
-    padding: 45px 0;
-
-    border-top: 1px solid #d7d0c7;
-    border-bottom: 1px solid #d7d0c7;
-
-    animation: foodOptionsIn 0.5s ease;
-}
-
-.food-options.active {
-    display: block;
-}
-
-@keyframes foodOptionsIn {
-
-    from {
-        opacity: 0;
-        transform: translateY(15px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
-}
-
-
-.food-options-header {
-    text-align: center;
-    margin-bottom: 35px;
-}
-
-.food-options-header span {
-    display: block;
-
-    font-size: 9px;
-    font-weight: 500;
-    letter-spacing: 3px;
-
-    color: #999;
-
-    margin-bottom: 12px;
-}
-
-.food-options-header h3 {
-    font-family: "Cormorant Garamond", Georgia, serif;
-
-    font-size: 42px;
-    font-weight: 500;
-
-    margin: 0 0 8px;
-}
-
-.food-options-header p {
-    font-size: 13px;
-    color: #777;
-    margin: 0;
-}
-
-
-/* OPTION GRID */
-
-.food-options-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1px;
-
-    background: #d7d0c7;
-
-    border: 1px solid #d7d0c7;
-}
-
-.food-option {
-    display: flex;
-    flex-direction: column;
-
-    padding: 40px 35px;
-
-    background: #f5f1eb;
-
-    color: #1c1c1c;
-
-    text-decoration: none;
-
-    transition:
-        background 0.3s ease,
-        transform 0.3s ease;
-}
-
-.food-option:hover {
-    background: #ebe5dc;
-}
-
-.food-option-number {
-    font-size: 9px;
-    letter-spacing: 2px;
-    color: #999;
-
-    margin-bottom: 22px;
-}
-
-.food-option h4 {
-    font-family: "Cormorant Garamond", Georgia, serif;
-
-    font-size: 40px;
-    font-weight: 500;
-
-    margin: 0 0 5px;
-}
-
-.food-option p {
-    font-family: "Cormorant Garamond", Georgia, serif;
-
-    font-size: 19px;
-    font-style: italic;
-
-    color: #666;
-
-    margin: 0 0 30px;
-}
-
-.food-option-arrow {
-    margin-top: auto;
-
-    font-size: 9px;
-    font-weight: 500;
-    letter-spacing: 2px;
-
-    color: #888;
-}
-
-
-/* ==================================================
-   MOBILE
-================================================== */
-
-@media (max-width: 700px) {
-
-    .personal-section {
-        padding: 0 20px 85px;
-    }
-
-    .personal-header {
-        margin-bottom: 40px;
-    }
-
-    .personal-header h2 {
-        font-size: 46px;
-    }
-
-    .personal-header p {
-        font-size: 22px;
-    }
-
-
-    .food-choice {
-        grid-template-columns: 1fr;
-        min-height: auto;
-    }
-
-
-    .food-card {
-        min-height: 360px;
-    }
-
-
-    .food-card:first-child {
-        border-right: 1px solid #d7d0c7;
-        border-bottom: none;
-    }
-
-    .food-card:last-child {
-        border-left: 1px solid #d7d0c7;
-        border-top: none;
-    }
-
-
-    .food-or {
-        min-height: 70px;
-        background: #f5f1eb;
-    }
-
-
-    .food-or::before,
-    .food-or::after {
-        width: 60px;
-        height: 1px;
-
-        top: 50%;
-        bottom: auto;
-    }
-
-
-    .food-or::before {
-        left: 0;
-    }
-
-    .food-or::after {
-        right: 0;
-    }
-
-
-    .food-card h3 {
-        font-size: 58px;
-    }
-
-
-    .food-card p {
-        font-size: 21px;
-    }
-
-
-    .food-options {
-        margin-top: 40px;
-        padding: 35px 0;
-    }
-
-
-    .food-options-header h3 {
-        font-size: 38px;
-    }
-
-
-    .food-options-grid {
-        grid-template-columns: 1fr;
-    }
-
-
-    .food-option {
-        padding: 32px 25px;
-    }
-
-}
-
-            .personal-card h3 {
-                font-size: 31px;
+            .personal-header p {
+                font-size: 21px;
+            }
+
+            .food-choice {
+                grid-template-columns: 1fr;
+                min-height: auto;
+            }
+
+            .food-card {
+                min-height: 360px;
+            }
+
+            .food-card:first-child {
+                border-right: 1px solid #d7d0c7;
+                border-bottom: none;
+            }
+
+            .food-card:last-child {
+                border-left: 1px solid #d7d0c7;
+                border-top: none;
+            }
+
+            .food-or {
+                min-height: 70px;
+                background: #f5f1eb;
+            }
+
+            .food-or::before,
+            .food-or::after {
+                width: 60px;
+                height: 1px;
+
+                top: 50%;
+                bottom: auto;
+            }
+
+            .food-or::before {
+                left: 0;
+            }
+
+            .food-or::after {
+                right: 0;
+            }
+
+            .food-card h3 {
+                font-size: 58px;
+            }
+
+            .food-card p {
+                font-size: 21px;
+            }
+
+            .food-options {
+                margin-top: 40px;
+                padding: 35px 0;
+            }
+
+            .food-options-header h3 {
+                font-size: 38px;
+            }
+
+            .food-options-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .food-option {
+                padding: 32px 25px;
             }
 
 
@@ -1703,7 +1567,7 @@
             }
 
 
-            /* Choice */
+            /* Final Choice */
 
             .choose-section {
                 padding: 90px 20px;
@@ -1785,6 +1649,7 @@
         }
 
     </style>
+
 </head>
 
 
@@ -1804,13 +1669,13 @@
         </div>
 
         <h1>
-    <span>HIEU SONG' S</span>
-    <span>GRADUATION NIGHT</span>
-</h1>
+            <span>HIEU SONG' S</span>
+            <span>GRADUATION NIGHT</span>
+        </h1>
 
         <div class="cover-subtitle">
             Where should we celebrate?
-            Pick your favorite spot below! 
+            Pick your favorite spot below!
         </div>
 
         <div class="cover-arrow">
@@ -1839,7 +1704,9 @@
 
     <p>
         After all the late nights, deadlines, little victories
-        and everything in between,  <br>
+        and everything in between,
+        <br>
+
         You made it! Yayy!!
 
         <br><br>
@@ -1858,7 +1725,7 @@
 
 
 <!-- ==================================================
-     WHY I PICKED THESE FOUR
+     THIS OR THAT
 ================================================== -->
 
 <section class="personal-section reveal">
@@ -1866,123 +1733,265 @@
     <div class="personal-header">
 
         <div class="section-eyebrow">
-            A little something from us
+            THIS 🫵 OR THAT 👉?
         </div>
 
         <h2>
-            Aukie, now you get to choose.
+            Choose wisely…
         </h2>
 
         <p>
-    We picked a few places we think you'd like. <br>
-    <strong>You pick the one, and we'll take care of the rest. 🤍</strong>
-</p>
+            We picked a few places we think you'd like.
+            <br><br>
+
+            <strong>
+                You pick the one, and we'll take care of the rest. 🤍
+            </strong>
+        </p>
 
     </div>
 
 
-    <div class="personal-grid">
+    <div class="food-choice">
 
-    <!-- WESTERN -->
-    <div class="personal-card food-card" onclick="showRestaurants('western')">
 
-        <div class="personal-number">
-            01 — WESTERN FOOD
+        <!-- THIS / WESTERN -->
+
+        <div
+            class="food-card"
+            onclick="showFoodOptions('western')"
+        >
+
+            <div class="food-card-content">
+
+                <div class="food-label">
+                    THIS 🫵
+                </div>
+
+                <h3>
+                    WESTERN
+                </h3>
+
+                <p>
+                    Dinner, drinks,
+                    <br>
+                    city lights &amp; a little drama.
+                </p>
+
+                <div class="food-hint">
+                    TAP TO EXPLORE
+                </div>
+
+            </div>
+
         </div>
 
-        <h3>
-            A beautiful dinner.
-        </h3>
 
-        <p>
-            For a night where good food, beautiful details,
-            and a little celebration come together.
-        </p>
+        <!-- OR -->
 
-    </div>
-
-
-    <!-- JAPANESE -->
-    <div class="personal-card food-card" onclick="showRestaurants('japanese')">
-
-        <div class="personal-number">
-            02 — JAPANESE FOOD
+        <div class="food-or">
+            OR
         </div>
 
-        <h3>
-            Something a little different.
-        </h3>
 
-        <p>
-            For when graduation calls for something special,
-            comforting, and worth remembering.
-        </p>
+        <!-- THAT / JAPANESE -->
+
+        <div
+            class="food-card"
+            onclick="showFoodOptions('japanese')"
+        >
+
+            <div class="food-card-content">
+
+                <div class="food-label">
+                    THAT 👉
+                </div>
+
+                <h3>
+                    JAPANESE
+                </h3>
+
+                <p>
+                    Intimate food,
+                    <br>
+                    beautiful details &amp; good conversation.
+                </p>
+
+                <div class="food-hint">
+                    TAP TO EXPLORE
+                </div>
+
+            </div>
+
+        </div>
 
     </div>
 
-</div>
 
 
-<!-- RESTAURANT OPTIONS -->
+    <!-- ==================================================
+         WESTERN OPTIONS
+    ================================================== -->
 
-<div class="restaurant-options" id="western-options">
+    <div
+        id="westernOptions"
+        class="food-options"
+    >
 
-    <div class="restaurant-option">
-        <div class="restaurant-number">01</div>
+        <div class="food-options-header">
 
-        <h3>Icon</h3>
+            <span>
+                THIS ONE?
+            </span>
 
-        <p>
-            A beautiful place for a special Western dinner.
-        </p>
+            <h3>
+                The Western Nights
+            </h3>
 
-        <button>Choose Icon</button>
+            <p>
+                Two ways to make the celebration a little bigger.
+            </p>
+
+        </div>
+
+
+        <div class="food-options-grid">
+
+
+            <a
+                href="#darcy"
+                class="food-option"
+            >
+
+                <span class="food-option-number">
+                    01
+                </span>
+
+                <h4>
+                    DARCY
+                </h4>
+
+                <p>
+                    The City Lights Night
+                </p>
+
+                <span class="food-option-arrow">
+                    EXPLORE ↘
+                </span>
+
+            </a>
+
+
+            <a
+                href="#icon-cruise"
+                class="food-option"
+            >
+
+                <span class="food-option-number">
+                    02
+                </span>
+
+                <h4>
+                    ICON CRUISE
+                </h4>
+
+                <p>
+                    The Main Character Night
+                </p>
+
+                <span class="food-option-arrow">
+                    EXPLORE ↘
+                </span>
+
+            </a>
+
+        </div>
+
     </div>
 
 
-    <div class="restaurant-option">
-        <div class="restaurant-number">02</div>
 
-        <h3>Darsy</h3>
+    <!-- ==================================================
+         JAPANESE OPTIONS
+    ================================================== -->
 
-        <p>
-            A stylish spot for a memorable graduation night.
-        </p>
+    <div
+        id="japaneseOptions"
+        class="food-options"
+    >
 
-        <button>Choose Darsy</button>
+        <div class="food-options-header">
+
+            <span>
+                THAT ONE?
+            </span>
+
+            <h3>
+                The Japanese Nights
+            </h3>
+
+            <p>
+                Two ways to celebrate with beautiful food and good company.
+            </p>
+
+        </div>
+
+
+        <div class="food-options-grid">
+
+
+            <a
+                href="#itadaki"
+                class="food-option"
+            >
+
+                <span class="food-option-number">
+                    01
+                </span>
+
+                <h4>
+                    ITADAKI
+                </h4>
+
+                <p>
+                    The Omakase Night
+                </p>
+
+                <span class="food-option-arrow">
+                    EXPLORE ↘
+                </span>
+
+            </a>
+
+
+            <a
+                href="#noire"
+                class="food-option"
+            >
+
+                <span class="food-option-number">
+                    02
+                </span>
+
+                <h4>
+                    NOIRE
+                </h4>
+
+                <p>
+                    The Mystery Night
+                </p>
+
+                <span class="food-option-arrow">
+                    EXPLORE ↘
+                </span>
+
+            </a>
+
+        </div>
+
     </div>
 
-</div>
-
-
-<div class="restaurant-options" id="japanese-options">
-
-    <div class="restaurant-option">
-        <div class="restaurant-number">01</div>
-
-        <h3>Japanese Place 1</h3>
-
-        <p>
-            A cozy Japanese dinner for the celebration.
-        </p>
-
-        <button>Choose this one</button>
-    </div>
-
-
-    <div class="restaurant-option">
-        <div class="restaurant-number">02</div>
-
-        <h3>Japanese Place 2</h3>
-
-        <p>
-            Something special for the night.
-        </p>
-
-        <button>Choose this one</button>
-    </div>
-
-</div>
+</section>
 
 
 
@@ -2008,6 +2017,7 @@
 
 
         <div class="night-grid">
+
 
             <div class="night-card">
 
@@ -2099,616 +2109,624 @@
 <section class="restaurants">
 
 
-<!-- ==================================================
-     ITADAKI
-================================================== -->
+    <!-- ==================================================
+         ITADAKI
+    ================================================== -->
 
-<article id="itadaki" class="restaurant reveal">
+    <article
+        id="itadaki"
+        class="restaurant reveal"
+    >
 
-    <!-- IMAGE 1 -->
+        <div class="restaurant-image-wrapper">
 
-    <div class="restaurant-image-wrapper">
+            <img
+                class="restaurant-image"
+                src="images/itadaki/itadaki-1.jpg"
+                alt="ITADAKI"
+            >
 
-        <img
-            class="restaurant-image"
-            src="images/itadaki/itadaki-1.jpg"
-            alt="ITADAKI"
-        >
-
-    </div>
-
-
-    <div class="restaurant-info">
-
-        <div class="option-number">
-            OPTION 01
-        </div>
-
-        <h3>
-            ITADAKI
-        </h3>
-
-        <div class="subtitle">
-            The Omakase Night
-        </div>
-
-        <p class="restaurant-description">
-            An intimate evening for people who appreciate
-            beautiful food, thoughtful details and a slower pace.
-
-            <br><br>
-
-            This is the night for sitting close, talking for hours,
-            and letting the food become part of the celebration.
-        </p>
-
-        <div class="mood">
-            Intimate · Elegant · Food-focused
         </div>
 
 
-        <div class="feeling-box">
+        <div class="restaurant-info">
 
-            <div class="feeling-label">
-                What the night feels like
+            <div class="option-number">
+                OPTION 01
             </div>
 
-            <p>
-                Slow conversations, beautiful plates,
-                a few glasses of something good,
-                and nowhere else we need to be.
+            <h3>
+                ITADAKI
+            </h3>
+
+            <div class="subtitle">
+                The Omakase Night
+            </div>
+
+            <p class="restaurant-description">
+
+                An intimate evening for people who appreciate
+                beautiful food, thoughtful details and a slower pace.
+
+                <br><br>
+
+                This is the night for sitting close, talking for hours,
+                and letting the food become part of the celebration.
+
             </p>
 
-        </div>
+            <div class="mood">
+                Intimate · Elegant · Food-focused
+            </div>
 
 
-        <!-- IMAGE 2 -->
+            <div class="feeling-box">
 
-        <img
-            class="restaurant-image-secondary"
-            src="images/itadaki/itadaki-2.jpg"
-            alt="ITADAKI interior"
-        >
+                <div class="feeling-label">
+                    What the night feels like
+                </div>
+
+                <p>
+                    Slow conversations, beautiful plates,
+                    a few glasses of something good,
+                    and nowhere else we need to be.
+                </p>
+
+            </div>
 
 
-        <div class="restaurant-details">
+            <img
+                class="restaurant-image-secondary"
+                src="images/itadaki/itadaki-2.jpg"
+                alt="ITADAKI interior"
+            >
 
-            <div class="detail-item">
 
-                <span class="detail-label">
-                    Address
-                </span>
+            <div class="restaurant-details">
 
-                <span class="detail-value">
-                    16 Ngo Van Nam, District 1, Ho Chi Minh City
-                </span>
+
+                <div class="detail-item">
+
+                    <span class="detail-label">
+                        Address
+                    </span>
+
+                    <span class="detail-value">
+                        16 Ngo Van Nam, District 1, Ho Chi Minh City
+                    </span>
+
+                    <a
+                        class="location-button"
+                        href="https://maps.app.goo.gl/u16HPqx2iFANEbwJ7?g_st=iz"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        View Location ↗
+                    </a>
+
+                </div>
+
+
+                <div class="detail-item">
+
+                    <span class="detail-label">
+                        Opening Hours
+                    </span>
+
+                    <span class="detail-value">
+                        11:30 AM — 3:00 PM
+                        <br>
+                        6:00 PM — 11:00 PM
+                    </span>
+
+                </div>
+
+
+                <div class="detail-item">
+
+                    <span class="detail-label">
+                        Rating
+                    </span>
+
+                    <span class="detail-value detail-rating">
+                        ★ 4.9 / 5
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="menu-section">
+
+                <div class="menu-title">
+                    THE MENU
+                </div>
+
+                <div class="menu-note">
+                    Take a look at the full menu before making your choice.
+                </div>
 
                 <a
-                    class="location-button"
-                    href="https://maps.app.goo.gl/u16HPqx2iFANEbwJ7?g_st=iz"
+                    class="menu-button"
+                    href="images/itadaki/itadaki-menu.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
                 >
-                    View Location ↗
+                    VIEW MENU ↗
                 </a>
 
             </div>
 
-
-            <div class="detail-item">
-
-                <span class="detail-label">
-                    Opening Hours
-                </span>
-
-                <span class="detail-value">
-                    11:30 AM — 3:00 PM
-                    <br>
-                    6:00 PM — 11:00 PM
-                </span>
-
-            </div>
-
-
-            <div class="detail-item">
-
-                <span class="detail-label">
-                    Rating
-                </span>
-
-                <span class="detail-value detail-rating">
-                    ★ 4.9 / 5
-                </span>
-
-            </div>
-
         </div>
 
+    </article>
 
-        <div class="menu-section">
 
-            <div class="menu-title">
-                THE MENU
-            </div>
 
-            <div class="menu-note">
-                Take a look at the full menu before making your choice.
-            </div>
+    <!-- ==================================================
+         NOIRE
+    ================================================== -->
 
-            <a
-                class="menu-button"
-                href="images/itadaki/itadaki-menu.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
+    <article
+        id="noire"
+        class="restaurant reveal"
+    >
+
+        <div class="restaurant-image-wrapper">
+
+            <img
+                class="restaurant-image"
+                src="images/noire/noire-1.webp"
+                alt="NOIRE"
             >
-                VIEW MENU ↗
-            </a>
 
         </div>
 
-    </div>
 
-</article>
+        <div class="restaurant-info">
 
-
-
-<!-- ==================================================
-     NOIRE
-================================================== -->
-
-<article id="noire" class="restaurant reveal">
-
-    <!-- IMAGE 1 -->
-
-    <div class="restaurant-image-wrapper">
-
-        <img
-            class="restaurant-image"
-            src="images/noire/noire-1.webp"
-            alt="NOIRE"
-        >
-
-    </div>
-
-
-    <div class="restaurant-info">
-
-        <div class="option-number">
-            OPTION 02
-        </div>
-
-        <h3>
-            NOIRE
-        </h3>
-
-        <div class="subtitle">
-            The Mystery Night
-        </div>
-
-        <p class="restaurant-description">
-            Dark, stylish and a little mysterious.
-
-            <br><br>
-
-            The kind of place where the lighting is low,
-            the conversation gets interesting,
-            and the night feels like a scene from a movie.
-        </p>
-
-        <div class="mood">
-            Chic · Mysterious · Cinematic
-        </div>
-
-
-        <div class="feeling-box">
-
-            <div class="feeling-label">
-                What the night feels like
+            <div class="option-number">
+                OPTION 02
             </div>
 
-            <p>
-                Dim lights, dressed-up energy,
-                good conversation and the feeling
-                that tonight is slightly different.
+            <h3>
+                NOIRE
+            </h3>
+
+            <div class="subtitle">
+                The Mystery Night
+            </div>
+
+            <p class="restaurant-description">
+
+                Dark, stylish and a little mysterious.
+
+                <br><br>
+
+                The kind of place where the lighting is low,
+                the conversation gets interesting,
+                and the night feels like a scene from a movie.
+
             </p>
 
-        </div>
+            <div class="mood">
+                Chic · Mysterious · Cinematic
+            </div>
 
 
-        <!-- IMAGE 2 -->
+            <div class="feeling-box">
 
-        <img
-            class="restaurant-image-secondary"
-            src="images/noire/noire-2.webp"
-            alt="NOIRE interior"
-        >
+                <div class="feeling-label">
+                    What the night feels like
+                </div>
+
+                <p>
+                    Dim lights, dressed-up energy,
+                    good conversation and the feeling
+                    that tonight is slightly different.
+                </p>
+
+            </div>
 
 
-        <div class="restaurant-details">
+            <img
+                class="restaurant-image-secondary"
+                src="images/noire/noire-2.webp"
+                alt="NOIRE interior"
+            >
 
-            <div class="detail-item">
 
-                <span class="detail-label">
-                    Address
-                </span>
+            <div class="restaurant-details">
 
-                <span class="detail-value">
-                    259 Điện Biên Phủ, Xuân Hòa,
-                    Hồ Chí Minh 70000, Vietnam
-                </span>
+
+                <div class="detail-item">
+
+                    <span class="detail-label">
+                        Address
+                    </span>
+
+                    <span class="detail-value">
+                        259 Điện Biên Phủ, Xuân Hòa,
+                        Hồ Chí Minh 70000, Vietnam
+                    </span>
+
+                    <a
+                        class="location-button"
+                        href="https://maps.app.goo.gl/Y3z1dccHrsqJyhYA8?g_st=ic"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        View Location ↗
+                    </a>
+
+                </div>
+
+
+                <div class="detail-item">
+
+                    <span class="detail-label">
+                        Opening Hours
+                    </span>
+
+                    <span class="detail-value">
+                        11:00 AM — 2:00 PM
+                        <br>
+                        5:00 PM — 11:00 PM
+                    </span>
+
+                </div>
+
+
+                <div class="detail-item">
+
+                    <span class="detail-label">
+                        Rating
+                    </span>
+
+                    <span class="detail-value detail-rating">
+                        ★ 4.9 / 5
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="menu-section">
+
+                <div class="menu-title">
+                    THE MENU
+                </div>
+
+                <div class="menu-note">
+                    Take a look at the full menu before making your choice.
+                </div>
 
                 <a
-                    class="location-button"
-                    href="https://maps.app.goo.gl/Y3z1dccHrsqJyhYA8?g_st=ic"
+                    class="menu-button"
+                    href="images/noire/noire-menu.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
                 >
-                    View Location ↗
+                    VIEW MENU ↗
                 </a>
 
             </div>
 
-
-            <div class="detail-item">
-
-                <span class="detail-label">
-                    Opening Hours
-                </span>
-
-                <span class="detail-value">
-                    11:00 AM — 2:00 PM
-                    <br>
-                    5:00 PM — 11:00 PM
-                </span>
-
-            </div>
-
-
-            <div class="detail-item">
-
-                <span class="detail-label">
-                    Rating
-                </span>
-
-                <span class="detail-value detail-rating">
-                    ★ 4.9 / 5
-                </span>
-
-            </div>
-
         </div>
 
+    </article>
 
-        <div class="menu-section">
 
-            <div class="menu-title">
-                THE MENU
-            </div>
 
-            <div class="menu-note">
-                Take a look at the full menu before making your choice.
-            </div>
+    <!-- ==================================================
+         DARCY
+    ================================================== -->
 
-            <a
-                class="menu-button"
-                href="images/noire/noire-menu.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
+    <article
+        id="darcy"
+        class="restaurant reveal"
+    >
+
+        <div class="restaurant-image-wrapper">
+
+            <img
+                class="restaurant-image"
+                src="images/darcy/darcy-1.jpg"
+                alt="DARCY"
             >
-                VIEW MENU ↗
-            </a>
 
         </div>
 
-    </div>
 
-</article>
+        <div class="restaurant-info">
 
-
-
-<!-- ==================================================
-     DARCY
-================================================== -->
-
-<article id="darcy" class="restaurant reveal">
-
-    <!-- IMAGE 1 -->
-
-    <div class="restaurant-image-wrapper">
-
-        <img
-            class="restaurant-image"
-            src="images/darcy/darcy-1.jpg"
-            alt="DARCY"
-        >
-
-    </div>
-
-
-    <div class="restaurant-info">
-
-        <div class="option-number">
-            OPTION 03
-        </div>
-
-        <h3>
-            DARCY
-        </h3>
-
-        <div class="subtitle">
-            The City Lights Night
-        </div>
-
-        <p class="restaurant-description">
-            A little louder, a little brighter,
-            and made for a night that doesn't want to end early.
-
-            <br><br>
-
-            Think city lights, good drinks, music,
-            photos and the kind of conversation that keeps going.
-        </p>
-
-        <div class="mood">
-            Fun · Social · City lights
-        </div>
-
-
-        <div class="feeling-box">
-
-            <div class="feeling-label">
-                What the night feels like
+            <div class="option-number">
+                OPTION 03
             </div>
 
-            <p>
-                Start with dinner, stay for drinks,
-                take too many photos,
-                and see where the night takes us.
+            <h3>
+                DARCY
+            </h3>
+
+            <div class="subtitle">
+                The City Lights Night
+            </div>
+
+            <p class="restaurant-description">
+
+                A little louder, a little brighter,
+                and made for a night that doesn't want to end early.
+
+                <br><br>
+
+                Think city lights, good drinks, music,
+                photos and the kind of conversation that keeps going.
+
             </p>
 
-        </div>
+            <div class="mood">
+                Fun · Social · City lights
+            </div>
 
 
-        <!-- IMAGE 2 -->
+            <div class="feeling-box">
 
-        <img
-            class="restaurant-image-secondary"
-            src="images/darcy/darcy-2.jpg"
-            alt="DARCY interior"
-        >
+                <div class="feeling-label">
+                    What the night feels like
+                </div>
+
+                <p>
+                    Start with dinner, stay for drinks,
+                    take too many photos,
+                    and see where the night takes us.
+                </p>
+
+            </div>
 
 
-        <div class="restaurant-details">
+            <img
+                class="restaurant-image-secondary"
+                src="images/darcy/darcy-2.jpg"
+                alt="DARCY interior"
+            >
 
-            <div class="detail-item">
 
-                <span class="detail-label">
-                    Address
-                </span>
+            <div class="restaurant-details">
 
-                <span class="detail-value">
-                    43 Nguyen Hue, District 1, Ho Chi Minh City
-                </span>
+
+                <div class="detail-item">
+
+                    <span class="detail-label">
+                        Address
+                    </span>
+
+                    <span class="detail-value">
+                        43 Nguyen Hue, District 1, Ho Chi Minh City
+                    </span>
+
+                    <a
+                        class="location-button"
+                        href="https://www.google.com/maps?q=Darcy+Fine+Bar,+43+Nguyễn+Huệ,+Sài+Gòn,+Hồ+Chí+Minh"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        View Location ↗
+                    </a>
+
+                </div>
+
+
+                <div class="detail-item">
+
+                    <span class="detail-label">
+                        Opening Hours
+                    </span>
+
+                    <span class="detail-value">
+                        11:00 AM — 3:00 PM
+                        <br>
+                        6:00 PM — 1:00 AM
+                    </span>
+
+                </div>
+
+
+                <div class="detail-item">
+
+                    <span class="detail-label">
+                        Rating
+                    </span>
+
+                    <span class="detail-value detail-rating">
+                        ★ 4.6 / 5
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="menu-section">
+
+                <div class="menu-title">
+                    THE MENU
+                </div>
+
+                <div class="menu-note">
+                    Take a look at the full menu before making your choice.
+                </div>
 
                 <a
-                    class="location-button"
-                    href="https://www.google.com/maps?q=Darcy+Fine+Bar,+43+Nguyễn+Huệ,+Sài+Gòn,+Hồ+Chí+Minh"
+                    class="menu-button"
+                    href="images/darcy/darcy-menu.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
                 >
-                    View Location ↗
+                    VIEW MENU ↗
                 </a>
 
             </div>
 
-
-            <div class="detail-item">
-
-                <span class="detail-label">
-                    Opening Hours
-                </span>
-
-                <span class="detail-value">
-                    11:00 AM — 3:00 PM
-                    <br>
-                    6:00 PM — 1:00 AM
-                </span>
-
-            </div>
-
-
-            <div class="detail-item">
-
-                <span class="detail-label">
-                    Rating
-                </span>
-
-                <span class="detail-value detail-rating">
-                    ★ 4.6 / 5
-                </span>
-
-            </div>
-
         </div>
 
+    </article>
 
-        <div class="menu-section">
 
-            <div class="menu-title">
-                THE MENU
-            </div>
 
-            <div class="menu-note">
-                Take a look at the full menu before making your choice.
-            </div>
+    <!-- ==================================================
+         ICON CRUISE
+    ================================================== -->
 
-            <a
-                class="menu-button"
-                href="images/darcy/darcy-menu.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
+    <article
+        id="icon-cruise"
+        class="restaurant reveal"
+    >
+
+        <div class="restaurant-image-wrapper">
+
+            <img
+                class="restaurant-image"
+                src="images/icon/icon-1.webp"
+                alt="ICON CRUISE"
             >
-                VIEW MENU ↗
-            </a>
 
         </div>
 
-    </div>
 
-</article>
+        <div class="restaurant-info">
 
-
-
-<!-- ==================================================
-     ICON CRUISE
-================================================== -->
-
-<article id="icon-cruise" class="restaurant reveal">
-
-    <!-- IMAGE 1 -->
-
-    <div class="restaurant-image-wrapper">
-
-        <img
-            class="restaurant-image"
-            src="images/icon/icon-1.webp"
-            alt="ICON CRUISE"
-        >
-
-    </div>
-
-
-    <div class="restaurant-info">
-
-        <div class="option-number">
-            OPTION 04
-        </div>
-
-        <h3>
-            ICON CRUISE
-        </h3>
-
-        <div class="subtitle">
-            The Main Character Night
-        </div>
-
-        <p class="restaurant-description">
-            Dinner on the water, city lights all around,
-            and a night that feels bigger than an ordinary dinner.
-
-            <br><br>
-
-            If graduation deserves a little drama,
-            this is the option.
-        </p>
-
-        <div class="mood">
-            Grand · Romantic · Unforgettable
-        </div>
-
-
-        <div class="feeling-box">
-
-            <div class="feeling-label">
-                What the night feels like
+            <div class="option-number">
+                OPTION 04
             </div>
 
-            <p>
-                City lights on the water,
-                dinner with a view,
-                and the kind of night you'll probably
-                remember for a long time.
+            <h3>
+                ICON CRUISE
+            </h3>
+
+            <div class="subtitle">
+                The Main Character Night
+            </div>
+
+            <p class="restaurant-description">
+
+                Dinner on the water, city lights all around,
+                and a night that feels bigger than an ordinary dinner.
+
+                <br><br>
+
+                If graduation deserves a little drama,
+                this is the option.
+
             </p>
 
-        </div>
+            <div class="mood">
+                Grand · Romantic · Unforgettable
+            </div>
 
 
-        <!-- IMAGE 2 -->
+            <div class="feeling-box">
 
-        <img
-            class="restaurant-image-secondary"
-            src="images/icon/icon-2.webp"
-            alt="ICON CRUISE"
-        >
+                <div class="feeling-label">
+                    What the night feels like
+                </div>
+
+                <p>
+                    City lights on the water,
+                    dinner with a view,
+                    and the kind of night you'll probably
+                    remember for a long time.
+                </p>
+
+            </div>
 
 
-        <div class="restaurant-details">
+            <img
+                class="restaurant-image-secondary"
+                src="images/icon/icon-2.webp"
+                alt="ICON CRUISE"
+            >
 
-            <div class="detail-item">
 
-                <span class="detail-label">
-                    Address
-                </span>
+            <div class="restaurant-details">
 
-                <span class="detail-value">
-                    5 Đ. Nguyễn Tất Thành, Xóm Chiếu,
-                    Hồ Chí Minh 700000, Vietnam
-                </span>
+
+                <div class="detail-item">
+
+                    <span class="detail-label">
+                        Address
+                    </span>
+
+                    <span class="detail-value">
+                        5 Đ. Nguyễn Tất Thành, Xóm Chiếu,
+                        Hồ Chí Minh 700000, Vietnam
+                    </span>
+
+                    <a
+                        class="location-button"
+                        href="https://maps.app.goo.gl/NgearxZQYaJzMoat5?g_st=iz"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        View Location ↗
+                    </a>
+
+                </div>
+
+
+                <div class="detail-item">
+
+                    <span class="detail-label">
+                        Opening Hours
+                    </span>
+
+                    <span class="detail-value">
+                        5:00 PM — 11:30 PM
+                    </span>
+
+                </div>
+
+
+                <div class="detail-item">
+
+                    <span class="detail-label">
+                        Rating
+                    </span>
+
+                    <span class="detail-value detail-rating">
+                        ★ 4.8 / 5
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="menu-section">
+
+                <div class="menu-title">
+                    THE MENU
+                </div>
+
+                <div class="menu-note">
+                    Take a look at the full menu before making your choice.
+                </div>
 
                 <a
-                    class="location-button"
-                    href="https://maps.app.goo.gl/NgearxZQYaJzMoat5?g_st=iz"
+                    class="menu-button"
+                    href="images/icon/icon-menu.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
                 >
-                    View Location ↗
+                    VIEW MENU ↗
                 </a>
 
             </div>
 
-
-            <div class="detail-item">
-
-                <span class="detail-label">
-                    Opening Hours
-                </span>
-
-                <span class="detail-value">
-                    5:00 PM — 11:30 PM
-                </span>
-
-            </div>
-
-
-            <div class="detail-item">
-
-                <span class="detail-label">
-                    Rating
-                </span>
-
-                <span class="detail-value detail-rating">
-                    ★ 4.8 / 5
-                </span>
-
-            </div>
-
         </div>
 
-
-        <div class="menu-section">
-
-            <div class="menu-title">
-                THE MENU
-            </div>
-
-            <div class="menu-note">
-                Take a look at the full menu before making your choice.
-            </div>
-
-            <a
-                class="menu-button"
-                href="images/icon/icon-menu.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                VIEW MENU ↗
-            </a>
-
-        </div>
-
-    </div>
-
-</article>
+    </article>
 
 
 </section>
@@ -2784,7 +2802,7 @@
 
 
 <!-- ==================================================
-     CHOOSE
+     FINAL CHOICE
 ================================================== -->
 
 <section class="choose-section">
@@ -2798,17 +2816,24 @@
     </h2>
 
     <p class="choose-description">
+
         You've seen the options.
         <br>
+
         You've picked the date.
         <br>
+
         Now choose the version of the night you'd like to remember.
+
         <br><br>
+
         ♡
+
     </p>
 
 
     <div class="choice-buttons">
+
 
         <button
             class="choice-button"
@@ -2845,7 +2870,9 @@
 
 
 
-    <!-- CONFIRM -->
+    <!-- ==================================================
+         CONFIRM
+    ================================================== -->
 
     <div
         id="confirmArea"
@@ -2884,7 +2911,9 @@
 
 
 
-    <!-- SUCCESS -->
+    <!-- ==================================================
+         SUCCESS
+    ================================================== -->
 
     <div
         id="successMessage"
@@ -2901,6 +2930,7 @@
 
         <p id="successText">
         </p>
+
 
 
         <!-- DIGITAL TICKET -->
@@ -3055,11 +3085,13 @@
 
 <script>
 
+
     /* ==================================================
        VARIABLES
     ================================================== */
 
     let selectedRestaurant = "";
+
 
 
     /* ==================================================
@@ -3081,6 +3113,7 @@
             "The Main Character Night"
 
     };
+
 
 
     /* ==================================================
@@ -3108,6 +3141,7 @@
         `${year}-${month}-${day}`;
 
 
+
     /* ==================================================
        FORMAT DATE
     ================================================== */
@@ -3125,7 +3159,9 @@
                 year: "numeric"
             }
         );
+
     }
+
 
 
     /* ==================================================
@@ -3146,61 +3182,69 @@
                 minute: "2-digit"
             }
         );
+
     }
+
+
 
     /* ==================================================
-   THIS OR THAT
-================================================== */
+       THIS OR THAT
+    ================================================== */
 
-function showFoodOptions(type) {
+    function showFoodOptions(type) {
 
-    const westernOptions =
-        document.getElementById("westernOptions");
+        const westernOptions =
+            document.getElementById("westernOptions");
 
-    const japaneseOptions =
-        document.getElementById("japaneseOptions");
-
-
-    /* Hide both */
-
-    westernOptions.classList.remove("active");
-    japaneseOptions.classList.remove("active");
+        const japaneseOptions =
+            document.getElementById("japaneseOptions");
 
 
-    /* Show selected */
+        /* Hide both */
 
-    if (type === "western") {
+        westernOptions.classList.remove("active");
 
-        westernOptions.classList.add("active");
+        japaneseOptions.classList.remove("active");
 
-        setTimeout(function () {
 
-            westernOptions.scrollIntoView({
-                behavior: "smooth",
-                block: "center"
-            });
+        /* Show Western */
 
-        }, 100);
+        if (type === "western") {
+
+            westernOptions.classList.add("active");
+
+            setTimeout(function () {
+
+                westernOptions.scrollIntoView({
+                    behavior: "smooth",
+                    block: "center"
+                });
+
+            }, 100);
+
+        }
+
+
+        /* Show Japanese */
+
+        if (type === "japanese") {
+
+            japaneseOptions.classList.add("active");
+
+            setTimeout(function () {
+
+                japaneseOptions.scrollIntoView({
+                    behavior: "smooth",
+                    block: "center"
+                });
+
+            }, 100);
+
+        }
 
     }
 
 
-    if (type === "japanese") {
-
-        japaneseOptions.classList.add("active");
-
-        setTimeout(function () {
-
-            japaneseOptions.scrollIntoView({
-                behavior: "smooth",
-                block: "center"
-            });
-
-        }, 100);
-
-    }
-
-}
 
     /* ==================================================
        CHOOSE RESTAURANT
@@ -3226,6 +3270,7 @@ function showFoodOptions(type) {
             dateInput.focus();
 
             return;
+
         }
 
 
@@ -3242,6 +3287,7 @@ function showFoodOptions(type) {
                 .focus();
 
             return;
+
         }
 
 
@@ -3255,7 +3301,7 @@ function showFoodOptions(type) {
 
         document
             .querySelectorAll(".choice-button")
-            .forEach(function(btn) {
+            .forEach(function (btn) {
 
                 btn.classList.remove("selected");
 
@@ -3329,6 +3375,7 @@ function showFoodOptions(type) {
     }
 
 
+
     /* ==================================================
        CHANGE CHOICE
     ================================================== */
@@ -3342,7 +3389,7 @@ function showFoodOptions(type) {
 
         document
             .querySelectorAll(".choice-button")
-            .forEach(function(btn) {
+            .forEach(function (btn) {
 
                 btn.classList.remove("selected");
 
@@ -3352,6 +3399,7 @@ function showFoodOptions(type) {
         selectedRestaurant = "";
 
     }
+
 
 
     /* ==================================================
@@ -3380,6 +3428,7 @@ function showFoodOptions(type) {
             );
 
             return;
+
         }
 
 
@@ -3438,6 +3487,7 @@ function showFoodOptions(type) {
             "block";
 
 
+
         /* ==================================================
            DIGITAL TICKET
         ================================================== */
@@ -3482,10 +3532,7 @@ function showFoodOptions(type) {
         });
 
 
-        /* ==================================================
-           CURRENT DATA
-           Later this can be sent to Google Apps Script
-        ================================================== */
+        /* Current data */
 
         console.log({
 
@@ -3501,6 +3548,7 @@ function showFoodOptions(type) {
     }
 
 
+
     /* ==================================================
        SCROLL REVEAL
     ================================================== */
@@ -3512,10 +3560,10 @@ function showFoodOptions(type) {
     const observer =
         new IntersectionObserver(
 
-            function(entries) {
+            function (entries) {
 
                 entries.forEach(
-                    function(entry) {
+                    function (entry) {
 
                         if (
                             entry.isIntersecting
@@ -3540,7 +3588,7 @@ function showFoodOptions(type) {
 
 
     revealElements.forEach(
-        function(element) {
+        function (element) {
 
             observer.observe(element);
 
@@ -3549,106 +3597,8 @@ function showFoodOptions(type) {
 
 </script>
 
-<section class="choose-section reveal">
 
-    <div class="choose-header">
-        <div class="section-eyebrow">
-            THIS 🫵 OR THAT 👉?
-        </div>
-
-        <h2>Choose wisely…</h2>
-
-        <p>Your celebration depends on it 👀</p>
-    </div>
-
-
-    <div class="choose-grid">
-
-        <!-- THIS -->
-        <div class="choose-card this-card" onclick="showRestaurants('western')">
-
-            <div class="choose-label">
-                THIS
-            </div>
-
-            <h3>WESTERN</h3>
-
-            <p>
-                A beautiful dinner,<br>
-                good food &amp; a little celebration.
-            </p>
-
-            <span class="choose-hint">
-                TAP TO CHOOSE
-            </span>
-
-        </div>
-
-
-        <!-- OR -->
-        <div class="choose-or">
-            OR
-        </div>
-
-
-        <!-- THAT -->
-        <div class="choose-card that-card" onclick="showRestaurants('japanese')">
-
-            <div class="choose-label">
-                THAT
-            </div>
-
-            <h3>JAPANESE</h3>
-
-            <p>
-                Something special,<br>
-                comforting &amp; worth remembering.
-            </p>
-
-            <span class="choose-hint">
-                TAP TO CHOOSE
-            </span>
-
-        </div>
-
-    </div>
-
-
-    <!-- RESTAURANT OPTIONS -->
-
-    <div class="restaurant-options" id="western-options">
-
-        <div class="restaurant-option">
-            <div class="restaurant-number">01</div>
-            <h3>Icon</h3>
-            <p>A beautiful Western dinner for the celebration.</p>
-        </div>
-
-        <div class="restaurant-option">
-            <div class="restaurant-number">02</div>
-            <h3>Darsy</h3>
-            <p>A stylish place for a memorable night.</p>
-        </div>
-
-    </div>
-
-
-    <div class="restaurant-options" id="japanese-options">
-
-        <div class="restaurant-option">
-            <div class="restaurant-number">01</div>
-            <h3>Japanese Place 1</h3>
-            <p>A cozy Japanese dinner for the celebration.</p>
-        </div>
-
-        <div class="restaurant-option">
-            <div class="restaurant-number">02</div>
-            <h3>Japanese Place 2</h3>
-            <p>Something special for the night.</p>
-        </div>
-
-    </div>
-
-</section>
 </body>
+
 </html>
+```
