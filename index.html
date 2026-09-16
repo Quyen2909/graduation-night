@@ -210,120 +210,259 @@
            WHY I PICKED THESE FOUR
         ================================================== */
 
-        .personal-section {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 20px 25px 120px;
-        }
+       <!-- ==================================================
+     THIS OR THAT
+================================================== -->
 
-        .personal-header {
-            text-align: center;
-            margin-bottom: 65px;
-        }
+<section class="personal-section reveal">
 
-        .personal-header h2 {
-            font-size: clamp(42px, 5vw, 60px);
-            font-weight: 500;
-            line-height: 1;
-            margin: 0 0 20px;
-        }
+    <div class="personal-header">
 
-        .personal-header p {
-            font-size: 24px;
-            color: #524646;
-            margin-bottom: 20px;
-        }
+        <div class="section-eyebrow">
+            THIS 🫵 OR THAT 👉?
+        </div>
 
-        .personal-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1px;
-            background: #d7d0c7;
-            border: 1px solid #d7d0c7;
-        }
+        <h2>
+            Choose wisely…
+        </h2>
 
-        .personal-card {
-            background: #f5f1eb;
-            padding: 40px 35px;
-        }
+        <p>
+            Your celebration depends on it 👀
+        </p>
 
-        .personal-number {
-            font-size: 10px;
-            letter-spacing: 2px;
-            color: #999;
-            margin-bottom: 18px;
-        }
-
-        .personal-card h3 {
-            font-size: 34px;
-            font-weight: 500;
-            margin: 0 0 12px;
-        }
-
-        .personal-card p {
-            color: #777;
-            font-size: 13px;
-            line-height: 1.8;
-            margin: 0;
-        }
+    </div>
 
 
-        /* ==================================================
-           FOUR NIGHTS PREVIEW
-        ================================================== */
+    <div class="food-choice">
 
-        .four-nights {
-            background: #ebe5dc;
-            padding: 105px 25px;
-        }
+        <!-- THIS -->
+        <div
+            class="food-card"
+            onclick="showFoodOptions('western')"
+        >
 
-        .four-nights-inner {
-            max-width: 1100px;
-            margin: auto;
-        }
+            <div class="food-card-content">
 
-        .four-nights-header {
-            text-align: center;
-            margin-bottom: 60px;
-        }
+                <div class="food-label">
+                    THIS
+                </div>
 
-        .four-nights-header h2 {
-            font-size: clamp(44px, 5vw, 62px);
-            font-weight: 500;
-            margin: 0;
-            line-height: 1;
-        }
+                <h3>
+                    WESTERN
+                </h3>
 
-        .night-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 35px;
-        }
+                <p>
+                    Dinner, drinks,<br>
+                    city lights &amp; a little drama.
+                </p>
 
-        .night-card {
-            text-align: center;
-        }
+                <div class="food-hint">
+                    TAP TO EXPLORE
+                </div>
 
-        .night-number {
-            font-size: 10px;
-            letter-spacing: 2px;
-            color: #999;
-            margin-bottom: 15px;
-        }
+            </div>
 
-        .night-card h3 {
-            font-size: 30px;
-            font-weight: 500;
-            margin: 0 0 8px;
-        }
+        </div>
 
-        .night-card p {
-            margin: 0;
-            font-size: 12px;
-            color: #777;
-            line-height: 1.7;
-        }
 
+        <!-- OR -->
+        <div class="food-or">
+            OR
+        </div>
+
+
+        <!-- THAT -->
+        <div
+            class="food-card"
+            onclick="showFoodOptions('japanese')"
+        >
+
+            <div class="food-card-content">
+
+                <div class="food-label">
+                    THAT
+                </div>
+
+                <h3>
+                    JAPANESE
+                </h3>
+
+                <p>
+                    Intimate food,<br>
+                    beautiful details &amp; good conversation.
+                </p>
+
+                <div class="food-hint">
+                    TAP TO EXPLORE
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ==================================================
+         WESTERN OPTIONS
+    ================================================== -->
+
+    <div
+        id="westernOptions"
+        class="food-options"
+    >
+
+        <div class="food-options-header">
+
+            <span>
+                THIS ONE?
+            </span>
+
+            <h3>
+                The Western Nights
+            </h3>
+
+            <p>
+                Two ways to make the celebration a little bigger.
+            </p>
+
+        </div>
+
+
+        <div class="food-options-grid">
+
+            <a
+                href="#darcy"
+                class="food-option"
+            >
+
+                <span class="food-option-number">
+                    01
+                </span>
+
+                <h4>
+                    DARCY
+                </h4>
+
+                <p>
+                    The City Lights Night
+                </p>
+
+                <span class="food-option-arrow">
+                    EXPLORE ↘
+                </span>
+
+            </a>
+
+
+            <a
+                href="#icon-cruise"
+                class="food-option"
+            >
+
+                <span class="food-option-number">
+                    02
+                </span>
+
+                <h4>
+                    ICON CRUISE
+                </h4>
+
+                <p>
+                    The Main Character Night
+                </p>
+
+                <span class="food-option-arrow">
+                    EXPLORE ↘
+                </span>
+
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- ==================================================
+         JAPANESE OPTIONS
+    ================================================== -->
+
+    <div
+        id="japaneseOptions"
+        class="food-options"
+    >
+
+        <div class="food-options-header">
+
+            <span>
+                THAT ONE?
+            </span>
+
+            <h3>
+                The Japanese Nights
+            </h3>
+
+            <p>
+                Two ways to celebrate with beautiful food and good company.
+            </p>
+
+        </div>
+
+
+        <div class="food-options-grid">
+
+            <a
+                href="#itadaki"
+                class="food-option"
+            >
+
+                <span class="food-option-number">
+                    01
+                </span>
+
+                <h4>
+                    ITADAKI
+                </h4>
+
+                <p>
+                    The Omakase Night
+                </p>
+
+                <span class="food-option-arrow">
+                    EXPLORE ↘
+                </span>
+
+            </a>
+
+
+            <a
+                href="#noire"
+                class="food-option"
+            >
+
+                <span class="food-option-number">
+                    02
+                </span>
+
+                <h4>
+                    NOIRE
+                </h4>
+
+                <p>
+                    The Mystery Night
+                </p>
+
+                <span class="food-option-arrow">
+                    EXPLORE ↘
+                </span>
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
 
         /* ==================================================
            RESTAURANTS
@@ -1016,13 +1155,410 @@
                 font-size: 46px;
             }
 
-            .personal-grid {
-                grid-template-columns: 1fr;
-            }
+            /* ==================================================
+   THIS OR THAT
+================================================== */
 
-            .personal-card {
-                padding: 32px 25px;
-            }
+.personal-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 30px 25px 120px;
+}
+
+.personal-header {
+    text-align: center;
+    margin-bottom: 65px;
+}
+
+.personal-header h2 {
+    font-size: clamp(44px, 5vw, 64px);
+    font-weight: 500;
+    line-height: 1;
+    margin: 0 0 18px;
+}
+
+.personal-header p {
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: 25px;
+    font-style: italic;
+    color: #524646;
+    margin: 0;
+}
+
+
+/* ==================================================
+   TWO CHOICES
+================================================== */
+
+.food-choice {
+    display: grid;
+    grid-template-columns: 1fr 80px 1fr;
+    min-height: 500px;
+    position: relative;
+}
+
+
+/* CARD */
+
+.food-card {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 500px;
+
+    background: #ebe5dc;
+
+    border: 1px solid #d7d0c7;
+
+    cursor: pointer;
+
+    overflow: hidden;
+
+    transition:
+        transform 0.4s ease,
+        background 0.4s ease,
+        box-shadow 0.4s ease;
+}
+
+.food-card:first-child {
+    border-right: none;
+}
+
+.food-card:last-child {
+    border-left: none;
+}
+
+.food-card:hover {
+    background: #e2dbd1;
+    transform: translateY(-5px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+}
+
+
+/* CARD CONTENT */
+
+.food-card-content {
+    text-align: center;
+    padding: 50px 30px;
+}
+
+.food-label {
+    font-size: 11px;
+    letter-spacing: 4px;
+    color: #999;
+    margin-bottom: 25px;
+}
+
+.food-card h3 {
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: clamp(48px, 6vw, 78px);
+    font-weight: 500;
+    line-height: 0.9;
+    margin: 0 0 30px;
+}
+
+.food-card p {
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: 23px;
+    line-height: 1.4;
+    color: #555;
+    margin: 0 0 35px;
+}
+
+.food-hint {
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 2.5px;
+    color: #999;
+}
+
+
+/* ==================================================
+   OR
+================================================== */
+
+.food-or {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+    z-index: 3;
+
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: 22px;
+    font-style: italic;
+
+    color: #777;
+
+    background: #f5f1eb;
+}
+
+.food-or::before,
+.food-or::after {
+    content: "";
+
+    position: absolute;
+
+    width: 1px;
+    height: 150px;
+
+    background: #d7d0c7;
+}
+
+.food-or::before {
+    top: 0;
+}
+
+.food-or::after {
+    bottom: 0;
+}
+
+
+/* ==================================================
+   RESTAURANT OPTIONS
+================================================== */
+
+.food-options {
+    display: none;
+
+    margin-top: 55px;
+
+    padding: 45px 0;
+
+    border-top: 1px solid #d7d0c7;
+    border-bottom: 1px solid #d7d0c7;
+
+    animation: foodOptionsIn 0.5s ease;
+}
+
+.food-options.active {
+    display: block;
+}
+
+@keyframes foodOptionsIn {
+
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+
+.food-options-header {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.food-options-header span {
+    display: block;
+
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 3px;
+
+    color: #999;
+
+    margin-bottom: 12px;
+}
+
+.food-options-header h3 {
+    font-family: "Cormorant Garamond", Georgia, serif;
+
+    font-size: 42px;
+    font-weight: 500;
+
+    margin: 0 0 8px;
+}
+
+.food-options-header p {
+    font-size: 13px;
+    color: #777;
+    margin: 0;
+}
+
+
+/* OPTION GRID */
+
+.food-options-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+
+    background: #d7d0c7;
+
+    border: 1px solid #d7d0c7;
+}
+
+.food-option {
+    display: flex;
+    flex-direction: column;
+
+    padding: 40px 35px;
+
+    background: #f5f1eb;
+
+    color: #1c1c1c;
+
+    text-decoration: none;
+
+    transition:
+        background 0.3s ease,
+        transform 0.3s ease;
+}
+
+.food-option:hover {
+    background: #ebe5dc;
+}
+
+.food-option-number {
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: #999;
+
+    margin-bottom: 22px;
+}
+
+.food-option h4 {
+    font-family: "Cormorant Garamond", Georgia, serif;
+
+    font-size: 40px;
+    font-weight: 500;
+
+    margin: 0 0 5px;
+}
+
+.food-option p {
+    font-family: "Cormorant Garamond", Georgia, serif;
+
+    font-size: 19px;
+    font-style: italic;
+
+    color: #666;
+
+    margin: 0 0 30px;
+}
+
+.food-option-arrow {
+    margin-top: auto;
+
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 2px;
+
+    color: #888;
+}
+
+
+/* ==================================================
+   MOBILE
+================================================== */
+
+@media (max-width: 700px) {
+
+    .personal-section {
+        padding: 0 20px 85px;
+    }
+
+    .personal-header {
+        margin-bottom: 40px;
+    }
+
+    .personal-header h2 {
+        font-size: 46px;
+    }
+
+    .personal-header p {
+        font-size: 22px;
+    }
+
+
+    .food-choice {
+        grid-template-columns: 1fr;
+        min-height: auto;
+    }
+
+
+    .food-card {
+        min-height: 360px;
+    }
+
+
+    .food-card:first-child {
+        border-right: 1px solid #d7d0c7;
+        border-bottom: none;
+    }
+
+    .food-card:last-child {
+        border-left: 1px solid #d7d0c7;
+        border-top: none;
+    }
+
+
+    .food-or {
+        min-height: 70px;
+        background: #f5f1eb;
+    }
+
+
+    .food-or::before,
+    .food-or::after {
+        width: 60px;
+        height: 1px;
+
+        top: 50%;
+        bottom: auto;
+    }
+
+
+    .food-or::before {
+        left: 0;
+    }
+
+    .food-or::after {
+        right: 0;
+    }
+
+
+    .food-card h3 {
+        font-size: 58px;
+    }
+
+
+    .food-card p {
+        font-size: 21px;
+    }
+
+
+    .food-options {
+        margin-top: 40px;
+        padding: 35px 0;
+    }
+
+
+    .food-options-header h3 {
+        font-size: 38px;
+    }
+
+
+    .food-options-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .food-option {
+        padding: 32px 25px;
+    }
+
+}
 
             .personal-card h3 {
                 font-size: 31px;
@@ -1244,156 +1780,7 @@
             }
 
         }
-.choose-section {
-    padding: 100px 20px;
-    text-align: center;
-}
 
-.choose-header {
-    margin-bottom: 60px;
-}
-
-.choose-header .section-eyebrow {
-    font-size: 14px;
-    letter-spacing: 4px;
-    margin-bottom: 20px;
-}
-
-.choose-header h2 {
-    font-size: clamp(32px, 5vw, 52px);
-    font-weight: 400;
-    margin: 0 0 10px;
-}
-
-.choose-header p {
-    font-size: 18px;
-    margin: 0;
-}
-
-
-.choose-grid {
-    position: relative;
-    display: grid;
-    grid-template-columns: 1fr 80px 1fr;
-    min-height: 420px;
-    max-width: 1100px;
-    margin: 0 auto;
-}
-
-
-.choose-card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
-    padding: 60px 40px;
-
-    border: 1px solid rgba(0, 0, 0, 0.15);
-
-    cursor: pointer;
-
-    transition:
-        transform 0.3s ease,
-        background 0.3s ease,
-        box-shadow 0.3s ease;
-}
-
-.choose-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
-}
-
-
-.choose-label {
-    font-size: 12px;
-    letter-spacing: 4px;
-    margin-bottom: 25px;
-}
-
-.choose-card h3 {
-    font-size: clamp(36px, 5vw, 60px);
-    font-weight: 400;
-    margin: 0 0 25px;
-}
-
-.choose-card p {
-    font-size: 17px;
-    line-height: 1.8;
-    margin-bottom: 30px;
-}
-
-
-.choose-hint {
-    font-size: 10px;
-    letter-spacing: 3px;
-    opacity: 0.6;
-}
-
-
-/* OR */
-
-.choose-or {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    font-size: 13px;
-    letter-spacing: 3px;
-    font-weight: 500;
-
-    position: relative;
-    z-index: 2;
-}
-
-.choose-or::before,
-.choose-or::after {
-    content: "";
-    position: absolute;
-    width: 1px;
-    height: 120px;
-    background: rgba(0, 0, 0, 0.15);
-}
-
-.choose-or::before {
-    top: 0;
-}
-
-.choose-or::after {
-    bottom: 0;
-}
-
-
-/* RESTAURANTS */
-
-.restaurant-options {
-    display: none;
-
-    grid-template-columns: repeat(2, 1fr);
-    gap: 25px;
-
-    max-width: 900px;
-    margin: 50px auto 0;
-}
-
-.restaurant-options.active {
-    display: grid;
-}
-
-.restaurant-option {
-    padding: 40px 30px;
-    border: 1px solid rgba(0, 0, 0, 0.15);
-}
-
-.restaurant-option h3 {
-    font-size: 30px;
-    font-weight: 400;
-    margin: 15px 0;
-}
-
-.restaurant-option p {
-    line-height: 1.7;
-}
     </style>
 </head>
 
@@ -1484,7 +1871,7 @@
         </h2>
 
         <p>
-    We picked a few places we think you'd like. <br> <br>
+    We picked a few places we think you'd like. <br>
     <strong>You pick the one, and we'll take care of the rest. 🤍</strong>
 </p>
 
@@ -1493,83 +1880,106 @@
 
     <div class="personal-grid">
 
-        <div class="personal-card">
+    <!-- WESTERN -->
+    <div class="personal-card food-card" onclick="showRestaurants('western')">
 
-            <div class="personal-number">
-                01 — FOR THE FOODIE
-            </div>
-
-            <h3>
-                A beautiful dinner.
-            </h3>
-
-            <p>
-                For a night where the food gets to be part of the story,
-                the details matter, and we can actually sit down and enjoy
-                the moment.
-            </p>
-
+        <div class="personal-number">
+            01 — WESTERN FOOD
         </div>
 
+        <h3>
+            A beautiful dinner.
+        </h3>
 
-        <div class="personal-card">
-
-            <div class="personal-number">
-                02 — FOR THE MOOD
-            </div>
-
-            <h3>
-                Something a little different.
-            </h3>
-
-            <p>
-                For when graduation calls for somewhere stylish,
-                atmospheric and just a little more memorable than
-                an ordinary dinner.
-            </p>
-
-        </div>
-
-
-        <div class="personal-card">
-
-            <div class="personal-number">
-                03 — FOR THE NIGHT
-            </div>
-
-            <h3>
-                Dinner, drinks, city lights.
-            </h3>
-
-            <p>
-                For the version of the night that starts with dinner
-                and somehow turns into stories, photos and staying out
-                a little later than planned.
-            </p>
-
-        </div>
-
-
-        <div class="personal-card">
-
-            <div class="personal-number">
-                04 — FOR THE MOMENT
-            </div>
-
-            <h3>
-                Make it a big one.
-            </h3>
-
-            <p>
-                Because graduation only happens once.
-                Maybe this is the night that deserves a little drama.
-            </p>
-
-        </div>
+        <p>
+            For a night where good food, beautiful details,
+            and a little celebration come together.
+        </p>
 
     </div>
 
-</section>
+
+    <!-- JAPANESE -->
+    <div class="personal-card food-card" onclick="showRestaurants('japanese')">
+
+        <div class="personal-number">
+            02 — JAPANESE FOOD
+        </div>
+
+        <h3>
+            Something a little different.
+        </h3>
+
+        <p>
+            For when graduation calls for something special,
+            comforting, and worth remembering.
+        </p>
+
+    </div>
+
+</div>
+
+
+<!-- RESTAURANT OPTIONS -->
+
+<div class="restaurant-options" id="western-options">
+
+    <div class="restaurant-option">
+        <div class="restaurant-number">01</div>
+
+        <h3>Icon</h3>
+
+        <p>
+            A beautiful place for a special Western dinner.
+        </p>
+
+        <button>Choose Icon</button>
+    </div>
+
+
+    <div class="restaurant-option">
+        <div class="restaurant-number">02</div>
+
+        <h3>Darsy</h3>
+
+        <p>
+            A stylish spot for a memorable graduation night.
+        </p>
+
+        <button>Choose Darsy</button>
+    </div>
+
+</div>
+
+
+<div class="restaurant-options" id="japanese-options">
+
+    <div class="restaurant-option">
+        <div class="restaurant-number">01</div>
+
+        <h3>Japanese Place 1</h3>
+
+        <p>
+            A cozy Japanese dinner for the celebration.
+        </p>
+
+        <button>Choose this one</button>
+    </div>
+
+
+    <div class="restaurant-option">
+        <div class="restaurant-number">02</div>
+
+        <h3>Japanese Place 2</h3>
+
+        <p>
+            Something special for the night.
+        </p>
+
+        <button>Choose this one</button>
+    </div>
+
+</div>
 
 
 
@@ -1690,7 +2100,7 @@
      ITADAKI
 ================================================== -->
 
-<article class="restaurant reveal">
+<article id="itadaki" class="restaurant reveal">
 
     <!-- IMAGE 1 -->
 
@@ -1843,7 +2253,7 @@
      NOIRE
 ================================================== -->
 
-<article class="restaurant reveal">
+<article id="noire" class="restaurant reveal">
 
     <!-- IMAGE 1 -->
 
@@ -1997,7 +2407,7 @@
      DARCY
 ================================================== -->
 
-<article class="restaurant reveal">
+<article id="darcy" class="restaurant reveal">
 
     <!-- IMAGE 1 -->
 
@@ -2150,7 +2560,7 @@
      ICON CRUISE
 ================================================== -->
 
-<article class="restaurant reveal">
+<article id="icon-cruise" class="restaurant reveal">
 
     <!-- IMAGE 1 -->
 
@@ -2735,6 +3145,59 @@
         );
     }
 
+    /* ==================================================
+   THIS OR THAT
+================================================== */
+
+function showFoodOptions(type) {
+
+    const westernOptions =
+        document.getElementById("westernOptions");
+
+    const japaneseOptions =
+        document.getElementById("japaneseOptions");
+
+
+    /* Hide both */
+
+    westernOptions.classList.remove("active");
+    japaneseOptions.classList.remove("active");
+
+
+    /* Show selected */
+
+    if (type === "western") {
+
+        westernOptions.classList.add("active");
+
+        setTimeout(function () {
+
+            westernOptions.scrollIntoView({
+                behavior: "smooth",
+                block: "center"
+            });
+
+        }, 100);
+
+    }
+
+
+    if (type === "japanese") {
+
+        japaneseOptions.classList.add("active");
+
+        setTimeout(function () {
+
+            japaneseOptions.scrollIntoView({
+                behavior: "smooth",
+                block: "center"
+            });
+
+        }, 100);
+
+    }
+
+}
 
     /* ==================================================
        CHOOSE RESTAURANT
@@ -3083,6 +3546,106 @@
 
 </script>
 
+<section class="choose-section reveal">
 
+    <div class="choose-header">
+        <div class="section-eyebrow">
+            THIS 🫵 OR THAT 👉?
+        </div>
+
+        <h2>Choose wisely…</h2>
+
+        <p>Your celebration depends on it 👀</p>
+    </div>
+
+
+    <div class="choose-grid">
+
+        <!-- THIS -->
+        <div class="choose-card this-card" onclick="showRestaurants('western')">
+
+            <div class="choose-label">
+                THIS
+            </div>
+
+            <h3>WESTERN</h3>
+
+            <p>
+                A beautiful dinner,<br>
+                good food &amp; a little celebration.
+            </p>
+
+            <span class="choose-hint">
+                TAP TO CHOOSE
+            </span>
+
+        </div>
+
+
+        <!-- OR -->
+        <div class="choose-or">
+            OR
+        </div>
+
+
+        <!-- THAT -->
+        <div class="choose-card that-card" onclick="showRestaurants('japanese')">
+
+            <div class="choose-label">
+                THAT
+            </div>
+
+            <h3>JAPANESE</h3>
+
+            <p>
+                Something special,<br>
+                comforting &amp; worth remembering.
+            </p>
+
+            <span class="choose-hint">
+                TAP TO CHOOSE
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <!-- RESTAURANT OPTIONS -->
+
+    <div class="restaurant-options" id="western-options">
+
+        <div class="restaurant-option">
+            <div class="restaurant-number">01</div>
+            <h3>Icon</h3>
+            <p>A beautiful Western dinner for the celebration.</p>
+        </div>
+
+        <div class="restaurant-option">
+            <div class="restaurant-number">02</div>
+            <h3>Darsy</h3>
+            <p>A stylish place for a memorable night.</p>
+        </div>
+
+    </div>
+
+
+    <div class="restaurant-options" id="japanese-options">
+
+        <div class="restaurant-option">
+            <div class="restaurant-number">01</div>
+            <h3>Japanese Place 1</h3>
+            <p>A cozy Japanese dinner for the celebration.</p>
+        </div>
+
+        <div class="restaurant-option">
+            <div class="restaurant-number">02</div>
+            <h3>Japanese Place 2</h3>
+            <p>Something special for the night.</p>
+        </div>
+
+    </div>
+
+</section>
 </body>
 </html>
