@@ -173,55 +173,70 @@
         /* ==================================================
            INTRO
         ================================================== */
+.intro {
+    min-height: 100vh;
+    box-sizing: border-box;
 
-        ..intro {
-    max-width: 900px;
-    margin: auto;
-    padding: 115px 25px 95px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    padding: 100px 25px;
     text-align: center;
 }
 
+/* Mỗi đoạn */
 .intro-part {
-    text-align: center;
-}
-
-.intro-part h2,
-.intro-part p {
+    width: 100%;
+    max-width: 760px;
     margin-left: auto;
     margin-right: auto;
 }
 
-/* SMALL EYEBROW TEXT */
+/* Khoảng cách giữa 2 đoạn */
+.intro-part-one {
+    margin-bottom: 110px;
+}
+
+.intro-part-two {
+    margin-bottom: 0;
+}
+
+/* FOR THE GRADUATE / A LITTLE SOMETHING FROM US */
 .section-eyebrow {
     display: block;
-    width: 100%;
-    text-align: center;
+    margin-bottom: 24px;
 
-    font-size: 24px;
+    font-size: 17px;
     font-weight: 500;
-    letter-spacing: 2.5px;
+    letter-spacing: 3px;
+    line-height: 1.5;
+
     text-transform: uppercase;
-    color: #524646;
-    margin-bottom: 20px;
+    text-align: center;
 }
 
-/* BIG TITLE */
+/* YOU DID IT / AUKIEE... */
 .intro h2 {
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: clamp(44px, 5.5vw, 64px);
-    font-weight: 500;
-    line-height: 1;
-    color: #1c1c1c;
-    margin: 0 0 30px;
+    margin: 0 0 28px;
+
+    font-size: 52px;
+    font-weight: 600;
+    line-height: 1.1;
+
+    text-align: center;
 }
 
-/* SMALL BODY TEXT */
+/* Paragraph */
 .intro p {
-    max-width: 680px;
-    margin: auto;
-    font-size: 15px;
+    max-width: 650px;
+    margin: 0 auto;
+
+    font-size: 17px;
+    font-weight: 400;
     line-height: 1.9;
-    color: #666;
+
+    text-align: center;
 }
         .little-something {
     display: inline-block;
