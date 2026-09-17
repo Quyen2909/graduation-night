@@ -256,26 +256,29 @@ body.invitation-locked {
         }
 
         .cover::before {
-            content: "";
-            position: absolute;
-            inset: 0;
+    content: "";
+    position: absolute;
+    inset: 0;
 
-            background: url("images/cover.jpg") center center / cover no-repeat;
-            opacity: 0.3;
+    background:
+        linear-gradient(
+            rgba(20, 17, 17, 0.48),
+            rgba(20, 17, 17, 0.48)
+        ),
+        url("images/cover.jpg") center center / cover no-repeat;
 
-            z-index: 0;
-        }
+    z-index: 0;
+}
 
-        .cover::after {
-            content: "";
-            position: absolute;
-            inset: 0;
+.cover::after {
+    content: "";
+    position: absolute;
+    inset: 0;
 
-            background: rgba(0, 0, 0, 0.5);
+    background: rgba(20, 17, 17, 0.15);
 
-            z-index: 0;
-        }
-
+    z-index: 0;
+}
         .cover-content {
             position: relative;
             z-index: 1;
