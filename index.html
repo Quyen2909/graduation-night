@@ -21,9 +21,14 @@
    OPENING SCREEN
 ================================= */
 
+/* =================================
+   SECRET OPENING SCREEN
+================================= */
+
 .opening-screen {
     position: fixed;
     inset: 0;
+
     z-index: 99999;
 
     display: flex;
@@ -32,84 +37,122 @@
 
     background:
         linear-gradient(
-            rgba(30, 25, 25, 0.35),
-            rgba(30, 25, 25, 0.35)
+            rgba(20, 17, 17, 0.48),
+            rgba(20, 17, 17, 0.48)
         ),
         url("images/cover.jpg") center / cover no-repeat;
 
+    opacity: 1;
+    visibility: visible;
+
     transition:
-        opacity 0.8s ease,
-        visibility 0.8s ease;
+        opacity 0.9s ease,
+        visibility 0.9s ease;
 }
 
+
+/* Content */
+
 .opening-content {
+    position: relative;
+    z-index: 2;
+
     display: flex;
     flex-direction: column;
     align-items: center;
 
     text-align: center;
+
+    padding: 40px;
 }
+
+
+/* FOR HIEU SONG */
 
 .opening-name {
     font-family: "Montserrat", sans-serif;
 
-    font-size: 13px;
-    font-weight: 500;
+    font-size: 22px;
+    font-weight: 600;
 
-    letter-spacing: 4px;
+    letter-spacing: 5px;
+
+    color: #ffffff;
+
     text-transform: uppercase;
 
-    color: #403737;
+    text-shadow:
+        0 2px 12px rgba(0, 0, 0, 0.25);
 }
 
+
+/* Heart */
+
 .opening-heart {
-    margin: 35px 0;
+    margin: 38px 0;
 
     font-family: "Cormorant Garamond", serif;
 
-    font-size: 34px;
+    font-size: 42px;
 
-    color: #403737;
+    line-height: 1;
+
+    color: #ffffff;
 }
 
-.opening-button {
-    padding: 12px 0;
 
-    border: none;
-    background: transparent;
+/* Open button */
+
+.opening-button {
+    appearance: none;
+
+    border: 1px solid rgba(255, 255, 255, 0.75);
+
+    background: rgba(255, 255, 255, 0.08);
+
+    padding: 17px 28px;
 
     font-family: "Montserrat", sans-serif;
 
-    font-size: 11px;
+    font-size: 14px;
     font-weight: 600;
 
-    letter-spacing: 2.5px;
+    letter-spacing: 3px;
 
-    color: #403737;
+    color: #ffffff;
 
     cursor: pointer;
 
-    transition: all 0.3s ease;
+    text-transform: uppercase;
+
+    transition:
+        background 0.3s ease,
+        border-color 0.3s ease,
+        transform 0.3s ease;
 }
 
 .opening-button span {
     display: inline-block;
 
-    margin-left: 8px;
+    margin-left: 10px;
 
     transition: transform 0.3s ease;
 }
 
 .opening-button:hover {
-    letter-spacing: 3px;
+    background: rgba(255, 255, 255, 0.18);
+
+    border-color: #ffffff;
+
+    transform: translateY(-2px);
 }
 
 .opening-button:hover span {
-    transform: translateX(5px);
+    transform: translateX(6px);
 }
 
 
-/* Khi mở invitation */
+/* Hide opening */
 
 .opening-screen.hide {
     opacity: 0;
@@ -117,6 +160,34 @@
     pointer-events: none;
 }
 
+
+/* Prevent scrolling before opening */
+
+body.invitation-locked {
+    overflow: hidden;
+}
+
+
+/* Mobile */
+
+@media (max-width: 768px) {
+
+    .opening-name {
+        font-size: 17px;
+        letter-spacing: 3.5px;
+    }
+
+    .opening-heart {
+        font-size: 36px;
+        margin: 32px 0;
+    }
+
+    .opening-button {
+        padding: 15px 23px;
+        font-size: 12px;
+        letter-spacing: 2.5px;
+    }
+}
 
 /* Không cho scroll khi opening đang mở */
 
@@ -1875,7 +1946,24 @@ body.invitation-locked {
 
 <body>
 
+<div class="opening-screen" id="openingScreen">
+    <div class="opening-content">
 
+        <div class="opening-name">
+            FOR HIEU SONG
+        </div>
+
+        <div class="opening-heart">
+            ♡
+        </div>
+
+        <button class="opening-button" id="openInvitation">
+            OPEN INVITATION
+            <span>→</span>
+        </button>
+
+    </div>
+</div>
 <!-- ==================================================
      COVER
 ================================================== -->
