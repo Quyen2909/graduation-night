@@ -534,267 +534,330 @@ body.invitation-locked {
         /* ==================================================
            FOOD CHOICE
         ================================================== */
+/* =========================================
+   FOOD CHOICE — TWO ROUND LAYOUT
+========================================= */
+
+.food-choice-section {
+    padding: 120px 7vw;
+    background: #f5f1eb;
+}
 
-        .food-choice {
-            display: grid;
-            grid-template-columns: 1fr 80px 1fr;
-            min-height: 500px;
-            position: relative;
-        }
-
-        .food-card {
-            position: relative;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            min-height: 500px;
-
-            background: #ebe5dc;
-
-            border: 1px solid #d7d0c7;
-
-            cursor: pointer;
-            overflow: hidden;
+
+/* -----------------------------------------
+   SECTION INTRO
+----------------------------------------- */
+
+.choice-intro {
+    text-align: center;
+    margin-bottom: 100px;
+}
+
+.choice-intro h2 {
+    margin: 14px 0 18px;
+    font-size: clamp(44px, 5.5vw, 64px);
+    font-weight: 600;
+    line-height: 1.05;
+}
 
-            transition:
-                transform 0.4s ease,
-                background 0.4s ease,
-                box-shadow 0.4s ease;
-        }
-
-        .food-card:first-child {
-            border-right: none;
-        }
+.choice-intro p {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 0.3px;
+}
 
-        .food-card:last-child {
-            border-left: none;
-        }
 
-        .food-card:hover {
-            background: #e2dbd1;
-            transform: translateY(-5px);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
-        }
+/* -----------------------------------------
+   ROUND
+----------------------------------------- */
 
-        .food-card-content {
-            text-align: center;
-            padding: 50px 30px;
-        }
+.choice-round {
+    max-width: 1100px;
+    margin: 0 auto;
+}
 
-        .food-label {
-            font-size: 11px;
-            letter-spacing: 4px;
-            color: #999;
-            margin-bottom: 25px;
-        }
+.round-one {
+    margin-bottom: 120px;
+}
+
+
+/* -----------------------------------------
+   ROUND LABEL
+----------------------------------------- */
 
-        .food-card h3 {
-            font-family: "Cormorant Garamond", Georgia, serif;
-            font-size: clamp(48px, 6vw, 78px);
-            font-weight: 500;
-            line-height: 0.9;
-            margin: 0 0 30px;
-        }
+.round-label {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
 
-        .food-card p {
-            max-width: 350px;
-            margin: 0 auto 35px;
+    padding-bottom: 18px;
+    margin-bottom: 45px;
 
-            font-family: "Cormorant Garamond", Georgia, serif;
-            font-size: 23px;
-            line-height: 1.4;
-            color: #555;
-        }
+    border-bottom: 1px solid rgba(28, 28, 28, 0.25);
+}
 
-        .food-hint {
-            font-size: 9px;
-            font-weight: 500;
-            letter-spacing: 2.5px;
-            color: #999;
-        }
+.round-label span {
+    font-family: "Montserrat", sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 3px;
+}
 
+.round-label strong {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 42px;
+    font-weight: 500;
+    line-height: 1;
+}
 
-        /* ==================================================
-           OR
-        ================================================== */
 
-        .food-or {
-            display: flex;
-            align-items: center;
-            justify-content: center;
+/* -----------------------------------------
+   ROUND HEADING
+----------------------------------------- */
 
-            position: relative;
-            z-index: 3;
+.round-heading {
+    margin-bottom: 45px;
+}
 
-            font-family: "Cormorant Garamond", Georgia, serif;
-            font-size: 22px;
-            font-style: italic;
+.round-heading > span {
+    display: block;
 
-            color: #777;
-            background: #f5f1eb;
-        }
+    margin-bottom: 12px;
 
-        .food-or::before,
-        .food-or::after {
-            content: "";
+    font-family: "Montserrat", sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
 
-            position: absolute;
+.round-heading h3 {
+    margin: 0;
 
-            width: 1px;
-            height: 150px;
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(38px, 4vw, 54px);
+    font-weight: 500;
+    line-height: 1.05;
+}
 
-            background: #d7d0c7;
-        }
 
-        .food-or::before {
-            top: 0;
-        }
+/* -----------------------------------------
+   ROUND 01 CARDS
+----------------------------------------- */
 
-        .food-or::after {
-            bottom: 0;
-        }
+.food-choice-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+}
 
 
-        /* ==================================================
-           FOOD OPTIONS
-        ================================================== */
+.food-choice-card {
+    position: relative;
 
-        .food-options {
-            display: none;
+    min-height: 220px;
+    padding: 30px;
 
-            margin-top: 55px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
 
-            padding: 45px 0;
+    border: 1px solid rgba(28, 28, 28, 0.25);
+    background: transparent;
 
-            border-top: 1px solid #d7d0c7;
-            border-bottom: 1px solid #d7d0c7;
+    text-align: left;
+    cursor: pointer;
 
-            animation: foodOptionsIn 0.5s ease;
-        }
+    transition:
+        background 0.35s ease,
+        transform 0.35s ease,
+        border-color 0.35s ease;
+}
 
-        .food-options.active {
-            display: block;
-        }
+.food-choice-card:hover {
+    background: #ebe5dc;
+    border-color: #1c1c1c;
+    transform: translateY(-4px);
+}
 
-        @keyframes foodOptionsIn {
 
-            from {
-                opacity: 0;
-                transform: translateY(15px);
-            }
+.food-choice-number {
+    font-family: "Montserrat", sans-serif;
+    font-size: 12px;
+    letter-spacing: 2px;
+}
 
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
 
-        }
+.food-choice-card h4 {
+    margin: 0 0 8px;
 
-        .food-options-header {
-            text-align: center;
-            margin-bottom: 35px;
-        }
+    font-family: "Cormorant Garamond", serif;
+    font-size: 48px;
+    font-weight: 500;
+}
 
-        .food-options-header span {
-            display: block;
 
-            font-size: 9px;
-            font-weight: 500;
-            letter-spacing: 3px;
+.food-choice-card p {
+    margin: 0;
 
-            color: #999;
+    font-family: "Montserrat", sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+}
 
-            margin-bottom: 12px;
-        }
 
-        .food-options-header h3 {
-            font-family: "Cormorant Garamond", Georgia, serif;
+.food-choice-arrow {
+    font-family: "Montserrat", sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+}
 
-            font-size: 42px;
-            font-weight: 500;
 
-            margin: 0 0 8px;
-        }
+/* -----------------------------------------
+   ROUND 02
+----------------------------------------- */
 
-        .food-options-header p {
-            font-size: 13px;
-            color: #777;
-            margin: 0;
-        }
+.round-two {
+    padding-top: 10px;
+}
 
-        .food-options-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1px;
 
-            background: #d7d0c7;
+/* hidden until round 1 choice */
 
-            border: 1px solid #d7d0c7;
-        }
+.round-two .food-options {
+    display: none;
+}
 
-        .food-option {
-            display: flex;
-            flex-direction: column;
+.round-two .food-options.active {
+    display: block;
+}
 
-            min-height: 220px;
 
-            padding: 40px 35px;
+/* -----------------------------------------
+   ROUND 02 OPTIONS
+----------------------------------------- */
 
-            background: #f5f1eb;
+.food-options-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+}
 
-            color: #1c1c1c;
 
-            text-decoration: none;
+.food-option {
+    position: relative;
 
-            transition:
-                background 0.3s ease,
-                transform 0.3s ease;
-        }
+    min-height: 230px;
+    padding: 30px;
 
-        .food-option:hover {
-            background: #ebe5dc;
-        }
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
 
-        .food-option-number {
-            font-size: 9px;
-            letter-spacing: 2px;
-            color: #999;
+    border: 1px solid rgba(28, 28, 28, 0.25);
 
-            margin-bottom: 22px;
-        }
+    text-decoration: none;
+    color: #1c1c1c;
 
-        .food-option h4 {
-            font-family: "Cormorant Garamond", Georgia, serif;
+    transition:
+        background 0.35s ease,
+        transform 0.35s ease,
+        border-color 0.35s ease;
+}
 
-            font-size: 40px;
-            font-weight: 500;
+.food-option:hover {
+    background: #ebe5dc;
+    border-color: #1c1c1c;
+    transform: translateY(-4px);
+}
 
-            margin: 0 0 5px;
-        }
 
-        .food-option p {
-            font-family: "Cormorant Garamond", Georgia, serif;
+.food-option-number {
+    font-family: "Montserrat", sans-serif;
+    font-size: 12px;
+    letter-spacing: 2px;
+}
 
-            font-size: 19px;
-            font-style: italic;
 
-            color: #666;
+.food-option h4 {
+    margin: 0 0 8px;
 
-            margin: 0 0 30px;
-        }
+    font-family: "Cormorant Garamond", serif;
+    font-size: 48px;
+    font-weight: 500;
+}
 
-        .food-option-arrow {
-            margin-top: auto;
 
-            font-size: 9px;
-            font-weight: 500;
-            letter-spacing: 2px;
+.food-option p {
+    margin: 0;
 
-            color: #888;
-        }
+    font-family: "Montserrat", sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+}
 
+
+.food-option-arrow {
+    font-family: "Montserrat", sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+
+/* -----------------------------------------
+   MOBILE
+----------------------------------------- */
+
+@media (max-width: 768px) {
+
+    .food-choice-section {
+        padding: 90px 24px;
+    }
+
+    .choice-intro {
+        margin-bottom: 75px;
+    }
+
+    .choice-intro h2 {
+        font-size: 42px;
+    }
+
+    .round-one {
+        margin-bottom: 90px;
+    }
+
+    .round-label {
+        margin-bottom: 35px;
+    }
+
+    .round-heading {
+        margin-bottom: 30px;
+    }
+
+    .round-heading h3 {
+        font-size: 38px;
+    }
+
+    .food-choice-grid,
+    .food-options-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .food-choice-card,
+    .food-option {
+        min-height: 190px;
+    }
+
+    .food-choice-card h4,
+    .food-option h4 {
+        font-size: 42px;
+    }
+}
 
         /* ==================================================
            FOUR NIGHTS
@@ -2126,9 +2189,7 @@ body.invitation-locked {
                 </h3>
 
                 <p>
-                    Intimate food,
-                    <br>
-                    beautiful details &amp; good conversation.
+                    Quiet moments & delicate bites.
                 </p>
 
                 <div class="food-hint">
@@ -2163,7 +2224,7 @@ body.invitation-locked {
             </h3>
 
             <p>
-                Two ways to make the celebration a little bigger.
+                 <strong>ROUND 2</strong>
             </p>
 
         </div>
@@ -2223,83 +2284,249 @@ body.invitation-locked {
 
     </div>
 
+<section class="food-choice-section" id="foodChoice">
+
+    <!-- ==============================
+         SECTION TITLE
+    =============================== -->
+
+    <div class="choice-intro">
+        <span class="section-eyebrow">
+            THE CHOICE
+        </span>
+
+        <h2>
+            THIS 🫵 OR THAT 👉?
+        </h2>
+
+        <p>
+            Two rounds. Four nights. One perfect way to celebrate.
+        </p>
+    </div>
 
 
-    <!-- ==================================================
-         JAPANESE OPTIONS
-    ================================================== -->
+    <!-- ==============================
+         ROUND 01
+    =============================== -->
 
-    <div
-        id="japaneseOptions"
-        class="food-options"
-    >
+    <div class="choice-round round-one">
 
-        <div class="food-options-header">
+        <div class="round-label">
+            <span>ROUND</span>
+            <strong>01</strong>
+        </div>
 
+        <div class="round-heading">
             <span>
-                THAT ONE?
+                FIRST, PICK YOUR MOOD
             </span>
 
             <h3>
-                The Japanese Nights
+                What are we feeling?
             </h3>
+        </div>
 
-            <p>
-                Two ways to celebrate with beautiful food and good company.
-            </p>
+
+        <div class="food-choice-grid">
+
+            <button
+                type="button"
+                class="food-choice-card"
+                onclick="showFoodOptions('western')"
+            >
+
+                <span class="food-choice-number">
+                    01
+                </span>
+
+                <div>
+                    <h4>
+                        WESTERN
+                    </h4>
+
+                    <p>
+                        City lights & good vibes
+                    </p>
+                </div>
+
+                <span class="food-choice-arrow">
+                    CHOOSE ↘
+                </span>
+
+            </button>
+
+
+            <button
+                type="button"
+                class="food-choice-card"
+                onclick="showFoodOptions('japanese')"
+            >
+
+                <span class="food-choice-number">
+                    02
+                </span>
+
+                <div>
+                    <h4>
+                        JAPANESE
+                    </h4>
+
+                    <p>
+                        Intimate & food-focused
+                    </p>
+                </div>
+
+                <span class="food-choice-arrow">
+                    CHOOSE ↘
+                </span>
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- ==============================
+         ROUND 02
+    ============================== -->
+
+    <div class="choice-round round-two">
+
+        <div class="round-label">
+            <span>ROUND</span>
+            <strong>02</strong>
+        </div>
+
+        <div class="round-heading">
+            <span>
+                THEN, PICK YOUR NIGHT
+            </span>
+
+            <h3 id="roundTwoTitle">
+                Your night awaits.
+            </h3>
+        </div>
+
+
+        <!-- WESTERN -->
+
+        <div
+            id="westernOptions"
+            class="food-options"
+        >
+
+            <div class="food-options-grid">
+
+                <a
+                    href="#darcy"
+                    class="food-option"
+                >
+
+                    <span class="food-option-number">
+                        01
+                    </span>
+
+                    <h4>
+                        DARCY
+                    </h4>
+
+                    <p>
+                        The City Lights Night
+                    </p>
+
+                    <span class="food-option-arrow">
+                        EXPLORE ↘
+                    </span>
+
+                </a>
+
+
+                <a
+                    href="#icon-cruise"
+                    class="food-option"
+                >
+
+                    <span class="food-option-number">
+                        02
+                    </span>
+
+                    <h4>
+                        ICON CRUISE
+                    </h4>
+
+                    <p>
+                        The Main Character Night
+                    </p>
+
+                    <span class="food-option-arrow">
+                        EXPLORE ↘
+                    </span>
+
+                </a>
+
+            </div>
 
         </div>
 
 
-        <div class="food-options-grid">
+        <!-- JAPANESE -->
+
+        <div
+            id="japaneseOptions"
+            class="food-options"
+        >
+
+            <div class="food-options-grid">
+
+                <a
+                    href="#itadaki"
+                    class="food-option"
+                >
+
+                    <span class="food-option-number">
+                        01
+                    </span>
+
+                    <h4>
+                        ITADAKI
+                    </h4>
+
+                    <p>
+                        The Omakase Night
+                    </p>
+
+                    <span class="food-option-arrow">
+                        EXPLORE ↘
+                    </span>
+
+                </a>
 
 
-            <a
-                href="#itadaki"
-                class="food-option"
-            >
+                <a
+                    href="#noire"
+                    class="food-option"
+                >
 
-                <span class="food-option-number">
-                    01
-                </span>
+                    <span class="food-option-number">
+                        02
+                    </span>
 
-                <h4>
-                    ITADAKI
-                </h4>
+                    <h4>
+                        NOIRE
+                    </h4>
 
-                <p>
-                    The Omakase Night
-                </p>
+                    <p>
+                        The Mystery Night
+                    </p>
 
-                <span class="food-option-arrow">
-                    EXPLORE ↘
-                </span>
+                    <span class="food-option-arrow">
+                        EXPLORE ↘
+                    </span>
 
-            </a>
+                </a>
 
-
-            <a
-                href="#noire"
-                class="food-option"
-            >
-
-                <span class="food-option-number">
-                    02
-                </span>
-
-                <h4>
-                    NOIRE
-                </h4>
-
-                <p>
-                    The Mystery Night
-                </p>
-
-                <span class="food-option-arrow">
-                    EXPLORE ↘
-                </span>
-
-            </a>
+            </div>
 
         </div>
 
@@ -3507,56 +3734,46 @@ body.invitation-locked {
 
     function showFoodOptions(type) {
 
-        const westernOptions =
-            document.getElementById("westernOptions");
+    const westernOptions =
+        document.getElementById("westernOptions");
 
-        const japaneseOptions =
-            document.getElementById("japaneseOptions");
+    const japaneseOptions =
+        document.getElementById("japaneseOptions");
 
-
-        /* Hide both */
-
-        westernOptions.classList.remove("active");
-
-        japaneseOptions.classList.remove("active");
+    const roundTwoTitle =
+        document.getElementById("roundTwoTitle");
 
 
-        /* Show Western */
-
-        if (type === "western") {
-
-            westernOptions.classList.add("active");
-
-            setTimeout(function () {
-
-                westernOptions.scrollIntoView({
-                    behavior: "smooth",
-                    block: "center"
-                });
-
-            }, 100);
-
-        }
+    westernOptions.classList.remove("active");
+    japaneseOptions.classList.remove("active");
 
 
-        /* Show Japanese */
+    if (type === "western") {
 
-        if (type === "japanese") {
+        westernOptions.classList.add("active");
 
-            japaneseOptions.classList.add("active");
-
-            setTimeout(function () {
-
-                japaneseOptions.scrollIntoView({
-                    behavior: "smooth",
-                    block: "center"
-                });
-
-            }, 100);
-
-        }
+        roundTwoTitle.textContent =
+            "So... Western it is.";
 
     }
+
+
+    if (type === "japanese") {
+
+        japaneseOptions.classList.add("active");
+
+        roundTwoTitle.textContent =
+            "So... Japanese it is.";
+
+    }
+
+
+    document.querySelector(".round-two")
+        .scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+}
 
 
 
