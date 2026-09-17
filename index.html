@@ -3938,7 +3938,15 @@ body.invitation-locked {
 
         }
     );
+function openInvitation() {
+    const openingScreen = document.getElementById("openingScreen");
 
+    openingScreen.classList.add("hide");
+
+    setTimeout(function () {
+        openingScreen.style.display = "none";
+    }, 800);
+}
 </script>
 
 
