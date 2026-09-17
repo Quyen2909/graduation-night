@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,7 +17,112 @@
     >
 
     <style>
+/* =================================
+   OPENING SCREEN
+================================= */
 
+.opening-screen {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background:
+        linear-gradient(
+            rgba(30, 25, 25, 0.35),
+            rgba(30, 25, 25, 0.35)
+        ),
+        url("images/cover.jpg") center / cover no-repeat;
+
+    transition:
+        opacity 0.8s ease,
+        visibility 0.8s ease;
+}
+
+.opening-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    text-align: center;
+}
+
+.opening-name {
+    font-family: "Montserrat", sans-serif;
+
+    font-size: 13px;
+    font-weight: 500;
+
+    letter-spacing: 4px;
+    text-transform: uppercase;
+
+    color: #403737;
+}
+
+.opening-heart {
+    margin: 35px 0;
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 34px;
+
+    color: #403737;
+}
+
+.opening-button {
+    padding: 12px 0;
+
+    border: none;
+    background: transparent;
+
+    font-family: "Montserrat", sans-serif;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    letter-spacing: 2.5px;
+
+    color: #403737;
+
+    cursor: pointer;
+
+    transition: all 0.3s ease;
+}
+
+.opening-button span {
+    display: inline-block;
+
+    margin-left: 8px;
+
+    transition: transform 0.3s ease;
+}
+
+.opening-button:hover {
+    letter-spacing: 3px;
+}
+
+.opening-button:hover span {
+    transform: translateX(5px);
+}
+
+
+/* Khi mở invitation */
+
+.opening-screen.hide {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+
+/* Không cho scroll khi opening đang mở */
+
+body.invitation-locked {
+    overflow: hidden;
+}
         /* ==================================================
            GLOBAL
         ================================================== */
@@ -1775,7 +1879,26 @@
 <!-- ==================================================
      COVER
 ================================================== -->
+<div class="opening-screen" id="openingScreen">
 
+    <div class="opening-content">
+
+        <div class="opening-name">
+            FOR HIEU SONG
+        </div>
+
+        <div class="opening-heart">
+            ♡
+        </div>
+
+        <button class="opening-button" onclick="openInvitation()">
+            OPEN INVITATION
+            <span>→</span>
+        </button>
+
+    </div>
+
+</div>
 <section class="cover">
 
     <div class="cover-content">
