@@ -198,8 +198,14 @@
     margin-bottom: 110px;
 }
 
-.intro-part-two {
-    margin-bottom: 0;
+.intro-part-two h2 {
+    white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+    .intro-part-two h2 {
+        font-size: 34px;
+    }
 }
 
 /* FOR THE GRADUATE / A LITTLE SOMETHING FROM US */
@@ -323,24 +329,33 @@
         }
 
         .choice-intro {
+    width: 100%;
     text-align: center;
-    margin-bottom: 60px;
+    margin: 0 auto 60px;
 }
 
 .choice-intro h2 {
     margin: 0 0 18px;
+    padding: 0;
 
     font-size: 56px;
     font-weight: 700;
     line-height: 1.1;
+
+    text-align: center;
 }
 
 .choice-intro p {
+    width: 100%;
+    max-width: none;
     margin: 0;
+    padding: 0;
 
     font-size: 18px;
     font-weight: 400;
     line-height: 1.5;
+
+    text-align: center;
 }
 @media (max-width: 768px) {
     .choice-intro h2 {
