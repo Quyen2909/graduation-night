@@ -190,10 +190,6 @@ body.invitation-locked {
 }
 
 /* Không cho scroll khi opening đang mở */
-
-body.invitation-locked {
-    overflow: hidden;
-}
         /* ==================================================
            GLOBAL
         ================================================== */
@@ -1967,26 +1963,6 @@ body.invitation-locked {
 <!-- ==================================================
      COVER
 ================================================== -->
-<div class="opening-screen" id="openingScreen">
-
-    <div class="opening-content">
-
-        <div class="opening-name">
-            FOR HIEU SONG
-        </div>
-
-        <div class="opening-heart">
-            ♡
-        </div>
-
-        <button class="opening-button" onclick="openInvitation()">
-            OPEN INVITATION
-            <span>→</span>
-        </button>
-
-    </div>
-
-</div>
 <section class="cover">
 
     <div class="cover-content">
@@ -3938,15 +3914,31 @@ body.invitation-locked {
 
         }
     );
-function openInvitation() {
-    const openingScreen = document.getElementById("openingScreen");
+/* ==================================================
+   OPEN INVITATION
+================================================== */
+
+document.body.classList.add("invitation-locked");
+
+const openButton =
+    document.getElementById("openInvitation");
+
+const openingScreen =
+    document.getElementById("openingScreen");
+
+openButton.addEventListener("click", function () {
 
     openingScreen.classList.add("hide");
 
+    document.body.classList.remove("invitation-locked");
+
     setTimeout(function () {
+
         openingScreen.style.display = "none";
-    }, 800);
-}
+
+    }, 900);
+
+});
 </script>
 
 
