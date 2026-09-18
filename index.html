@@ -1008,6 +1008,18 @@ text-transform: uppercase;
 color: #777;
 }
 
+#selectedRestaurant {
+    width: 100%;
+    margin-top: 60px;
+}
+
+#selectedRestaurant .restaurant {
+    display: block;
+}
+
+#selectedRestaurant .restaurant-image-wrapper {
+    width: 100%;
+}
 
 /* ==================================================
           FEELING BOX
@@ -2240,9 +2252,10 @@ The Western Nights
 <div class="food-options-grid">
 
 
-<a
-href="#darcy"
+<a 
+href="javascript:void(0)" 
 class="food-option"
+onclick="showRestaurantOption('darcy')"
 >
 
 <span class="food-option-number">
@@ -2264,9 +2277,10 @@ EXPLORE ↘
 </a>
 
 
-<a
-href="#icon-cruise"
+<a 
+href="javascript:void(0)" 
 class="food-option"
+onclick="showRestaurantOption('icon-cruise')"
 >
 
 <span class="food-option-number">
@@ -2323,9 +2337,10 @@ The Japanese Nights
 <div class="food-options-grid">
 
 
-<a
-href="#itadaki"
+<a 
+href="javascript:void(0)" 
 class="food-option"
+onclick="showRestaurantOption('itadaki')"
 >
 
 <span class="food-option-number">
@@ -2347,9 +2362,10 @@ EXPLORE ↘
 </a>
 
 
-<a
-href="#noire"
+<a 
+href="javascript:void(0)" 
 class="food-option"
+onclick="showRestaurantOption('noire')"
 >
 
 <span class="food-option-number">
@@ -2373,7 +2389,7 @@ EXPLORE ↘
 </div>
 
 </div>
-
+<div id="selectedRestaurant"></div>
 </section>
 
 
@@ -2834,7 +2850,7 @@ DARCY
 </h3>
 
 <div class="subtitle">
-The City Lights Night
+Old-world charm & bar
 </div>
 
 <p class="restaurant-description">
@@ -2995,7 +3011,7 @@ The Main Character Night
 <p class="restaurant-description">
 
 Dinner on the water, city lights all around,
-and a night that feels bigger than an ordinary dinner.
+and a night that feels bigger than an ordinary dinner
 
 <br><br>
 
@@ -3627,8 +3643,29 @@ block: "center"
 
 }
 
+function showRestaurant(id) {
 
+    const restaurant = document.getElementById(id);
+    const container = document.getElementById("selectedRestaurant");
 
+    if (!restaurant || !container) return;
+
+    // Xóa option đang hiển thị trước đó
+    container.innerHTML = "";
+
+    // Clone toàn bộ nội dung restaurant
+    const clone = restaurant.cloneNode(true);
+
+    // Đổi ID để không bị trùng ID trong HTML
+    clone.removeAttribute("id");
+
+    // Hiện nội dung
+    clone.classList.remove("reveal");
+    clone.style.display = "block";
+
+    // Đưa vào khu vực preview
+    container.appendChild(clone);
+}
 /* ==================================================
       CHOOSE RESTAURANT
    ================================================== */
