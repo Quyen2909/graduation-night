@@ -1,40 +1,269 @@
-@@ -1,3942 +1,4159 @@
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Your Graduation Night</title>
+<title>Your Graduation Night</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link
-        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@400;500;600&display=swap"
-        rel="stylesheet"
-    >
+<link
+href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@400;500;600&display=swap"
+rel="stylesheet"
+>
 
-    <style>
+<style>
 /* =================================
-   OPENING SCREEN
+  OPENING SCREEN
 ================================= */
 
 /* =================================
-   SECRET OPENING SCREEN
+  SECRET OPENING SCREEN
 ================================= */
 
 .opening-screen {
-    position: fixed;
-    inset: 0;
+position: fixed;
+inset: 0;
 
-    z-index: 99999;
+z-index: 99999;
+
+display: flex;
+align-items: center;
+justify-content: center;
+
+background:
+linear-gradient(
+rgba(20, 17, 17, 0.48),
+rgba(20, 17, 17, 0.48)
+),
+url("images/cover.jpg") center / cover no-repeat;
+
+opacity: 1;
+visibility: visible;
+
+transition:
+opacity 0.9s ease,
+visibility 0.9s ease;
+}
+
+
+/* Content */
+
+.opening-content {
+position: relative;
+z-index: 2;
+
+display: flex;
+flex-direction: column;
+align-items: center;
+
+text-align: center;
+
+padding: 40px;
+}
+
+
+/* FOR HIEU SONG */
+
+.opening-name {
+font-family: "Montserrat", sans-serif;
+
+font-size: 34px;
+font-weight: 600;
+
+letter-spacing: 7px;
+
+color: #ffffff;
+
+text-transform: uppercase;
+
+text-shadow:
+0 2px 12px rgba(0, 0, 0, 0.25);
+}
+
+
+/* Heart */
+
+.opening-heart {
+margin: 38px 0;
+
+font-family: "Cormorant Garamond", serif;
+
+font-size: 42px;
+
+line-height: 1;
+
+color: #ffffff;
+}
+
+
+/* Open button */
+
+.opening-button {
+appearance: none;
+border: 1px solid rgba(255, 255, 255, 0.75);
+background: rgba(255, 255, 255, 0.08);
+padding: 20px 38px;
+font-family: "Montserrat", sans-serif;
+font-size: 17px;
+font-weight: 600;
+letter-spacing: 4px;
+color: #ffffff;
+cursor: pointer;
+text-transform: uppercase;
+transition:
+background 0.3s ease,
+border-color 0.3s ease,
+transform 0.3s ease;
+}
+
+.opening-button span {
+display: inline-block;
+
+margin-left: 10px;
+
+transition: transform 0.3s ease;
+}
+
+.opening-button:hover {
+background: rgba(255, 255, 255, 0.18);
+
+border-color: #ffffff;
+
+transform: translateY(-2px);
+}
+
+.opening-button:hover span {
+transform: translateX(6px);
+}
+
+
+/* Hide opening */
+
+.opening-screen.hide {
+opacity: 0;
+visibility: hidden;
+pointer-events: none;
+}
+
+
+/* Prevent scrolling before opening */
+
+body.invitation-locked {
+overflow: hidden;
+}
+
+
+/* Mobile */
+
+@media (max-width: 768px) {
+
+.opening-name {
+font-size: 26px;
+letter-spacing: 5px;
+}
+
+
+.opening-heart {
+font-size: 36px;
+margin: 32px 0;
+}
+
+.opening-button {
+padding: 17px 28px;
+font-size: 14px;
+letter-spacing: 3px;
+}
+}
+
+/* Không cho scroll khi opening đang mở */
+/* ==================================================
+          GLOBAL
+       ================================================== */
+
+* {
+box-sizing: border-box;
+}
+
+html {
+scroll-behavior: smooth;
+}
+
+body {
+margin: 0;
+background: #f5f1eb;
+color: #1c1c1c;
+font-family: "Montserrat", Arial, sans-serif;
+font-size: 15px;
+line-height: 1.7;
+-webkit-font-smoothing: antialiased;
+}
+
+button,
+input {
+font-family: "Montserrat", Arial, sans-serif;
+}
+
+h1,
+h2,
+h3,
+.subtitle,
+.ticket-title,
+.letter-title {
+font-family: "Cormorant Garamond", Georgia, serif;
+}
+
+
+/* ==================================================
+          SCROLL ANIMATION
+       ================================================== */
+
+.reveal {
+opacity: 0;
+transform: translateY(30px);
+transition:
+opacity 0.8s ease,
+transform 0.8s ease;
+}
+
+.reveal.visible {
+opacity: 1;
+transform: translateY(0);
+}
+
+
+/* ==================================================
+          COVER
+================================================== */
+
+.cover {
+    min-height: 100vh;
+    position: relative;
 
     display: flex;
     align-items: center;
     justify-content: center;
+
+    text-align: center;
+    color: white;
+
+    padding: 40px 20px;
+
+    overflow: hidden;
+}
+
+
+/* SAME BACKGROUND AS OPENING SCREEN */
+
+.cover::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
 
     background:
         linear-gradient(
@@ -43,2144 +272,1727 @@
         ),
         url("images/cover.jpg") center / cover no-repeat;
 
-    opacity: 1;
-    visibility: visible;
-
-    transition:
-        opacity 0.9s ease,
-        visibility 0.9s ease;
-}
-
-
-/* Content */
-
-.opening-content {
-    position: relative;
-    z-index: 2;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    text-align: center;
-
-    padding: 40px;
-}
-
-
-/* FOR HIEU SONG */
-
-.opening-name {
-    font-family: "Montserrat", sans-serif;
-
-    font-size: 34px;
-    font-weight: 600;
-
-    letter-spacing: 7px;
-
-    color: #ffffff;
-
-    text-transform: uppercase;
-
-    text-shadow:
-        0 2px 12px rgba(0, 0, 0, 0.25);
-}
-
-
-/* Heart */
-
-.opening-heart {
-    margin: 38px 0;
-
-    font-family: "Cormorant Garamond", serif;
-
-    font-size: 42px;
-
-    line-height: 1;
-
-    color: #ffffff;
-}
-
-
-/* Open button */
-
-.opening-button {
-    appearance: none;
-    border: 1px solid rgba(255, 255, 255, 0.75);
-    background: rgba(255, 255, 255, 0.08);
-    padding: 20px 38px;
-    font-family: "Montserrat", sans-serif;
-    font-size: 17px;
-    font-weight: 600;
-    letter-spacing: 4px;
-    color: #ffffff;
-    cursor: pointer;
-    text-transform: uppercase;
-    transition:
-        background 0.3s ease,
-        border-color 0.3s ease,
-        transform 0.3s ease;
-}
-
-.opening-button span {
-    display: inline-block;
-
-    margin-left: 10px;
-
-    transition: transform 0.3s ease;
-}
-
-.opening-button:hover {
-    background: rgba(255, 255, 255, 0.18);
-
-    border-color: #ffffff;
-
-    transform: translateY(-2px);
-}
-
-.opening-button:hover span {
-    transform: translateX(6px);
-}
-
-
-/* Hide opening */
-
-.opening-screen.hide {
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-}
-
-
-/* Prevent scrolling before opening */
-
-body.invitation-locked {
-    overflow: hidden;
-}
-
-
-/* Mobile */
-
-@media (max-width: 768px) {
-
-    .opening-name {
-        font-size: 26px;
-        letter-spacing: 5px;
-    }
-
-
-    .opening-heart {
-        font-size: 36px;
-        margin: 32px 0;
-    }
-
-    .opening-button {
-        padding: 17px 28px;
-        font-size: 14px;
-        letter-spacing: 3px;
-    }
-}
-
-/* Không cho scroll khi opening đang mở */
-        /* ==================================================
-           GLOBAL
-        ================================================== */
-
-        * {
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            margin: 0;
-            background: #f5f1eb;
-            color: #1c1c1c;
-            font-family: "Montserrat", Arial, sans-serif;
-            font-size: 15px;
-            line-height: 1.7;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        button,
-        input {
-            font-family: "Montserrat", Arial, sans-serif;
-        }
-
-        h1,
-        h2,
-        h3,
-        .subtitle,
-        .ticket-title,
-        .letter-title {
-            font-family: "Cormorant Garamond", Georgia, serif;
-        }
-
-
-        /* ==================================================
-           SCROLL ANIMATION
-        ================================================== */
-
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition:
-                opacity 0.8s ease,
-                transform 0.8s ease;
-        }
-
-        .reveal.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-
-        /* ==================================================
-           COVER
-        ================================================== */
-
-        .cover {
-            min-height: 100vh;
-            position: relative;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            text-align: center;
-            color: white;
-
-            padding: 40px 20px;
-            overflow: hidden;
-        }
-
-        .cover::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-
-    background:
-        linear-gradient(
-            rgba(20, 17, 17, 0.48),
-            rgba(20, 17, 17, 0.48)
-        ),
-        url("images/cover.jpg") center center / cover no-repeat;
-
     z-index: 0;
 }
+
+
+/* NO EXTRA OVERLAY */
 
 .cover::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-
-    background: rgba(20, 17, 17, 0.15);
-
-    z-index: 0;
+    display: none;
 }
-        .cover-content {
-            position: relative;
-            z-index: 1;
-            max-width: 900px;
-        }
-
-        .cover-small {
-            font-size: 26px;
-            font-weight: 300;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            margin-bottom: 28px;
-        }
-
-        .cover h1 {
-            font-size: clamp(52px, 7.5vw, 92px);
-            font-weight: 500;
-            line-height: 0.9;
-            margin: 0 0 30px;
-            letter-spacing: -1.5px;
-        }
-
-        .cover h1 span {
-            display: block;
-        }
-
-        .cover h1 span:first-child {
-            margin-bottom: 50px;
-        }
-
-        .cover-subtitle {
-            font-family: "Cormorant Garamond", Georgia, serif;
-            font-size: clamp(20px, 2.2vw, 26px);
-            font-style: italic;
-            margin-bottom: 45px;
-        }
-
-        .cover-arrow {
-            font-size: 22px;
-            animation: floating 2s infinite ease-in-out;
-        }
-
-        @keyframes floating {
-
-            0%,
-            100% {
-                transform: translateY(0);
-            }
-
-            50% {
-                transform: translateY(8px);
-            }
-
-        }
 
 
-        /* ==================================================
-           INTRO
-        ================================================== */
+/* CONTENT */
+
+.cover-content {
+    position: relative;
+    z-index: 1;
+
+    max-width: 900px;
+}
+
+
+/* SMALL TITLE */
+
+.cover-small {
+    font-size: 26px;
+    font-weight: 300;
+
+    letter-spacing: 3px;
+
+    text-transform: uppercase;
+
+    margin-bottom: 28px;
+}
+
+
+/* MAIN TITLE */
+
+.cover h1 {
+    font-size: clamp(52px, 7.5vw, 92px);
+
+    font-weight: 500;
+
+    line-height: 0.9;
+
+    margin: 0 0 30px;
+
+    letter-spacing: -1.5px;
+}
+
+.cover h1 span {
+    display: block;
+}
+
+.cover h1 span:first-child {
+    margin-bottom: 50px;
+}
+
+
+/* SUBTITLE */
+
+.cover-subtitle {
+    font-family: "Cormorant Garamond", Georgia, serif;
+
+    font-size: clamp(20px, 2.2vw, 26px);
+
+    font-style: italic;
+
+    margin-bottom: 45px;
+}
+
+
+/* DOWN ARROW */
+
+.cover-arrow {
+    font-size: 22px;
+
+    animation: floating 2s infinite ease-in-out;
+}
+
+
+@keyframes floating {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(8px);
+    }
+
+}
+
+/* ==================================================
+          INTRO
+       ================================================== */
 .intro {
-    min-height: 100vh;
-    box-sizing: border-box;
+min-height: 100vh;
+box-sizing: border-box;
 
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+display: flex;
+flex-direction: column;
+justify-content: center;
 
-    padding: 100px 25px;
-    text-align: center;
+padding: 100px 25px;
+text-align: center;
 }
 
 /* Mỗi đoạn */
 .intro-part {
-    width: 100%;
-    max-width: 760px;
-    margin-left: auto;
-    margin-right: auto;
+width: 100%;
+max-width: 760px;
+margin-left: auto;
+margin-right: auto;
 }
 
 /* Khoảng cách giữa 2 đoạn */
 .intro-part-one {
-    margin-bottom: 110px;
+margin-bottom: 110px;
 }
 
 .intro-part-two h2 {
-    white-space: nowrap;
+white-space: nowrap;
 }
 
 @media (max-width: 768px) {
-    .intro-part-two h2 {
-        font-size: 34px;
-    }
+.intro-part-two h2 {
+font-size: 34px;
+}
 }
 
 /* FOR THE GRADUATE / A LITTLE SOMETHING FROM US */
 .section-eyebrow {
-    display: block;
-    margin-bottom: 24px;
+display: block;
+margin-bottom: 24px;
 
-    font-size: 17px;
-    font-weight: 500;
-    letter-spacing: 3px;
-    line-height: 1.5;
+font-size: 17px;
+font-weight: 500;
+letter-spacing: 3px;
+line-height: 1.5;
 
-    text-transform: uppercase;
-    text-align: center;
+text-transform: uppercase;
+text-align: center;
 }
 
 /* YOU DID IT / AUKIEE... */
 .intro h2 {
-    margin: 0 0 28px;
+margin: 0 0 28px;
 
-    font-size: 52px;
-    font-weight: 600;
-    line-height: 1.1;
+font-size: 52px;
+font-weight: 600;
+line-height: 1.1;
 
-    text-align: center;
+text-align: center;
 }
 
 /* Paragraph */
 .intro p {
-    max-width: 650px;
-    margin: 0 auto;
+max-width: 650px;
+margin: 0 auto;
 
-    font-size: 17px;
-    font-weight: 400;
-    line-height: 1.9;
+font-size: 17px;
+font-weight: 400;
+line-height: 1.9;
 
-    text-align: center;
+text-align: center;
 }
-        .little-something {
-    display: inline-block;
-    font-size: 24px;
-    font-weight: 700;
-    letter-spacing: 2.5px;
-    color: #524646;
+.little-something {
+display: inline-block;
+font-size: 24px;
+font-weight: 700;
+letter-spacing: 2.5px;
+color: #524646;
 }
 
 .choose-intro {
-    display: inline-block;
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: clamp(44px, 5.5vw, 64px);
-    font-weight: 500;
-    line-height: 1;
-    color: #1c1c1c;
+display: inline-block;
+font-family: "Cormorant Garamond", Georgia, serif;
+font-size: clamp(44px, 5.5vw, 64px);
+font-weight: 500;
+line-height: 1;
+color: #1c1c1c;
 }
 
-        .intro h2 {
-            font-size: clamp(44px, 5.5vw, 64px);
-            font-weight: 500;
-            line-height: 1;
-            margin: 0 0 30px;
-        }
-
-        .intro p {
-            max-width: 680px;
-            margin: auto;
-            font-size: 15px;
-            line-height: 1.9;
-            color: #666;
-        }
-
-        .intro p strong {
-            font-weight: 500;
-            color: #222;
-        }
-
-
-        /* ==================================================
-           THIS OR THAT
-        ================================================== */
-
-        .personal-section {
-    min-height: 100vh;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-
-    max-width: 1200px;
-    margin: 0 auto;
-
-    padding: 100px 25px 120px;
+.intro h2 {
+font-size: clamp(44px, 5.5vw, 64px);
+font-weight: 500;
+line-height: 1;
+margin: 0 0 30px;
 }
 
-        .personal-header {
-    text-align: center;
-    margin-bottom: 65px;
-    padding-top: 30px;
+.intro p {
+max-width: 680px;
+margin: auto;
+font-size: 15px;
+line-height: 1.9;
+color: #666;
 }
 
-        .personal-header h2 {
-            font-size: clamp(44px, 5vw, 64px);
-            font-weight: 500;
-            line-height: 1;
-            margin: 0 0 25px;
-        }
+.intro p strong {
+font-weight: 500;
+color: #222;
+}
 
-        .personal-header p {
-            max-width: 680px;
-            margin: auto;
 
-            font-family: "Cormorant Garamond", Georgia, serif;
-            font-size: 22px;
-            line-height: 1.8;
-            font-weight: 400;
-            color: #666;
-        }
+/* ==================================================
+          THIS OR THAT
+       ================================================== */
 
-        .personal-header p strong {
-            font-weight: 600;
-            color: #222;
-        }
+.personal-section {
+min-height: 100vh;
 
-        .choice-intro {
-    width: 100%;
-    text-align: center;
-    margin: 0 auto 60px;
+display: flex;
+flex-direction: column;
+justify-content: center;
+
+max-width: 1200px;
+margin: 0 auto;
+
+padding: 100px 25px 120px;
+}
+
+.personal-header {
+text-align: center;
+margin-bottom: 65px;
+padding-top: 30px;
+}
+
+.personal-header h2 {
+font-size: clamp(44px, 5vw, 64px);
+font-weight: 500;
+line-height: 1;
+margin: 0 0 25px;
+}
+
+.personal-header p {
+max-width: 680px;
+margin: auto;
+
+font-family: "Cormorant Garamond", Georgia, serif;
+font-size: 22px;
+line-height: 1.8;
+font-weight: 400;
+color: #666;
+}
+
+.personal-header p strong {
+font-weight: 600;
+color: #222;
+}
+
+.choice-intro {
+width: 100%;
+text-align: center;
+margin: 0 auto 60px;
 }
 
 .choice-intro h2 {
-    margin: 0 0 18px;
-    padding: 0;
+margin: 0 0 18px;
+padding: 0;
 
-    font-size: 56px;
-    font-weight: 700;
-    line-height: 1.1;
+font-size: 56px;
+font-weight: 700;
+line-height: 1.1;
 
-    text-align: center;
+text-align: center;
 }
 
 .choice-intro p {
-    width: 100%;
-    max-width: none;
-    margin: 0;
-    padding: 0;
+width: 100%;
+max-width: none;
+margin: 0;
+padding: 0;
 
-    font-size: 18px;
-    font-weight: 400;
-    line-height: 1.5;
+font-size: 18px;
+font-weight: 400;
+line-height: 1.5;
 
-    text-align: center;
+text-align: center;
 }
 @media (max-width: 768px) {
-    .choice-intro h2 {
-        font-size: 42px;
-    }
-
-    .choice-intro p {
-        font-size: 16px;
-    }
-}
-        /* ==================================================
-           FOOD CHOICE
-        ================================================== */
-/* =========================================
-   FOOD CHOICE — TWO ROUND LAYOUT
-========================================= */
-
-        .food-choice {
-            display: grid;
-            grid-template-columns: 1fr 80px 1fr;
-            min-height: 500px;
-            position: relative;
-        }
-.food-choice-section {
-    padding: 120px 7vw;
-    background: #f5f1eb;
-}
-
-        .food-card {
-            position: relative;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-/* -----------------------------------------
-   SECTION INTRO
------------------------------------------ */
-
-            min-height: 500px;
-.choice-intro {
-    text-align: center;
-    margin-bottom: 100px;
-}
-
-            background: #ebe5dc;
 .choice-intro h2 {
-    margin: 14px 0 18px;
-    font-size: clamp(44px, 5.5vw, 64px);
-    font-weight: 600;
-    line-height: 1.05;
+font-size: 42px;
 }
 
-            border: 1px solid #d7d0c7;
 .choice-intro p {
-    margin: 0;
-    font-size: 16px;
-    font-weight: 400;
-    letter-spacing: 0.3px;
+font-size: 16px;
+}
+}
+/* ==================================================
+          FOOD CHOICE
+       ================================================== */
+
+.food-choice {
+display: grid;
+grid-template-columns: 1fr 80px 1fr;
+min-height: 500px;
+position: relative;
 }
 
-            cursor: pointer;
-            overflow: hidden;
+.food-card {
+position: relative;
 
-            transition:
-                transform 0.4s ease,
-                background 0.4s ease,
-                box-shadow 0.4s ease;
-        }
-/* -----------------------------------------
-   ROUND
------------------------------------------ */
+display: flex;
+align-items: center;
+justify-content: center;
 
-        .food-card:first-child {
-            border-right: none;
-        }
-.choice-round {
-    max-width: 1100px;
-    margin: 0 auto;
+min-height: 500px;
+
+background: #ebe5dc;
+
+border: 1px solid #d7d0c7;
+
+cursor: pointer;
+overflow: hidden;
+
+transition:
+transform 0.4s ease,
+background 0.4s ease,
+box-shadow 0.4s ease;
 }
 
-        .food-card:last-child {
-            border-left: none;
-        }
-.round-one {
-    margin-bottom: 120px;
+.food-card:first-child {
+border-right: none;
 }
 
-        .food-card:hover {
-            background: #e2dbd1;
-            transform: translateY(-5px);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
-        }
-
-        .food-card-content {
-            text-align: center;
-            padding: 50px 30px;
-        }
-/* -----------------------------------------
-   ROUND LABEL
------------------------------------------ */
-
-        .food-label {
-            font-size: 11px;
-            letter-spacing: 4px;
-            color: #999;
-            margin-bottom: 25px;
-        }
-.round-label {
-    display: flex;
-    align-items: baseline;
-    gap: 12px;
-
-        .food-card h3 {
-            font-family: "Cormorant Garamond", Georgia, serif;
-            font-size: clamp(48px, 6vw, 78px);
-            font-weight: 500;
-            line-height: 0.9;
-            margin: 0 0 30px;
-        }
-    padding-bottom: 18px;
-    margin-bottom: 45px;
-
-        .food-card p {
-            max-width: 350px;
-            margin: 0 auto 35px;
-    border-bottom: 1px solid rgba(28, 28, 28, 0.25);
+.food-card:last-child {
+border-left: none;
 }
 
-            font-family: "Cormorant Garamond", Georgia, serif;
-            font-size: 23px;
-            line-height: 1.4;
-            color: #555;
-        }
-.round-label span {
-    font-family: "Montserrat", sans-serif;
-    font-size: 13px;
-    font-weight: 600;
-    letter-spacing: 3px;
+.food-card:hover {
+background: #e2dbd1;
+transform: translateY(-5px);
+box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
 }
 
-        .food-hint {
-            font-size: 9px;
-            font-weight: 500;
-            letter-spacing: 2.5px;
-            color: #999;
-        }
-.round-label strong {
-    font-family: "Cormorant Garamond", serif;
-    font-size: 42px;
-    font-weight: 500;
-    line-height: 1;
+.food-card-content {
+text-align: center;
+padding: 50px 30px;
+}
+
+.food-label {
+font-size: 11px;
+letter-spacing: 4px;
+color: #999;
+margin-bottom: 25px;
+}
+
+.food-card h3 {
+font-family: "Cormorant Garamond", Georgia, serif;
+font-size: clamp(48px, 6vw, 78px);
+font-weight: 500;
+line-height: 0.9;
+margin: 0 0 30px;
+}
+
+.food-card p {
+max-width: 350px;
+margin: 0 auto 35px;
+
+font-family: "Cormorant Garamond", Georgia, serif;
+font-size: 23px;
+line-height: 1.4;
+color: #555;
+}
+
+.food-hint {
+font-size: 9px;
+font-weight: 500;
+letter-spacing: 2.5px;
+color: #999;
 }
 
 
-        /* ==================================================
-           OR
-        ================================================== */
-/* -----------------------------------------
-   ROUND HEADING
------------------------------------------ */
+/* ==================================================
+          OR
+       ================================================== */
 
-        .food-or {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-.round-heading {
-    margin-bottom: 45px;
+.food-or {
+display: flex;
+align-items: center;
+justify-content: center;
+
+position: relative;
+z-index: 3;
+
+font-family: "Cormorant Garamond", Georgia, serif;
+font-size: 22px;
+font-style: italic;
+
+color: #777;
+background: #f5f1eb;
 }
 
-            position: relative;
-            z-index: 3;
-.round-heading > span {
-    display: block;
+.food-or::before,
+.food-or::after {
+content: "";
 
-            font-family: "Cormorant Garamond", Georgia, serif;
-            font-size: 22px;
-            font-style: italic;
-    margin-bottom: 12px;
+position: absolute;
 
-            color: #777;
-            background: #f5f1eb;
-        }
-    font-family: "Montserrat", sans-serif;
-    font-size: 13px;
-    font-weight: 500;
-    letter-spacing: 3px;
-    text-transform: uppercase;
+width: 1px;
+height: 150px;
+
+background: #d7d0c7;
 }
 
-        .food-or::before,
-        .food-or::after {
-            content: "";
-.round-heading h3 {
-    margin: 0;
-
-            position: absolute;
-    font-family: "Cormorant Garamond", serif;
-    font-size: clamp(38px, 4vw, 54px);
-    font-weight: 500;
-    line-height: 1.05;
+.food-or::before {
+top: 0;
 }
 
-            width: 1px;
-            height: 150px;
-
-            background: #d7d0c7;
-        }
-/* -----------------------------------------
-   ROUND 01 CARDS
------------------------------------------ */
-
-        .food-or::before {
-            top: 0;
-        }
-.food-choice-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 24px;
+.food-or::after {
+bottom: 0;
 }
 
-        .food-or::after {
-            bottom: 0;
-        }
 
-.food-choice-card {
-    position: relative;
+/* ==================================================
+          FOOD OPTIONS
+       ================================================== */
 
-        /* ==================================================
-           FOOD OPTIONS
-        ================================================== */
-    min-height: 220px;
-    padding: 30px;
+.food-options {
+display: none;
 
-        .food-options {
-            display: none;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: flex-start;
+margin-top: 55px;
 
-            margin-top: 55px;
-    border: 1px solid rgba(28, 28, 28, 0.25);
-    background: transparent;
+padding: 45px 0;
 
-            padding: 45px 0;
-    text-align: left;
-    cursor: pointer;
+border-top: 1px solid #d7d0c7;
+border-bottom: 1px solid #d7d0c7;
 
-            border-top: 1px solid #d7d0c7;
-            border-bottom: 1px solid #d7d0c7;
-    transition:
-        background 0.35s ease,
-        transform 0.35s ease,
-        border-color 0.35s ease;
+animation: foodOptionsIn 0.5s ease;
 }
 
-            animation: foodOptionsIn 0.5s ease;
-        }
-.food-choice-card:hover {
-    background: #ebe5dc;
-    border-color: #1c1c1c;
-    transform: translateY(-4px);
+.food-options.active {
+display: block;
 }
 
-        .food-options.active {
-            display: block;
-        }
+@keyframes foodOptionsIn {
 
-        @keyframes foodOptionsIn {
-.food-choice-number {
-    font-family: "Montserrat", sans-serif;
-    font-size: 12px;
-    letter-spacing: 2px;
+from {
+opacity: 0;
+transform: translateY(15px);
 }
 
-            from {
-                opacity: 0;
-                transform: translateY(15px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-.food-choice-card h4 {
-    margin: 0 0 8px;
-
-        }
-    font-family: "Cormorant Garamond", serif;
-    font-size: 48px;
-    font-weight: 500;
+to {
+opacity: 1;
+transform: translateY(0);
 }
 
-        .food-options-header {
-            text-align: center;
-            margin-bottom: 35px;
-        }
-
-        .food-options-header span {
-            display: block;
-.food-choice-card p {
-    margin: 0;
-
-            font-size: 9px;
-            font-weight: 500;
-            letter-spacing: 3px;
-    font-family: "Montserrat", sans-serif;
-    font-size: 13px;
-    letter-spacing: 0.5px;
 }
 
-            color: #999;
-
-            margin-bottom: 12px;
-        }
-.food-choice-arrow {
-    font-family: "Montserrat", sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 2px;
+.food-options-header {
+text-align: center;
+margin-bottom: 35px;
 }
 
-        .food-options-header h3 {
-            font-family: "Cormorant Garamond", Georgia, serif;
+.food-options-header span {
+display: block;
 
-            font-size: 42px;
-            font-weight: 500;
-/* -----------------------------------------
-   ROUND 02
------------------------------------------ */
+font-size: 9px;
+font-weight: 500;
+letter-spacing: 3px;
 
-            margin: 0 0 8px;
-        }
-.round-two {
-    padding-top: 10px;
+color: #999;
+
+margin-bottom: 12px;
 }
 
-        .food-options-header p {
-            font-size: 13px;
-            color: #777;
-            margin: 0;
-        }
+.food-options-header h3 {
+font-family: "Cormorant Garamond", Georgia, serif;
 
-        .food-options-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1px;
-/* hidden until round 1 choice */
+font-size: 42px;
+font-weight: 500;
 
-            background: #d7d0c7;
-.round-two .food-options {
-    display: none;
+margin: 0 0 8px;
 }
 
-            border: 1px solid #d7d0c7;
-        }
-.round-two .food-options.active {
-    display: block;
+.food-options-header p {
+font-size: 13px;
+color: #777;
+margin: 0;
 }
 
-        .food-option {
-            display: flex;
-            flex-direction: column;
-
-            min-height: 220px;
-/* -----------------------------------------
-   ROUND 02 OPTIONS
------------------------------------------ */
-
-            padding: 40px 35px;
 .food-options-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 24px;
+display: grid;
+grid-template-columns: repeat(2, 1fr);
+gap: 1px;
+
+background: #d7d0c7;
+
+border: 1px solid #d7d0c7;
 }
 
-            background: #f5f1eb;
-
-            color: #1c1c1c;
 .food-option {
-    position: relative;
+display: flex;
+flex-direction: column;
 
-            text-decoration: none;
-    min-height: 230px;
-    padding: 30px;
+min-height: 220px;
 
-            transition:
-                background 0.3s ease,
-                transform 0.3s ease;
-        }
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: flex-start;
+padding: 40px 35px;
 
-        .food-option:hover {
-            background: #ebe5dc;
-        }
-    border: 1px solid rgba(28, 28, 28, 0.25);
+background: #f5f1eb;
 
-        .food-option-number {
-            font-size: 9px;
-            letter-spacing: 2px;
-            color: #999;
-    text-decoration: none;
-    color: #1c1c1c;
+color: #1c1c1c;
 
-            margin-bottom: 22px;
-        }
-    transition:
-        background 0.35s ease,
-        transform 0.35s ease,
-        border-color 0.35s ease;
+text-decoration: none;
+
+transition:
+background 0.3s ease,
+transform 0.3s ease;
 }
 
-        .food-option h4 {
-            font-family: "Cormorant Garamond", Georgia, serif;
 .food-option:hover {
-    background: #ebe5dc;
-    border-color: #1c1c1c;
-    transform: translateY(-4px);
+background: #ebe5dc;
 }
 
-            font-size: 40px;
-            font-weight: 500;
-
-            margin: 0 0 5px;
-        }
 .food-option-number {
-    font-family: "Montserrat", sans-serif;
-    font-size: 12px;
-    letter-spacing: 2px;
+font-size: 9px;
+letter-spacing: 2px;
+color: #999;
+
+margin-bottom: 22px;
 }
 
-        .food-option p {
-            font-family: "Cormorant Garamond", Georgia, serif;
-
-            font-size: 19px;
-            font-style: italic;
 .food-option h4 {
-    margin: 0 0 8px;
+font-family: "Cormorant Garamond", Georgia, serif;
 
-            color: #666;
-    font-family: "Cormorant Garamond", serif;
-    font-size: 48px;
-    font-weight: 500;
+font-size: 40px;
+font-weight: 500;
+
+margin: 0 0 5px;
 }
 
-            margin: 0 0 30px;
-        }
-
-        .food-option-arrow {
-            margin-top: auto;
 .food-option p {
-    margin: 0;
+font-family: "Cormorant Garamond", Georgia, serif;
 
-            font-size: 9px;
-            font-weight: 500;
-            letter-spacing: 2px;
-    font-family: "Montserrat", sans-serif;
-    font-size: 13px;
-    letter-spacing: 0.5px;
+font-size: 19px;
+font-style: italic;
+
+color: #666;
+
+margin: 0 0 30px;
 }
-
-            color: #888;
-        }
 
 .food-option-arrow {
-    font-family: "Montserrat", sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 2px;
+margin-top: auto;
+
+font-size: 9px;
+font-weight: 500;
+letter-spacing: 2px;
+
+color: #888;
+}
+
+.round-one-label,
+.round-two-label {
+    text-align: center;
+    margin-top: 25px;
+}
+
+/* ROUND */
+.round-one-label span,
+.round-two-label span {
+    display: block;
+
+    font-family: inherit;
+    font-size: 17px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    color: #999;
+
+    line-height: 1;
+    margin-bottom: 8px;
+}
+
+/* 01 / 02 */
+.round-one-label strong,
+.round-two-label strong {
+    display: block;
+
+    font-family: inherit;
+    font-size: 17px;
+    font-weight: 800;
+    letter-spacing: 3px;
+    color: #222;
+
+    line-height: 1;
+}
+/* ==================================================
+          FOUR NIGHTS
+       ================================================== */
+
+.four-nights {
+padding: 100px 25px 120px;
+background: #ebe5dc;
+}
+
+.four-nights-inner {
+max-width: 1100px;
+margin: auto;
+}
+
+.four-nights-header {
+text-align: center;
+margin-bottom: 60px;
+}
+
+.four-nights-header h2 {
+font-family: "Cormorant Garamond", Georgia, serif;
+font-size: clamp(44px, 5vw, 64px);
+font-weight: 500;
+margin: 0;
+}
+
+.night-grid {
+display: grid;
+grid-template-columns: repeat(4, 1fr);
+gap: 30px;
+}
+
+.night-card {
+padding: 35px 20px;
+border-top: 1px solid #cfc7bd;
+}
+
+.night-number {
+font-size: 10px;
+letter-spacing: 2px;
+color: #999;
+margin-bottom: 20px;
+}
+
+.night-card h3 {
+font-family: "Cormorant Garamond", Georgia, serif;
+font-size: 34px;
+font-weight: 500;
+margin: 0 0 15px;
+}
+
+.night-card p {
+font-family: "Cormorant Garamond", Georgia, serif;
+font-size: 18px;
+line-height: 1.6;
+color: #666;
 }
 
 
-/* -----------------------------------------
-   MOBILE
------------------------------------------ */
+/* ==================================================
+          RESTAURANTS
+       ================================================== */
 
-@media (max-width: 768px) {
-
-    .food-choice-section {
-        padding: 90px 24px;
-    }
-
-    .choice-intro {
-        margin-bottom: 75px;
-    }
-
-    .choice-intro h2 {
-        font-size: 42px;
-    }
-
-    .round-one {
-        margin-bottom: 90px;
-    }
-
-    .round-label {
-        margin-bottom: 35px;
-    }
-
-    .round-heading {
-        margin-bottom: 30px;
-    }
-
-    .round-heading h3 {
-        font-size: 38px;
-    }
-
-    .food-choice-grid,
-    .food-options-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .food-choice-card,
-    .food-option {
-        min-height: 190px;
-    }
-
-    .food-choice-card h4,
-    .food-option h4 {
-        font-size: 42px;
-    }
+.restaurants {
+max-width: 1200px;
+margin: auto;
+padding: 120px 20px 40px;
 }
 
-        /* ==================================================
-           FOUR NIGHTS
-        ================================================== */
-
-        .four-nights {
-            padding: 100px 25px 120px;
-            background: #ebe5dc;
-        }
-
-        .four-nights-inner {
-            max-width: 1100px;
-            margin: auto;
-        }
-
-        .four-nights-header {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        .four-nights-header h2 {
-            font-family: "Cormorant Garamond", Georgia, serif;
-            font-size: clamp(44px, 5vw, 64px);
-            font-weight: 500;
-            margin: 0;
-        }
-
-        .night-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 30px;
-        }
-
-        .night-card {
-            padding: 35px 20px;
-            border-top: 1px solid #cfc7bd;
-        }
-
-        .night-number {
-            font-size: 10px;
-            letter-spacing: 2px;
-            color: #999;
-            margin-bottom: 20px;
-        }
-
-        .night-card h3 {
-            font-family: "Cormorant Garamond", Georgia, serif;
-            font-size: 34px;
-            font-weight: 500;
-            margin: 0 0 15px;
-        }
-
-        .night-card p {
-            font-family: "Cormorant Garamond", Georgia, serif;
-            font-size: 18px;
-            line-height: 1.6;
-            color: #666;
-        }
-
-
-        /* ==================================================
-           RESTAURANTS
-        ================================================== */
-
-        .restaurants {
-            max-width: 1200px;
-            margin: auto;
-            padding: 120px 20px 40px;
-        }
-
-        .restaurant {
-            margin-bottom: 170px;
-            scroll-margin-top: 40px;
-        }
-
-        .restaurant-image-wrapper {
-            width: 100%;
-            overflow: hidden;
-        }
-
-        .restaurant-image {
-            width: 100%;
-            height: 620px;
-            display: block;
-            object-fit: cover;
-            transition: transform 0.7s ease;
-        }
-
-        .restaurant-image-wrapper:hover .restaurant-image {
-            transform: scale(1.015);
-        }
-
-        .restaurant-image-secondary {
-            width: 100%;
-            height: 420px;
-            display: block;
-            object-fit: cover;
-            margin-top: 55px;
-            transition: transform 0.7s ease;
-        }
-
-        .restaurant-image-secondary:hover {
-            transform: scale(1.01);
-        }
-
-        .restaurant-info {
-            padding: 35px 5px 0;
-        }
-
-        .option-number {
-            font-size: 11px;
-            font-weight: 500;
-            letter-spacing: 2.5px;
-            color: #999;
-            margin-bottom: 12px;
-        }
-
-        .restaurant h3 {
-            font-size: clamp(48px, 5.5vw, 68px);
-            font-weight: 500;
-            margin: 0;
-            line-height: 0.95;
-            letter-spacing: -0.5px;
-        }
-
-        .subtitle {
-            font-size: 23px;
-            font-weight: 400;
-            font-style: italic;
-            margin-top: 12px;
-            color: #444;
-        }
-
-        .restaurant-description {
-            max-width: 720px;
-            font-size: 14px;
-            line-height: 1.9;
-            color: #666;
-            margin-top: 25px;
-        }
-
-        .mood {
-            margin-top: 18px;
-            font-size: 10px;
-            font-weight: 500;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: #777;
-        }
-
-
-        /* ==================================================
-           FEELING BOX
-        ================================================== */
-
-        .feeling-box {
-            margin-top: 50px;
-            padding: 38px 35px;
-            background: #ebe5dc;
-            border-left: 2px solid #999;
-        }
-
-        .feeling-label {
-            font-size: 10px;
-            font-weight: 500;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: #999;
-            margin-bottom: 12px;
-        }
-
-        .feeling-box p {
-            margin: 0;
-            max-width: 750px;
-
-            font-family: "Cormorant Garamond", Georgia, serif;
-            font-size: 24px;
-            line-height: 1.4;
-            color: #333;
-        }
-
-
-        /* ==================================================
-           RESTAURANT DETAILS
-        ================================================== */
-
-        .restaurant-details {
-            display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 25px;
-
-            margin-top: 40px;
-            padding: 28px 0;
-
-            border-top: 1px solid #d7d0c7;
-            border-bottom: 1px solid #d7d0c7;
-        }
-
-        .detail-item {
-            display: flex;
-            flex-direction: column;
-            gap: 7px;
-        }
-
-        .detail-label {
-            font-size: 10px;
-            font-weight: 500;
-            letter-spacing: 2px;
-            color: #999;
-            text-transform: uppercase;
-        }
-
-        .detail-value {
-            font-size: 14px;
-            font-weight: 400;
-            line-height: 1.7;
-            color: #333;
-        }
-
-        .detail-rating {
-            font-size: 14px;
-            letter-spacing: 1px;
-        }
-
-        .location-button {
-            display: inline-block;
-            width: fit-content;
-
-            margin-top: 12px;
-            padding: 9px 15px;
-
-            border: 1px solid #bbb;
-
-            color: #444;
-            text-decoration: none;
-
-            font-size: 10px;
-            font-weight: 500;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-
-            transition:
-                background 0.25s ease,
-                color 0.25s ease,
-                border-color 0.25s ease;
-        }
-
-        .location-button:hover {
-            background: #222;
-            color: white;
-            border-color: #222;
-        }
-
-
-        /* ==================================================
-           MENU
-        ================================================== */
-
-        .menu-section {
-            margin-top: 50px;
-            padding-top: 30px;
-            border-top: 1px solid #d7d0c7;
-        }
-
-        .menu-title {
-            font-size: 10px;
-            font-weight: 500;
-            letter-spacing: 2.5px;
-            text-transform: uppercase;
-            margin-bottom: 8px;
-        }
-
-        .menu-note {
-            font-size: 13px;
-            color: #777;
-            margin-bottom: 22px;
-        }
-
-        .menu-button {
-            display: inline-block;
-
-            margin-top: 5px;
-            padding: 12px 21px;
-
-            border: 1px solid #222;
-
-            color: #222;
-            text-decoration: none;
-
-            font-size: 10px;
-            font-weight: 500;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-
-            transition:
-                background 0.25s ease,
-                color 0.25s ease;
-        }
-
-        .menu-button:hover {
-            background: #222;
-            color: white;
-        }
-
-
-        /* ==================================================
-           SAVE THE DATE
-        ================================================== */
-
-        .booking-section {
-            max-width: 760px;
-            margin: 40px auto 120px;
-
-            padding: 75px 35px;
-
-            border-top: 1px solid #d7d0c7;
-            border-bottom: 1px solid #d7d0c7;
-
-            text-align: center;
-        }
-
-        .booking-section h2 {
-            font-size: clamp(40px, 5vw, 58px);
-            font-weight: 500;
-            line-height: 1;
-            margin: 0 0 15px;
-        }
-
-        .booking-description {
-            color: #777;
-            font-size: 14px;
-            margin-bottom: 40px;
-        }
-
-        .save-the-date {
-            margin-bottom: 45px;
-        }
-
-        .save-the-date-line {
-            width: 50px;
-            height: 1px;
-            background: #999;
-            margin: 0 auto 20px;
-        }
-
-        .save-the-date-title {
-            font-size: 10px;
-            font-weight: 500;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            color: #999;
-        }
-
-        .booking-fields {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 18px;
-            text-align: left;
-        }
-
-        .booking-field {
-            display: flex;
-            flex-direction: column;
-            gap: 7px;
-        }
-
-        .booking-field label {
-            font-size: 10px;
-            font-weight: 500;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: #888;
-        }
-
-        .booking-field input {
-            width: 100%;
-            padding: 14px;
-
-            border: 1px solid #cfc8bf;
-
-            background: rgba(255, 255, 255, 0.25);
-            color: #222;
-
-            font-size: 14px;
-
-            outline: none;
-            border-radius: 0;
-
-            transition: border-color 0.25s ease;
-        }
-
-        .booking-field input:focus {
-            border-color: #222;
-        }
-
-        .booking-hint {
-            margin-top: 20px;
-
-            font-family: "Cormorant Garamond", Georgia, serif;
-            font-size: 17px;
-            font-style: italic;
-
-            color: #999;
-        }
-
-
-        /* ==================================================
-           FINAL CHOOSE SECTION
-        ================================================== */
-
-        .choose-section {
-            background: #1c1c1c;
-            color: white;
-
-            padding: 120px 25px;
-
-            text-align: center;
-        }
-
-        .choose-small {
-            font-size: 10px;
-            font-weight: 500;
-            letter-spacing: 2.5px;
-            text-transform: uppercase;
-
-            margin-bottom: 22px;
-
-            color: #999;
-        }
-
-        .choose-section h2 {
-            font-size: clamp(46px, 6vw, 70px);
-            font-weight: 500;
-            line-height: 0.95;
-
-            margin: 0 0 22px;
-        }
-
-        .choose-description {
-            max-width: 600px;
-
-            margin: 0 auto 45px;
-
-            color: #aaa;
-            font-size: 14px;
-            line-height: 1.9;
-        }
-
-        .choice-buttons {
-            max-width: 700px;
-
-            margin: auto;
-
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-
-            gap: 14px;
-        }
-
-        .choice-button {
-            background: transparent;
-
-            border: 1px solid #666;
-
-            color: white;
-
-            padding: 19px 15px;
-
-            font-size: 11px;
-            font-weight: 500;
-            letter-spacing: 2px;
-
-            cursor: pointer;
-
-            transition:
-                background 0.25s ease,
-                color 0.25s ease,
-                border-color 0.25s ease;
-        }
-
-        .choice-button:hover {
-            background: white;
-            color: #1c1c1c;
-            border-color: white;
-        }
-
-        .choice-button.selected {
-            background: white;
-            color: #1c1c1c;
-            border-color: white;
-        }
-
-
-        /* ==================================================
-           CONFIRM AREA
-        ================================================== */
+.restaurant {
+margin-bottom: 170px;
+scroll-margin-top: 40px;
+}
+
+.restaurant-image-wrapper {
+width: 100%;
+overflow: hidden;
+}
+
+.restaurant-image {
+width: 100%;
+height: 620px;
+display: block;
+object-fit: cover;
+transition: transform 0.7s ease;
+}
+
+.restaurant-image-wrapper:hover .restaurant-image {
+transform: scale(1.015);
+}
+
+.restaurant-image-secondary {
+width: 100%;
+height: 420px;
+display: block;
+object-fit: cover;
+margin-top: 55px;
+transition: transform 0.7s ease;
+}
+
+.restaurant-image-secondary:hover {
+transform: scale(1.01);
+}
+
+.restaurant-info {
+padding: 35px 5px 0;
+}
+
+.option-number {
+font-size: 11px;
+font-weight: 500;
+letter-spacing: 2.5px;
+color: #999;
+margin-bottom: 12px;
+}
+
+.restaurant h3 {
+font-size: clamp(48px, 5.5vw, 68px);
+font-weight: 500;
+margin: 0;
+line-height: 0.95;
+letter-spacing: -0.5px;
+}
+
+.subtitle {
+font-size: 23px;
+font-weight: 400;
+font-style: italic;
+margin-top: 12px;
+color: #444;
+}
+
+.restaurant-description {
+max-width: 720px;
+font-size: 14px;
+line-height: 1.9;
+color: #666;
+margin-top: 25px;
+}
+
+.mood {
+margin-top: 18px;
+font-size: 10px;
+font-weight: 500;
+letter-spacing: 2px;
+text-transform: uppercase;
+color: #777;
+}
+
+
+/* ==================================================
+          FEELING BOX
+       ================================================== */
+
+.feeling-box {
+margin-top: 50px;
+padding: 38px 35px;
+background: #ebe5dc;
+border-left: 2px solid #999;
+}
+
+.feeling-label {
+font-size: 10px;
+font-weight: 500;
+letter-spacing: 2px;
+text-transform: uppercase;
+color: #999;
+margin-bottom: 12px;
+}
+
+.feeling-box p {
+margin: 0;
+max-width: 750px;
+
+font-family: "Cormorant Garamond", Georgia, serif;
+font-size: 24px;
+line-height: 1.4;
+color: #333;
+}
+
+
+/* ==================================================
+          RESTAURANT DETAILS
+       ================================================== */
+
+.restaurant-details {
+display: grid;
+grid-template-columns: repeat(3, minmax(0, 1fr));
+gap: 25px;
+
+margin-top: 40px;
+padding: 28px 0;
+
+border-top: 1px solid #d7d0c7;
+border-bottom: 1px solid #d7d0c7;
+}
+
+.detail-item {
+display: flex;
+flex-direction: column;
+gap: 7px;
+}
+
+.detail-label {
+font-size: 10px;
+font-weight: 500;
+letter-spacing: 2px;
+color: #999;
+text-transform: uppercase;
+}
+
+.detail-value {
+font-size: 14px;
+font-weight: 400;
+line-height: 1.7;
+color: #333;
+}
+
+.detail-rating {
+font-size: 14px;
+letter-spacing: 1px;
+}
+
+.location-button {
+display: inline-block;
+width: fit-content;
+
+margin-top: 12px;
+padding: 9px 15px;
+
+border: 1px solid #bbb;
+
+color: #444;
+text-decoration: none;
+
+font-size: 10px;
+font-weight: 500;
+letter-spacing: 1.5px;
+text-transform: uppercase;
+
+transition:
+background 0.25s ease,
+color 0.25s ease,
+border-color 0.25s ease;
+}
+
+.location-button:hover {
+background: #222;
+color: white;
+border-color: #222;
+}
+
+
+/* ==================================================
+          MENU
+       ================================================== */
+
+.menu-section {
+margin-top: 50px;
+padding-top: 30px;
+border-top: 1px solid #d7d0c7;
+}
+
+.menu-title {
+font-size: 10px;
+font-weight: 500;
+letter-spacing: 2.5px;
+text-transform: uppercase;
+margin-bottom: 8px;
+}
+
+.menu-note {
+font-size: 13px;
+color: #777;
+margin-bottom: 22px;
+}
+
+.menu-button {
+display: inline-block;
+
+margin-top: 5px;
+padding: 12px 21px;
+
+border: 1px solid #222;
+
+color: #222;
+text-decoration: none;
+
+font-size: 10px;
+font-weight: 500;
+letter-spacing: 1.5px;
+text-transform: uppercase;
+
+transition:
+background 0.25s ease,
+color 0.25s ease;
+}
+
+.menu-button:hover {
+background: #222;
+color: white;
+}
+
+
+/* ==================================================
+          SAVE THE DATE
+       ================================================== */
+
+.booking-section {
+max-width: 760px;
+margin: 40px auto 120px;
+
+padding: 75px 35px;
+
+border-top: 1px solid #d7d0c7;
+border-bottom: 1px solid #d7d0c7;
+
+text-align: center;
+}
+
+.booking-section h2 {
+font-size: clamp(40px, 5vw, 58px);
+font-weight: 500;
+line-height: 1;
+margin: 0 0 15px;
+}
+
+.booking-description {
+color: #777;
+font-size: 14px;
+margin-bottom: 40px;
+}
+
+.save-the-date {
+margin-bottom: 45px;
+}
+
+.save-the-date-line {
+width: 50px;
+height: 1px;
+background: #999;
+margin: 0 auto 20px;
+}
+
+.save-the-date-title {
+font-size: 10px;
+font-weight: 500;
+letter-spacing: 3px;
+text-transform: uppercase;
+color: #999;
+}
+
+.booking-fields {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 18px;
+text-align: left;
+}
+
+.booking-field {
+display: flex;
+flex-direction: column;
+gap: 7px;
+}
 
-        .confirm-area {
-            display: none;
-
-            max-width: 650px;
+.booking-field label {
+font-size: 10px;
+font-weight: 500;
+letter-spacing: 2px;
+text-transform: uppercase;
+color: #888;
+}
 
-            margin: 55px auto 0;
-            padding: 45px 30px;
+.booking-field input {
+width: 100%;
+padding: 14px;
 
-            border: 1px solid #555;
-        }
-
-        .confirm-small {
-            font-size: 10px;
-            font-weight: 500;
-            letter-spacing: 2.5px;
-            text-transform: uppercase;
+border: 1px solid #cfc8bf;
 
-            color: #888;
+background: rgba(255, 255, 255, 0.25);
+color: #222;
 
-            margin-bottom: 16px;
-        }
+font-size: 14px;
 
-        .confirm-area h3 {
-            font-size: 42px;
-            font-weight: 500;
+outline: none;
+border-radius: 0;
 
-            margin: 0 0 22px;
-        }
+transition: border-color 0.25s ease;
+}
 
-        .confirm-details {
-            font-size: 14px;
-            color: #bbb;
-            line-height: 2.1;
-        }
+.booking-field input:focus {
+border-color: #222;
+}
 
-        .confirm-details strong {
-            color: white;
-            font-weight: 500;
-        }
+.booking-hint {
+margin-top: 20px;
 
-        .confirm-button {
-            margin-top: 28px;
+font-family: "Cormorant Garamond", Georgia, serif;
+font-size: 17px;
+font-style: italic;
 
-            padding: 16px 32px;
+color: #999;
+}
 
-            border: 1px solid white;
 
-            background: white;
-            color: #1c1c1c;
+/* ==================================================
+          FINAL CHOOSE SECTION
+       ================================================== */
 
-            font-size: 10px;
-            font-weight: 500;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
+.choose-section {
+background: #1c1c1c;
+color: white;
 
-            cursor: pointer;
+padding: 120px 25px;
 
-            transition: all 0.25s ease;
-        }
+text-align: center;
+}
 
-        .confirm-button:hover {
-            background: transparent;
-            color: white;
-        }
+.choose-small {
+font-size: 10px;
+font-weight: 500;
+letter-spacing: 2.5px;
+text-transform: uppercase;
 
-        .change-choice {
-            display: block;
+margin-bottom: 22px;
 
-            margin: 18px auto 0;
+color: #999;
+}
 
-            background: none;
-            border: none;
+.choose-section h2 {
+font-size: clamp(46px, 6vw, 70px);
+font-weight: 500;
+line-height: 0.95;
 
-            color: #888;
+margin: 0 0 22px;
+}
 
-            font-size: 10px;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
+.choose-description {
+max-width: 600px;
 
-            cursor: pointer;
-        }
+margin: 0 auto 45px;
 
-        .change-choice:hover {
-            color: white;
-        }
+color: #aaa;
+font-size: 14px;
+line-height: 1.9;
+}
 
+.choice-buttons {
+max-width: 700px;
 
-        /* ==================================================
-           SUCCESS MESSAGE
-        ================================================== */
+margin: auto;
 
-        .success-message {
-            display: none;
+display: grid;
+grid-template-columns: repeat(2, minmax(0, 1fr));
 
-            max-width: 650px;
+gap: 14px;
+}
 
-            margin: 55px auto 0;
-        }
+.choice-button {
+background: transparent;
 
-        .success-message h3 {
-            font-size: 42px;
-            font-weight: 500;
+border: 1px solid #666;
 
-            margin: 0 0 22px;
-        }
+color: white;
 
-        .success-message > p {
-            color: #bbb;
-            line-height: 1.9;
-        }
+padding: 19px 15px;
 
+font-size: 11px;
+font-weight: 500;
+letter-spacing: 2px;
 
-        /* ==================================================
-           DIGITAL TICKET
-        ================================================== */
+cursor: pointer;
 
-        .ticket {
-            display: none;
+transition:
+background 0.25s ease,
+color 0.25s ease,
+border-color 0.25s ease;
+}
 
-            max-width: 650px;
+.choice-button:hover {
+background: white;
+color: #1c1c1c;
+border-color: white;
+}
 
-            margin: 60px auto 0;
+.choice-button.selected {
+background: white;
+color: #1c1c1c;
+border-color: white;
+}
 
-            background: #f5f1eb;
-            color: #1c1c1c;
 
-            position: relative;
+/* ==================================================
+          CONFIRM AREA
+       ================================================== */
 
-            text-align: left;
-        }
+.confirm-area {
+display: none;
 
-        .ticket-top {
-            padding: 42px 40px 35px;
+max-width: 650px;
 
-            text-align: center;
+margin: 55px auto 0;
+padding: 45px 30px;
 
-            border-bottom: 1px dashed #aaa;
-        }
+border: 1px solid #555;
+}
 
-        .ticket-label {
-            font-size: 9px;
-            font-weight: 500;
-            letter-spacing: 3px;
-            text-transform: uppercase;
+.confirm-small {
+font-size: 10px;
+font-weight: 500;
+letter-spacing: 2.5px;
+text-transform: uppercase;
 
-            color: #999;
+color: #888;
 
-            margin-bottom: 18px;
-        }
+margin-bottom: 16px;
+}
 
-        .ticket-title {
-            font-size: 48px;
-            font-weight: 500;
-            line-height: 1;
+.confirm-area h3 {
+font-size: 42px;
+font-weight: 500;
 
-            margin-bottom: 8px;
-        }
+margin: 0 0 22px;
+}
 
-        .ticket-subtitle {
-            font-family: "Cormorant Garamond", Georgia, serif;
+.confirm-details {
+font-size: 14px;
+color: #bbb;
+line-height: 2.1;
+}
 
-            font-size: 22px;
-            font-style: italic;
+.confirm-details strong {
+color: white;
+font-weight: 500;
+}
 
-            color: #555;
-        }
+.confirm-button {
+margin-top: 28px;
 
-        .ticket-middle {
-            padding: 30px 40px;
+padding: 16px 32px;
 
-            display: grid;
-            grid-template-columns: 1fr 1fr;
+border: 1px solid white;
 
-            gap: 25px;
-        }
+background: white;
+color: #1c1c1c;
 
-        .ticket-detail-label {
-            font-size: 9px;
-            font-weight: 500;
-            letter-spacing: 2px;
-            text-transform: uppercase;
+font-size: 10px;
+font-weight: 500;
+letter-spacing: 1.5px;
+text-transform: uppercase;
 
-            color: #999;
+cursor: pointer;
 
-            margin-bottom: 5px;
-        }
+transition: all 0.25s ease;
+}
 
-        .ticket-detail-value {
-            font-size: 13px;
-            font-weight: 500;
-        }
+.confirm-button:hover {
+background: transparent;
+color: white;
+}
 
-        .ticket-bottom {
-            padding: 25px 40px 30px;
+.change-choice {
+display: block;
 
-            border-top: 1px dashed #aaa;
+margin: 18px auto 0;
 
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+background: none;
+border: none;
 
-        .admit {
-            font-size: 9px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
+color: #888;
 
-            color: #999;
-        }
+font-size: 10px;
+letter-spacing: 1.5px;
+text-transform: uppercase;
 
-        .ticket-heart {
-            font-family: "Cormorant Garamond", Georgia, serif;
-            font-size: 26px;
-        }
+cursor: pointer;
+}
 
+.change-choice:hover {
+color: white;
+}
 
-        /* ==================================================
-           ONE LAST THING
-        ================================================== */
 
-        .last-section {
-            max-width: 850px;
+/* ==================================================
+          SUCCESS MESSAGE
+       ================================================== */
 
-            margin: auto;
+.success-message {
+display: none;
 
-            padding: 140px 25px;
+max-width: 650px;
 
-            text-align: center;
-        }
+margin: 55px auto 0;
+}
 
-        .letter-title {
-            font-size: clamp(46px, 5vw, 64px);
-            font-weight: 500;
-            line-height: 1;
+.success-message h3 {
+font-size: 42px;
+font-weight: 500;
 
-            margin: 0 0 35px;
-        }
+margin: 0 0 22px;
+}
 
-        .letter {
-            max-width: 650px;
+.success-message > p {
+color: #bbb;
+line-height: 1.9;
+}
 
-            margin: auto;
 
-            font-family: "Cormorant Garamond", Georgia, serif;
+/* ==================================================
+          DIGITAL TICKET
+       ================================================== */
 
-            font-size: 23px;
-            line-height: 1.65;
+.ticket {
+display: none;
 
-            color: #555;
-        }
+max-width: 650px;
 
-        .letter-signature {
-            margin-top: 40px;
+margin: 60px auto 0;
 
-            font-family: "Cormorant Garamond", Georgia, serif;
+background: #f5f1eb;
+color: #1c1c1c;
 
-            font-size: 25px;
-            font-style: italic;
-        }
+position: relative;
 
-        .final-line {
-            margin-top: 75px;
+text-align: left;
+}
 
-            font-size: 10px;
-            font-weight: 500;
-            letter-spacing: 3px;
-            text-transform: uppercase;
+.ticket-top {
+padding: 42px 40px 35px;
 
-            color: #999;
-        }
+text-align: center;
 
+border-bottom: 1px dashed #aaa;
+}
 
-        /* ==================================================
-           FOOTER
-        ================================================== */
+.ticket-label {
+font-size: 9px;
+font-weight: 500;
+letter-spacing: 3px;
+text-transform: uppercase;
 
-        footer {
-            padding: 30px 20px 45px;
+color: #999;
 
-            text-align: center;
+margin-bottom: 18px;
+}
 
-            color: #aaa;
+.ticket-title {
+font-size: 48px;
+font-weight: 500;
+line-height: 1;
 
-            font-size: 9px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
+margin-bottom: 8px;
+}
 
+.ticket-subtitle {
+font-family: "Cormorant Garamond", Georgia, serif;
 
-        /* ==================================================
-           MOBILE
-        ================================================== */
+font-size: 22px;
+font-style: italic;
 
-        @media (max-width: 700px) {
+color: #555;
+}
 
-            .cover {
-                min-height: 90vh;
-            }
+.ticket-middle {
+padding: 30px 40px;
 
-            .cover-small {
-                font-size: 20px;
-                letter-spacing: 2.5px;
-                margin-bottom: 22px;
-            }
+display: grid;
+grid-template-columns: 1fr 1fr;
 
-            .cover h1 {
-                font-size: clamp(48px, 15vw, 68px);
-                letter-spacing: -1px;
-                margin-bottom: 25px;
-            }
+gap: 25px;
+}
 
-            .cover h1 span:first-child {
-                margin-bottom: 35px;
-            }
+.ticket-detail-label {
+font-size: 9px;
+font-weight: 500;
+letter-spacing: 2px;
+text-transform: uppercase;
 
-            .cover-subtitle {
-                font-size: 20px;
-            }
+color: #999;
 
+margin-bottom: 5px;
+}
 
-            /* Intro */
+.ticket-detail-value {
+font-size: 13px;
+font-weight: 500;
+}
 
-            .intro {
-                padding: 85px 20px 75px;
-            }
+.ticket-bottom {
+padding: 25px 40px 30px;
 
-            .intro h2 {
-                font-size: 48px;
-            }
+border-top: 1px dashed #aaa;
 
-            .intro p {
-                font-size: 14px;
-                line-height: 1.85;
-            }
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
 
+.admit {
+font-size: 9px;
+letter-spacing: 2px;
+text-transform: uppercase;
 
-            /* This or That */
+color: #999;
+}
 
-            .personal-section {
-                padding: 20px 20px 85px;
-            }
+.ticket-heart {
+font-family: "Cormorant Garamond", Georgia, serif;
+font-size: 26px;
+}
 
-            .personal-header {
-                margin-bottom: 40px;
-            }
 
-            .personal-header h2 {
-                font-size: 46px;
-            }
+/* ==================================================
+          ONE LAST THING
+       ================================================== */
 
-            .personal-header p {
-                font-size: 21px;
-            }
+.last-section {
+max-width: 850px;
 
-            .food-choice {
-                grid-template-columns: 1fr;
-                min-height: auto;
-            }
+margin: auto;
 
-            .food-card {
-                min-height: 360px;
-            }
+padding: 140px 25px;
 
-            .food-card:first-child {
-                border-right: 1px solid #d7d0c7;
-                border-bottom: none;
-            }
+text-align: center;
+}
 
-            .food-card:last-child {
-                border-left: 1px solid #d7d0c7;
-                border-top: none;
-            }
+.letter-title {
+font-size: clamp(46px, 5vw, 64px);
+font-weight: 500;
+line-height: 1;
 
-            .food-or {
-                min-height: 70px;
-                background: #f5f1eb;
-            }
+margin: 0 0 35px;
+}
 
-            .food-or::before,
-            .food-or::after {
-                width: 60px;
-                height: 1px;
+.letter {
+max-width: 650px;
 
-                top: 50%;
-                bottom: auto;
-            }
+margin: auto;
 
-            .food-or::before {
-                left: 0;
-            }
+font-family: "Cormorant Garamond", Georgia, serif;
 
-            .food-or::after {
-                right: 0;
-            }
+font-size: 23px;
+line-height: 1.65;
 
-            .food-card h3 {
-                font-size: 58px;
-            }
+color: #555;
+}
 
-            .food-card p {
-                font-size: 21px;
-            }
+.letter-signature {
+margin-top: 40px;
 
-            .food-options {
-                margin-top: 40px;
-                padding: 35px 0;
-            }
+font-family: "Cormorant Garamond", Georgia, serif;
 
-            .food-options-header h3 {
-                font-size: 38px;
-            }
+font-size: 25px;
+font-style: italic;
+}
 
-            .food-options-grid {
-                grid-template-columns: 1fr;
-            }
+.final-line {
+margin-top: 75px;
 
-            .food-option {
-                padding: 32px 25px;
-            }
+font-size: 10px;
+font-weight: 500;
+letter-spacing: 3px;
+text-transform: uppercase;
 
+color: #999;
+}
 
-            /* Four nights */
 
-            .four-nights {
-                padding: 80px 20px;
-            }
+/* ==================================================
+          FOOTER
+       ================================================== */
 
-            .four-nights-header {
-                margin-bottom: 45px;
-            }
+footer {
+padding: 30px 20px 45px;
 
-            .four-nights-header h2 {
-                font-size: 48px;
-            }
+text-align: center;
 
-            .night-grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 40px 20px;
-            }
+color: #aaa;
 
-            .night-card h3 {
-                font-size: 27px;
-            }
+font-size: 9px;
+letter-spacing: 2px;
+text-transform: uppercase;
+}
 
 
-            /* Restaurants */
+/* ==================================================
+          MOBILE
+       ================================================== */
 
-            .restaurants {
-                padding: 80px 15px 20px;
-            }
+@media (max-width: 700px) {
 
-            .restaurant {
-                margin-bottom: 110px;
-            }
+.cover {
+min-height: 90vh;
+}
 
-            .restaurant-image {
-                height: 430px;
-            }
+.cover-small {
+font-size: 20px;
+letter-spacing: 2.5px;
+margin-bottom: 22px;
+}
 
-            .restaurant-image-secondary {
-                height: 320px;
-                margin-top: 40px;
-            }
+.cover h1 {
+font-size: clamp(48px, 15vw, 68px);
+letter-spacing: -1px;
+margin-bottom: 25px;
+}
 
-            .restaurant-info {
-                padding-top: 26px;
-            }
+.cover h1 span:first-child {
+margin-bottom: 35px;
+}
 
-            .restaurant h3 {
-                font-size: 54px;
-            }
+.cover-subtitle {
+font-size: 20px;
+}
 
-            .subtitle {
-                font-size: 22px;
-            }
 
-            .restaurant-description {
-                font-size: 14px;
-                line-height: 1.85;
-            }
+/* Intro */
 
-            .mood {
-                font-size: 9px;
-                letter-spacing: 1.8px;
-            }
+.intro {
+padding: 85px 20px 75px;
+}
 
+.intro h2 {
+font-size: 48px;
+}
 
-            /* Feeling */
+.intro p {
+font-size: 14px;
+line-height: 1.85;
+}
 
-            .feeling-box {
-                padding: 30px 24px;
-                margin-top: 40px;
-            }
 
-            .feeling-box p {
-                font-size: 21px;
-            }
+/* This or That */
 
+.personal-section {
+padding: 20px 20px 85px;
+}
 
-            /* Details */
+.personal-header {
+margin-bottom: 40px;
+}
 
-            .restaurant-details {
-                grid-template-columns: 1fr;
-                gap: 20px;
-                padding: 25px 0;
-            }
+.personal-header h2 {
+font-size: 46px;
+}
 
-            .detail-label {
-                font-size: 9px;
-                letter-spacing: 1.8px;
-            }
+.personal-header p {
+font-size: 21px;
+}
 
-            .detail-value {
-                font-size: 14px;
-            }
+.food-choice {
+grid-template-columns: 1fr;
+min-height: auto;
+}
 
-            .location-button {
-                font-size: 9px;
-            }
+.food-card {
+min-height: 360px;
+}
 
+.food-card:first-child {
+border-right: 1px solid #d7d0c7;
+border-bottom: none;
+}
 
-            /* Menu */
+.food-card:last-child {
+border-left: 1px solid #d7d0c7;
+border-top: none;
+}
 
-            .menu-title {
-                font-size: 9px;
-            }
+.food-or {
+min-height: 70px;
+background: #f5f1eb;
+}
 
-            .menu-note {
-                font-size: 12px;
-            }
+.food-or::before,
+.food-or::after {
+width: 60px;
+height: 1px;
 
-            .menu-button {
-                font-size: 9px;
-            }
+top: 50%;
+bottom: auto;
+}
 
+.food-or::before {
+left: 0;
+}
 
-            /* Booking */
+.food-or::after {
+right: 0;
+}
 
-            .booking-section {
-                margin: 0 15px 80px;
-                padding: 55px 20px;
-            }
+.food-card h3 {
+font-size: 58px;
+}
 
-            .booking-section h2 {
-                font-size: 43px;
-            }
+.food-card p {
+font-size: 21px;
+}
 
-            .booking-description {
-                font-size: 13px;
-            }
+.food-options {
+margin-top: 40px;
+padding: 35px 0;
+}
 
-            .booking-fields {
-                grid-template-columns: 1fr;
-            }
+.food-options-header h3 {
+font-size: 38px;
+}
 
+.food-options-grid {
+grid-template-columns: 1fr;
+}
 
-            /* Final Choice */
+.food-option {
+padding: 32px 25px;
+}
 
-            .choose-section {
-                padding: 90px 20px;
-            }
 
-            .choose-section h2 {
-                font-size: 50px;
-            }
+/* Four nights */
 
-            .choose-description {
-                font-size: 13px;
-            }
+.four-nights {
+padding: 80px 20px;
+}
 
-            .choice-buttons {
-                grid-template-columns: 1fr;
-            }
+.four-nights-header {
+margin-bottom: 45px;
+}
 
-            .choice-button {
-                font-size: 10px;
-                letter-spacing: 1.8px;
-            }
+.four-nights-header h2 {
+font-size: 48px;
+}
 
+.night-grid {
+grid-template-columns: 1fr 1fr;
+gap: 40px 20px;
+}
 
-            /* Confirm */
+.night-card h3 {
+font-size: 27px;
+}
 
-            .confirm-area {
-                padding: 38px 20px;
-            }
 
-            .confirm-area h3 {
-                font-size: 38px;
-            }
+/* Restaurants */
 
-            .confirm-details {
-                font-size: 13px;
-            }
+.restaurants {
+padding: 80px 15px 20px;
+}
 
+.restaurant {
+margin-bottom: 110px;
+}
 
-            /* Ticket */
+.restaurant-image {
+height: 430px;
+}
 
-            .ticket-top {
-                padding: 35px 25px 30px;
-            }
+.restaurant-image-secondary {
+height: 320px;
+margin-top: 40px;
+}
 
-            .ticket-title {
-                font-size: 42px;
-            }
+.restaurant-info {
+padding-top: 26px;
+}
 
-            .ticket-middle {
-                padding: 25px;
-                gap: 22px;
-            }
+.restaurant h3 {
+font-size: 54px;
+}
 
-            .ticket-bottom {
-                padding: 22px 25px 27px;
-            }
+.subtitle {
+font-size: 22px;
+}
 
+.restaurant-description {
+font-size: 14px;
+line-height: 1.85;
+}
 
-            /* Letter */
+.mood {
+font-size: 9px;
+letter-spacing: 1.8px;
+}
 
-            .last-section {
-                padding: 100px 20px;
-            }
 
-            .letter-title {
-                font-size: 48px;
-            }
+/* Feeling */
 
-            .letter {
-                font-size: 21px;
-            }
+.feeling-box {
+padding: 30px 24px;
+margin-top: 40px;
+}
 
-            .final-line {
-                margin-top: 55px;
-                font-size: 9px;
-                letter-spacing: 2px;
-            }
+.feeling-box p {
+font-size: 21px;
+}
 
-        }
 
-    </style>
+/* Details */
+
+.restaurant-details {
+grid-template-columns: 1fr;
+gap: 20px;
+padding: 25px 0;
+}
+
+.detail-label {
+font-size: 9px;
+letter-spacing: 1.8px;
+}
+
+.detail-value {
+font-size: 14px;
+}
+
+.location-button {
+font-size: 9px;
+}
+
+
+/* Menu */
+
+.menu-title {
+font-size: 9px;
+}
+
+.menu-note {
+font-size: 12px;
+}
+
+.menu-button {
+font-size: 9px;
+}
+
+
+/* Booking */
+
+.booking-section {
+margin: 0 15px 80px;
+padding: 55px 20px;
+}
+
+.booking-section h2 {
+font-size: 43px;
+}
+
+.booking-description {
+font-size: 13px;
+}
+
+.booking-fields {
+grid-template-columns: 1fr;
+}
+
+
+/* Final Choice */
+
+.choose-section {
+padding: 90px 20px;
+}
+
+.choose-section h2 {
+font-size: 50px;
+}
+
+.choose-description {
+font-size: 13px;
+}
+
+.choice-buttons {
+grid-template-columns: 1fr;
+}
+
+.choice-button {
+font-size: 10px;
+letter-spacing: 1.8px;
+}
+
+
+/* Confirm */
+
+.confirm-area {
+padding: 38px 20px;
+}
+
+.confirm-area h3 {
+font-size: 38px;
+}
+
+.confirm-details {
+font-size: 13px;
+}
+
+
+/* Ticket */
+
+.ticket-top {
+padding: 35px 25px 30px;
+}
+
+.ticket-title {
+font-size: 42px;
+}
+
+.ticket-middle {
+padding: 25px;
+gap: 22px;
+}
+
+.ticket-bottom {
+padding: 22px 25px 27px;
+}
+
+
+/* Letter */
+
+.last-section {
+padding: 100px 20px;
+}
+
+.letter-title {
+font-size: 48px;
+}
+
+.letter {
+font-size: 21px;
+}
+
+.final-line {
+margin-top: 55px;
+font-size: 9px;
+letter-spacing: 2px;
+}
+
+}
+
+</style>
 
 </head>
 
@@ -2188,1321 +2000,1116 @@ body.invitation-locked {
 <body>
 
 <div class="opening-screen" id="openingScreen">
-    <div class="opening-content">
+<div class="opening-content">
 
-        <div class="opening-name">
-            FOR HIEU SONG
-        </div>
+<div class="opening-name">
+FOR HIEU SONG
+</div>
 
-        <div class="opening-heart">
-            ♡
-        </div>
+<div class="opening-heart">
+♡
+</div>
 
-        <button class="opening-button" id="openInvitation">
-            OPEN INVITATION
-            <span>→</span>
-        </button>
+<button class="opening-button" id="openInvitation">
+OPEN INVITATION
+<span>→</span>
+</button>
 
-    </div>
+</div>
 </div>
 <!-- ==================================================
-     COVER
+    COVER
 ================================================== -->
 <section class="cover">
 
-    <div class="cover-content">
+<div class="cover-content">
 
-        <div class="cover-small">
-            WELCOME TO
-        </div>
+<div class="cover-small">
+WELCOME TO
+</div>
 
-        <h1>
-            <span>HIEU SONG' S</span>
-            <span>GRADUATION NIGHT</span>
-        </h1>
+<h1>
+<span>HIEU SONG' S</span>
+<span>GRADUATION NIGHT</span>
+</h1>
 
-        <div class="cover-subtitle">
-            Where should we celebrate?
-            Pick your favorite spot below!
-        </div>
+<div class="cover-subtitle">
+Where should we celebrate?
+Pick your favorite spot below!
+</div>
 
-        <div class="cover-arrow">
-            ↓
-        </div>
+<div class="cover-arrow">
+↓
+</div>
 
-    </div>
+</div>
 
 </section>
 
 
 
 <!-- ==================================================
-     INTRO
+    INTRO
 ================================================== -->
 
 <section class="intro reveal">
 
-    <!-- PART 1 -->
-    <div class="intro-part intro-part-one">
+<!-- PART 1 -->
+<div class="intro-part intro-part-one">
 
-        <div class="section-eyebrow">
-            For the graduate
-        </div>
+<div class="section-eyebrow">
+For the graduate
+</div>
 
-        <h2>
-            You did it.
-        </h2>
+<h2>
+You did it.
+</h2>
 
-        <p>
-            After all the late nights, deadlines, little victories
-            and everything in between,
-            <br>
+<p>
+After all the late nights, deadlines, little victories
+and everything in between,
+<br>
 
-            You made it! Yayy!!
+You made it! Yayy!!
 
-            <br><br>
+<br><br>
 
-            Now it's our turn to celebrate you.
+Now it's our turn to celebrate you.
 
-            <br><br>
+<br><br>
 
-            <strong>So… where are we celebrating?<strong>
-        </p>
+<strong>So… where are we celebrating?<strong>
+</p>
 
-    </div>
-
-
-    <!-- BIG SPACE / TRANSITION -->
+</div>
 
 
-    <!-- PART 2 -->
-    <div class="intro-part intro-part-two">
+<!-- BIG SPACE / TRANSITION -->
 
-        <div class="section-eyebrow">
-            A LITTLE SOMETHING FROM US
-        </div>
 
-        <h2>
-            Aukiee, now you get to choose.
-        </h2>
+<!-- PART 2 -->
+<div class="intro-part intro-part-two">
 
-        <p>
-            We picked a few places we think you'd like.
-            <br><br>
+<div class="section-eyebrow">
+A LITTLE SOMETHING FROM US
+</div>
 
-            <strong>You pick the one, and we'll take care of the rest. 🤍<strong>
+<h2>
+Aukiee, now you get to choose.
+</h2>
 
-        </p>
+<p>
+We picked a few places we think you'd like.
+<br><br>
 
-    </div>
+<strong>You pick the one, and we'll take care of the rest. 🤍<strong>
+
+</p>
+
+</div>
 
 </section>
 
 
 
 <!-- ==================================================
-     THIS OR THAT
+    THIS OR THAT
 ================================================== -->
 
 <section class="personal-section reveal">
 
-    <div class="personal-header">
+<div class="personal-header">
 
-    <div class="choice-intro">
-    <h2>THIS 🫵 OR THAT 👉?</h2>
+<div class="choice-intro">
+<h2>THIS 🫵 OR THAT 👉?</h2>
 
-    <p>
-        Choose wisely… Your celebration depends on it. 👀
-    </p>
+<p>
+    Choose wisely… Your celebration depends on it. 👀
+</p>
+
+<div class="round-one-label">
+    <span>ROUND</span>
+    <strong>01</strong>
+</div>
+
 </div>
 
 
-    <div class="food-choice">
+<div class="food-choice">
 
 
-        <!-- THIS / WESTERN -->
+<!-- THIS / WESTERN -->
 
-        <div
-            class="food-card"
-            onclick="showFoodOptions('western')"
-        >
+<div
+class="food-card"
+onclick="showFoodOptions('western')"
+>
 
-            <div class="food-card-content">
+<div class="food-card-content">
 
-                <div class="food-label">
-                    THIS 🫵
-                </div>
+<div class="food-label">
+THIS 🫵
+</div>
 
-                <h3>
-                    WESTERN
-                </h3>
+<h3>
+WESTERN
+</h3>
 
-                <p>
-                    Dinner, drinks,
-                    <br>
-                    city lights &amp; a little drama.
-                </p>
+<p>
+Dinner, drinks,
+<br>
+city lights &amp; a little drama.
+</p>
 
-                <div class="food-hint">
-                    TAP TO EXPLORE
-                </div>
+<div class="food-hint">
+TAP TO EXPLORE
+</div>
 
-            </div>
+</div>
 
-        </div>
-
-
-        <!-- OR -->
-
-        <div class="food-or">
-            OR
-        </div>
+</div>
 
 
-        <!-- THAT / JAPANESE -->
+<!-- OR -->
 
-        <div
-            class="food-card"
-            onclick="showFoodOptions('japanese')"
-        >
+<div class="food-or">
+OR
+</div>
 
-            <div class="food-card-content">
 
-                <div class="food-label">
-                    THAT 👉
-                </div>
+<!-- THAT / JAPANESE -->
 
-                <h3>
-                    JAPANESE
-                </h3>
+<div
+class="food-card"
+onclick="showFoodOptions('japanese')"
+>
 
-                <p>
-                    Intimate food,
-                    <br>
-                    beautiful details &amp; good conversation.
-                    Quiet moments & delicate bites.
-                </p>
+<div class="food-card-content">
 
-                <div class="food-hint">
-                    TAP TO EXPLORE
-                </div>
+<div class="food-label">
+THAT 👉
+</div>
 
-            </div>
+<h3>
+JAPANESE
+</h3>
 
-        </div>
+<p>
+Quiet moments & delicate bites
+</p>
 
+<div class="food-hint">
+TAP TO EXPLORE
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+<!-- ==================================================
+        WESTERN OPTIONS
+   ================================================== -->
+
+<div
+id="westernOptions"
+class="food-options"
+>
+
+<div class="food-options-header">
+
+<span>
+THIS ONE?
+</span>
+
+<h3>
+The Western Nights
+</h3>
+
+<div class="round-two-label">
+        <span>ROUND</span>
+        <strong>02</strong>
     </div>
 
+</div>
 
 
-    <!-- ==================================================
-         WESTERN OPTIONS
-    ================================================== -->
-
-    <div
-        id="westernOptions"
-        class="food-options"
-    >
-
-        <div class="food-options-header">
-
-            <span>
-                THIS ONE?
-            </span>
-
-            <h3>
-                The Western Nights
-            </h3>
-
-            <p>
-                Two ways to make the celebration a little bigger.
-                 <strong>ROUND 2</strong>
-            </p>
-
-        </div>
+<div class="food-options-grid">
 
 
-        <div class="food-options-grid">
+<a
+href="#darcy"
+class="food-option"
+>
+
+<span class="food-option-number">
+01
+</span>
+
+<h4>
+DARCY
+</h4>
+
+<p>
+ Old-world charm & bar
+</p>
+
+<span class="food-option-arrow">
+EXPLORE ↘
+</span>
+
+</a>
 
 
-            <a
-                href="#darcy"
-                class="food-option"
-            >
+<a
+href="#icon-cruise"
+class="food-option"
+>
 
-                <span class="food-option-number">
-                    01
-                </span>
+<span class="food-option-number">
+02
+</span>
 
-                <h4>
-                    DARCY
-                </h4>
+<h4>
+ICON CRUISE
+</h4>
 
-                <p>
-                    The City Lights Night
-                </p>
+<p>
+River views
+</p>
 
-                <span class="food-option-arrow">
-                    EXPLORE ↘
-                </span>
+<span class="food-option-arrow">
+EXPLORE ↘
+</span>
 
-            </a>
+</a>
+
+</div>
+
+</div>
 
 
-            <a
-                href="#icon-cruise"
-                class="food-option"
-            >
 
-                <span class="food-option-number">
-                    02
-                </span>
+<!-- ==================================================
+        JAPANESE OPTIONS
+   ================================================== -->
 
-                <h4>
-                    ICON CRUISE
-                </h4>
+<div
+id="japaneseOptions"
+class="food-options"
+>
 
-                <p>
-                    The Main Character Night
-                </p>
+<div class="food-options-header">
 
-                <span class="food-option-arrow">
-                    EXPLORE ↘
-                </span>
+<span>
+THAT ONE?
+</span>
 
-            </a>
+<h3>
+The Japanese Nights
+</h3>
 
-        </div>
-
+<div class="round-two-label">
+        <span>ROUND</span>
+        <strong>02</strong>
     </div>
 
-<section class="food-choice-section" id="foodChoice">
-
-    <!-- ==============================
-         SECTION TITLE
-    =============================== -->
-
-    <!-- ==================================================
-         JAPANESE OPTIONS
-    ================================================== -->
-    <div class="choice-intro">
-        <span class="section-eyebrow">
-            THE CHOICE
-        </span>
-
-    <div
-        id="japaneseOptions"
-        class="food-options"
-    >
-        <h2>
-            THIS 🫵 OR THAT 👉?
-        </h2>
-
-        <div class="food-options-header">
-        <p>
-            Two rounds. Four nights. One perfect way to celebrate.
-        </p>
-    </div>
-
-
-    <!-- ==============================
-         ROUND 01
-    =============================== -->
-
-    <div class="choice-round round-one">
-
-        <div class="round-label">
-            <span>ROUND</span>
-            <strong>01</strong>
-        </div>
-
-        <div class="round-heading">
-            <span>
-                THAT ONE?
-                FIRST, PICK YOUR MOOD
-            </span>
-
-            <h3>
-                The Japanese Nights
-                What are we feeling?
-            </h3>
-
-            <p>
-                Two ways to celebrate with beautiful food and good company.
-            </p>
-
-        </div>
-
-
-        <div class="food-options-grid">
-
-        <div class="food-choice-grid">
-
-            <a
-                href="#itadaki"
-                class="food-option"
-            <button
-                type="button"
-                class="food-choice-card"
-                onclick="showFoodOptions('western')"
-            >
-
-                <span class="food-option-number">
-                <span class="food-choice-number">
-                    01
-                </span>
-
-                <h4>
-                    ITADAKI
-                </h4>
-                <div>
-                    <h4>
-                        WESTERN
-                    </h4>
-
-                <p>
-                    The Omakase Night
-                </p>
-                    <p>
-                        City lights & good vibes
-                    </p>
-                </div>
-
-                <span class="food-option-arrow">
-                    EXPLORE ↘
-                <span class="food-choice-arrow">
-                    CHOOSE ↘
-                </span>
-
-            </a>
-            </button>
-
+</div>
 
-            <a
-                href="#noire"
-                class="food-option"
-            <button
-                type="button"
-                class="food-choice-card"
-                onclick="showFoodOptions('japanese')"
-            >
 
-                <span class="food-option-number">
-                <span class="food-choice-number">
-                    02
-                </span>
+<div class="food-options-grid">
 
-                <h4>
-                    NOIRE
-                </h4>
-                <div>
-                    <h4>
-                        JAPANESE
-                    </h4>
 
-                <p>
-                    The Mystery Night
-                </p>
-                    <p>
-                        Intimate & food-focused
-                    </p>
-                </div>
+<a
+href="#itadaki"
+class="food-option"
+>
 
-                <span class="food-option-arrow">
-                    EXPLORE ↘
-                <span class="food-choice-arrow">
-                    CHOOSE ↘
-                </span>
+<span class="food-option-number">
+01
+</span>
 
-            </a>
-            </button>
+<h4>
+ITADAKI
+</h4>
 
-        </div>
+<p>
+Omakase
+</p>
 
-    </div>
+<span class="food-option-arrow">
+EXPLORE ↘
+</span>
 
+</a>
 
-    <!-- ==============================
-         ROUND 02
-    ============================== -->
 
-    <div class="choice-round round-two">
+<a
+href="#noire"
+class="food-option"
+>
 
-        <div class="round-label">
-            <span>ROUND</span>
-            <strong>02</strong>
-        </div>
+<span class="food-option-number">
+02
+</span>
 
-        <div class="round-heading">
-            <span>
-                THEN, PICK YOUR NIGHT
-            </span>
+<h4>
+NOIRE
+</h4>
 
-            <h3 id="roundTwoTitle">
-                Your night awaits.
-            </h3>
-        </div>
+<p>
+Private moments 
+</p>
 
+<span class="food-option-arrow">
+EXPLORE ↘
+</span>
 
-        <!-- WESTERN -->
+</a>
 
-        <div
-            id="westernOptions"
-            class="food-options"
-        >
+</div>
 
-            <div class="food-options-grid">
-
-                <a
-                    href="#darcy"
-                    class="food-option"
-                >
-
-                    <span class="food-option-number">
-                        01
-                    </span>
-
-                    <h4>
-                        DARCY
-                    </h4>
-
-                    <p>
-                        The City Lights Night
-                    </p>
-
-                    <span class="food-option-arrow">
-                        EXPLORE ↘
-                    </span>
-
-                </a>
-
-
-                <a
-                    href="#icon-cruise"
-                    class="food-option"
-                >
-
-                    <span class="food-option-number">
-                        02
-                    </span>
-
-                    <h4>
-                        ICON CRUISE
-                    </h4>
-
-                    <p>
-                        The Main Character Night
-                    </p>
-
-                    <span class="food-option-arrow">
-                        EXPLORE ↘
-                    </span>
-
-                </a>
-
-            </div>
-
-        </div>
-
-
-        <!-- JAPANESE -->
-
-        <div
-            id="japaneseOptions"
-            class="food-options"
-        >
-
-            <div class="food-options-grid">
-
-                <a
-                    href="#itadaki"
-                    class="food-option"
-                >
-
-                    <span class="food-option-number">
-                        01
-                    </span>
-
-                    <h4>
-                        ITADAKI
-                    </h4>
-
-                    <p>
-                        The Omakase Night
-                    </p>
-
-                    <span class="food-option-arrow">
-                        EXPLORE ↘
-                    </span>
-
-                </a>
-
-
-                <a
-                    href="#noire"
-                    class="food-option"
-                >
-
-                    <span class="food-option-number">
-                        02
-                    </span>
-
-                    <h4>
-                        NOIRE
-                    </h4>
-
-                    <p>
-                        The Mystery Night
-                    </p>
-
-                    <span class="food-option-arrow">
-                        EXPLORE ↘
-                    </span>
-
-                </a>
-
-            </div>
-
-        </div>
-
-    </div>
+</div>
 
 </section>
 
 
 
 <!-- ==================================================
-     FOUR NIGHTS
+    FOUR NIGHTS
 ================================================== -->
 
 <section class="four-nights reveal">
 
-    <div class="four-nights-inner">
+<div class="four-nights-inner">
 
-        <div class="four-nights-header">
+<div class="four-nights-header">
 
-            <div class="section-eyebrow">
-                Choose your mood
-            </div>
+<div class="section-eyebrow">
+Choose your mood
+</div>
 
-            <h2>
-                The Four Nights
-            </h2>
+<h2>
+The Four Nights
+</h2>
 
-        </div>
-
-
-        <div class="night-grid">
+</div>
 
 
-            <div class="night-card">
-
-                <div class="night-number">
-                    01
-                </div>
-
-                <h3>
-                    Omakase
-                </h3>
-
-                <p>
-                    Intimate.<br>
-                    Elegant.<br>
-                    Food-focused.
-                </p>
-
-            </div>
+<div class="night-grid">
 
 
-            <div class="night-card">
+<div class="night-card">
 
-                <div class="night-number">
-                    02
-                </div>
+<div class="night-number">
+01
+</div>
 
-                <h3>
-                    Mystery
-                </h3>
+<h3>
+Omakase
+</h3>
 
-                <p>
-                    Chic.<br>
-                    Mysterious.<br>
-                    Cinematic.
-                </p>
+<p>
+Intimate.<br>
+Elegant.<br>
+Food-focused.
+</p>
 
-            </div>
-
-
-            <div class="night-card">
-
-                <div class="night-number">
-                    03
-                </div>
-
-                <h3>
-                    City Lights
-                </h3>
-
-                <p>
-                    Fun.<br>
-                    Social.<br>
-                    Late-night.
-                </p>
-
-            </div>
+</div>
 
 
-            <div class="night-card">
+<div class="night-card">
 
-                <div class="night-number">
-                    04
-                </div>
+<div class="night-number">
+02
+</div>
 
-                <h3>
-                    Main Character
-                </h3>
+<h3>
+Mystery
+</h3>
 
-                <p>
-                    Grand.<br>
-                    Romantic.<br>
-                    Unforgettable.
-                </p>
+<p>
+Chic.<br>
+Mysterious.<br>
+Cinematic.
+</p>
 
-            </div>
+</div>
 
-        </div>
 
-    </div>
+<div class="night-card">
+
+<div class="night-number">
+03
+</div>
+
+<h3>
+City Lights
+</h3>
+
+<p>
+Fun.<br>
+Social.<br>
+Late-night.
+</p>
+
+</div>
+
+
+<div class="night-card">
+
+<div class="night-number">
+04
+</div>
+
+<h3>
+Main Character
+</h3>
+
+<p>
+Grand.<br>
+Romantic.<br>
+Unforgettable.
+</p>
+
+</div>
+
+</div>
+
+</div>
 
 </section>
 
 
 
 <!-- ==================================================
-     RESTAURANTS
+    RESTAURANTS
 ================================================== -->
 
 <section class="restaurants">
 
 
-    <!-- ==================================================
-         ITADAKI
-    ================================================== -->
+<!-- ==================================================
+        ITADAKI
+   ================================================== -->
 
-    <article
-        id="itadaki"
-        class="restaurant reveal"
-    >
+<article
+id="itadaki"
+class="restaurant reveal"
+>
 
-        <div class="restaurant-image-wrapper">
+<div class="restaurant-image-wrapper">
 
-            <img
-                class="restaurant-image"
-                src="images/itadaki/itadaki-1.jpg"
-                alt="ITADAKI"
-            >
+<img
+class="restaurant-image"
+src="images/itadaki/itadaki-1.jpg"
+alt="ITADAKI"
+>
 
-        </div>
+</div>
 
 
-        <div class="restaurant-info">
+<div class="restaurant-info">
 
-            <div class="option-number">
-                OPTION 01
-            </div>
+<div class="option-number">
+OPTION 01
+</div>
 
-            <h3>
-                ITADAKI
-            </h3>
+<h3>
+ITADAKI
+</h3>
 
-            <div class="subtitle">
-                The Omakase Night
-            </div>
+<div class="subtitle">
+The Omakase Night
+</div>
 
-            <p class="restaurant-description">
+<p class="restaurant-description">
 
-                An intimate evening for people who appreciate
-                beautiful food, thoughtful details and a slower pace.
+An intimate evening for people who appreciate
+beautiful food, thoughtful details and a slower pace.
 
-                <br><br>
+<br><br>
 
-                This is the night for sitting close, talking for hours,
-                and letting the food become part of the celebration.
+This is the night for sitting close, talking for hours,
+and letting the food become part of the celebration.
 
-            </p>
+</p>
 
-            <div class="mood">
-                Intimate · Elegant · Food-focused
-            </div>
+<div class="mood">
+Intimate · Elegant · Food-focused
+</div>
 
 
-            <div class="feeling-box">
+<div class="feeling-box">
 
-                <div class="feeling-label">
-                    What the night feels like
-                </div>
+<div class="feeling-label">
+What the night feels like
+</div>
 
-                <p>
-                    Slow conversations, beautiful plates,
-                    a few glasses of something good,
-                    and nowhere else we need to be.
-                </p>
+<p>
+Slow conversations, beautiful plates,
+a few glasses of something good,
+and nowhere else we need to be.
+</p>
 
-            </div>
+</div>
 
 
-            <img
-                class="restaurant-image-secondary"
-                src="images/itadaki/itadaki-2.jpg"
-                alt="ITADAKI interior"
-            >
+<img
+class="restaurant-image-secondary"
+src="images/itadaki/itadaki-2.jpg"
+alt="ITADAKI interior"
+>
 
 
-            <div class="restaurant-details">
+<div class="restaurant-details">
 
 
-                <div class="detail-item">
+<div class="detail-item">
 
-                    <span class="detail-label">
-                        Address
-                    </span>
+<span class="detail-label">
+Address
+</span>
 
-                    <span class="detail-value">
-                        16 Ngo Van Nam, District 1, Ho Chi Minh City
-                    </span>
+<span class="detail-value">
+16 Ngo Van Nam, District 1, Ho Chi Minh City
+</span>
 
-                    <a
-                        class="location-button"
-                        href="https://maps.app.goo.gl/u16HPqx2iFANEbwJ7?g_st=iz"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        View Location ↗
-                    </a>
+<a
+class="location-button"
+href="https://maps.app.goo.gl/u16HPqx2iFANEbwJ7?g_st=iz"
+target="_blank"
+rel="noopener noreferrer"
+>
+View Location ↗
+</a>
 
-                </div>
+</div>
 
 
-                <div class="detail-item">
+<div class="detail-item">
 
-                    <span class="detail-label">
-                        Opening Hours
-                    </span>
+<span class="detail-label">
+Opening Hours
+</span>
 
-                    <span class="detail-value">
-                        11:30 AM — 3:00 PM
-                        <br>
-                        6:00 PM — 11:00 PM
-                    </span>
+<span class="detail-value">
+11:30 AM — 3:00 PM
+<br>
+6:00 PM — 11:00 PM
+</span>
 
-                </div>
+</div>
 
 
-                <div class="detail-item">
+<div class="detail-item">
 
-                    <span class="detail-label">
-                        Rating
-                    </span>
+<span class="detail-label">
+Rating
+</span>
 
-                    <span class="detail-value detail-rating">
-                        ★ 4.9 / 5
-                    </span>
+<span class="detail-value detail-rating">
+★ 4.9 / 5
+</span>
 
-                </div>
+</div>
 
-            </div>
+</div>
 
 
-            <div class="menu-section">
+<div class="menu-section">
 
-                <div class="menu-title">
-                    THE MENU
-                </div>
+<div class="menu-title">
+THE MENU
+</div>
 
-                <div class="menu-note">
-                    Take a look at the full menu before making your choice.
-                </div>
+<div class="menu-note">
+Take a look at the full menu before making your choice.
+</div>
 
-                <a
-                    class="menu-button"
-                    href="images/itadaki/itadaki-menu.pdf"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    VIEW MENU ↗
-                </a>
+<a
+class="menu-button"
+href="images/itadaki/itadaki-menu.pdf"
+target="_blank"
+rel="noopener noreferrer"
+>
+VIEW MENU ↗
+</a>
 
-            </div>
+</div>
 
-        </div>
+</div>
 
-    </article>
+</article>
 
 
 
-    <!-- ==================================================
-         NOIRE
-    ================================================== -->
+<!-- ==================================================
+        NOIRE
+   ================================================== -->
 
-    <article
-        id="noire"
-        class="restaurant reveal"
-    >
+<article
+id="noire"
+class="restaurant reveal"
+>
 
-        <div class="restaurant-image-wrapper">
+<div class="restaurant-image-wrapper">
 
-            <img
-                class="restaurant-image"
-                src="images/noire/noire-1.webp"
-                alt="NOIRE"
-            >
+<img
+class="restaurant-image"
+src="images/noire/noire-1.webp"
+alt="NOIRE"
+>
 
-        </div>
+</div>
 
 
-        <div class="restaurant-info">
+<div class="restaurant-info">
 
-            <div class="option-number">
-                OPTION 02
-            </div>
+<div class="option-number">
+OPTION 02
+</div>
 
-            <h3>
-                NOIRE
-            </h3>
+<h3>
+NOIRE
+</h3>
 
-            <div class="subtitle">
-                The Mystery Night
-            </div>
+<div class="subtitle">
+The Mystery Night
+</div>
 
-            <p class="restaurant-description">
+<p class="restaurant-description">
 
-                Dark, stylish and a little mysterious.
+Dark, stylish and a little mysterious.
 
-                <br><br>
+<br><br>
 
-                The kind of place where the lighting is low,
-                the conversation gets interesting,
-                and the night feels like a scene from a movie.
+The kind of place where the lighting is low,
+the conversation gets interesting,
+and the night feels like a scene from a movie.
 
-            </p>
+</p>
 
-            <div class="mood">
-                Chic · Mysterious · Cinematic
-            </div>
+<div class="mood">
+Chic · Mysterious · Cinematic
+</div>
 
 
-            <div class="feeling-box">
+<div class="feeling-box">
 
-                <div class="feeling-label">
-                    What the night feels like
-                </div>
+<div class="feeling-label">
+What the night feels like
+</div>
 
-                <p>
-                    Dim lights, dressed-up energy,
-                    good conversation and the feeling
-                    that tonight is slightly different.
-                </p>
+<p>
+Dim lights, dressed-up energy,
+good conversation and the feeling
+that tonight is slightly different.
+</p>
 
-            </div>
+</div>
 
 
-            <img
-                class="restaurant-image-secondary"
-                src="images/noire/noire-2.webp"
-                alt="NOIRE interior"
-            >
+<img
+class="restaurant-image-secondary"
+src="images/noire/noire-2.webp"
+alt="NOIRE interior"
+>
 
 
-            <div class="restaurant-details">
+<div class="restaurant-details">
 
 
-                <div class="detail-item">
+<div class="detail-item">
 
-                    <span class="detail-label">
-                        Address
-                    </span>
+<span class="detail-label">
+Address
+</span>
 
-                    <span class="detail-value">
-                        259 Điện Biên Phủ, Xuân Hòa,
-                        Hồ Chí Minh 70000, Vietnam
-                    </span>
+<span class="detail-value">
+259 Điện Biên Phủ, Xuân Hòa,
+Hồ Chí Minh 70000, Vietnam
+</span>
 
-                    <a
-                        class="location-button"
-                        href="https://maps.app.goo.gl/Y3z1dccHrsqJyhYA8?g_st=ic"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        View Location ↗
-                    </a>
+<a
+class="location-button"
+href="https://maps.app.goo.gl/Y3z1dccHrsqJyhYA8?g_st=ic"
+target="_blank"
+rel="noopener noreferrer"
+>
+View Location ↗
+</a>
 
-                </div>
+</div>
 
 
-                <div class="detail-item">
+<div class="detail-item">
 
-                    <span class="detail-label">
-                        Opening Hours
-                    </span>
+<span class="detail-label">
+Opening Hours
+</span>
 
-                    <span class="detail-value">
-                        11:00 AM — 2:00 PM
-                        <br>
-                        5:00 PM — 11:00 PM
-                    </span>
+<span class="detail-value">
+11:00 AM — 2:00 PM
+<br>
+5:00 PM — 11:00 PM
+</span>
 
-                </div>
+</div>
 
 
-                <div class="detail-item">
+<div class="detail-item">
 
-                    <span class="detail-label">
-                        Rating
-                    </span>
+<span class="detail-label">
+Rating
+</span>
 
-                    <span class="detail-value detail-rating">
-                        ★ 4.9 / 5
-                    </span>
+<span class="detail-value detail-rating">
+★ 4.9 / 5
+</span>
 
-                </div>
+</div>
 
-            </div>
+</div>
 
 
-            <div class="menu-section">
+<div class="menu-section">
 
-                <div class="menu-title">
-                    THE MENU
-                </div>
+<div class="menu-title">
+THE MENU
+</div>
 
-                <div class="menu-note">
-                    Take a look at the full menu before making your choice.
-                </div>
+<div class="menu-note">
+Take a look at the full menu before making your choice.
+</div>
 
-                <a
-                    class="menu-button"
-                    href="images/noire/noire-menu.pdf"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    VIEW MENU ↗
-                </a>
+<a
+class="menu-button"
+href="images/noire/noire-menu.pdf"
+target="_blank"
+rel="noopener noreferrer"
+>
+VIEW MENU ↗
+</a>
 
-            </div>
+</div>
 
-        </div>
+</div>
 
-    </article>
+</article>
 
 
 
-    <!-- ==================================================
-         DARCY
-    ================================================== -->
+<!-- ==================================================
+        DARCY
+   ================================================== -->
 
-    <article
-        id="darcy"
-        class="restaurant reveal"
-    >
+<article
+id="darcy"
+class="restaurant reveal"
+>
 
-        <div class="restaurant-image-wrapper">
+<div class="restaurant-image-wrapper">
 
-            <img
-                class="restaurant-image"
-                src="images/darcy/darcy-1.jpg"
-                alt="DARCY"
-            >
+<img
+class="restaurant-image"
+src="images/darcy/darcy-1.jpg"
+alt="DARCY"
+>
 
-        </div>
+</div>
 
 
-        <div class="restaurant-info">
+<div class="restaurant-info">
 
-            <div class="option-number">
-                OPTION 03
-            </div>
+<div class="option-number">
+OPTION 03
+</div>
 
-            <h3>
-                DARCY
-            </h3>
+<h3>
+DARCY
+</h3>
 
-            <div class="subtitle">
-                The City Lights Night
-            </div>
+<div class="subtitle">
+The City Lights Night
+</div>
 
-            <p class="restaurant-description">
+<p class="restaurant-description">
 
-                A little louder, a little brighter,
-                and made for a night that doesn't want to end early.
+A little louder, a little brighter,
+and made for a night that doesn't want to end early.
 
-                <br><br>
+<br><br>
 
-                Think city lights, good drinks, music,
-                photos and the kind of conversation that keeps going.
+Think city lights, good drinks, music,
+photos and the kind of conversation that keeps going.
 
-            </p>
+</p>
 
-            <div class="mood">
-                Fun · Social · City lights
-            </div>
+<div class="mood">
+Fun · Social · City lights
+</div>
 
 
-            <div class="feeling-box">
+<div class="feeling-box">
 
-                <div class="feeling-label">
-                    What the night feels like
-                </div>
+<div class="feeling-label">
+What the night feels like
+</div>
 
-                <p>
-                    Start with dinner, stay for drinks,
-                    take too many photos,
-                    and see where the night takes us.
-                </p>
+<p>
+Start with dinner, stay for drinks,
+take too many photos,
+and see where the night takes us.
+</p>
 
-            </div>
+</div>
 
 
-            <img
-                class="restaurant-image-secondary"
-                src="images/darcy/darcy-2.jpg"
-                alt="DARCY interior"
-            >
+<img
+class="restaurant-image-secondary"
+src="images/darcy/darcy-2.jpg"
+alt="DARCY interior"
+>
 
 
-            <div class="restaurant-details">
+<div class="restaurant-details">
 
 
-                <div class="detail-item">
+<div class="detail-item">
 
-                    <span class="detail-label">
-                        Address
-                    </span>
+<span class="detail-label">
+Address
+</span>
 
-                    <span class="detail-value">
-                        43 Nguyen Hue, District 1, Ho Chi Minh City
-                    </span>
+<span class="detail-value">
+43 Nguyen Hue, District 1, Ho Chi Minh City
+</span>
 
-                    <a
-                        class="location-button"
-                        href="https://www.google.com/maps?q=Darcy+Fine+Bar,+43+Nguyễn+Huệ,+Sài+Gòn,+Hồ+Chí+Minh"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        View Location ↗
-                    </a>
+<a
+class="location-button"
+href="https://www.google.com/maps?q=Darcy+Fine+Bar,+43+Nguyễn+Huệ,+Sài+Gòn,+Hồ+Chí+Minh"
+target="_blank"
+rel="noopener noreferrer"
+>
+View Location ↗
+</a>
 
-                </div>
+</div>
 
 
-                <div class="detail-item">
+<div class="detail-item">
 
-                    <span class="detail-label">
-                        Opening Hours
-                    </span>
+<span class="detail-label">
+Opening Hours
+</span>
 
-                    <span class="detail-value">
-                        11:00 AM — 3:00 PM
-                        <br>
-                        6:00 PM — 1:00 AM
-                    </span>
+<span class="detail-value">
+11:00 AM — 3:00 PM
+<br>
+6:00 PM — 1:00 AM
+</span>
 
-                </div>
+</div>
 
 
-                <div class="detail-item">
+<div class="detail-item">
 
-                    <span class="detail-label">
-                        Rating
-                    </span>
+<span class="detail-label">
+Rating
+</span>
 
-                    <span class="detail-value detail-rating">
-                        ★ 4.6 / 5
-                    </span>
+<span class="detail-value detail-rating">
+★ 4.6 / 5
+</span>
 
-                </div>
+</div>
 
-            </div>
+</div>
 
 
-            <div class="menu-section">
+<div class="menu-section">
 
-                <div class="menu-title">
-                    THE MENU
-                </div>
+<div class="menu-title">
+THE MENU
+</div>
 
-                <div class="menu-note">
-                    Take a look at the full menu before making your choice.
-                </div>
+<div class="menu-note">
+Take a look at the full menu before making your choice.
+</div>
 
-                <a
-                    class="menu-button"
-                    href="images/darcy/darcy-menu.pdf"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    VIEW MENU ↗
-                </a>
+<a
+class="menu-button"
+href="images/darcy/darcy-menu.pdf"
+target="_blank"
+rel="noopener noreferrer"
+>
+VIEW MENU ↗
+</a>
 
-            </div>
+</div>
 
-        </div>
+</div>
 
-    </article>
+</article>
 
 
 
-    <!-- ==================================================
-         ICON CRUISE
-    ================================================== -->
+<!-- ==================================================
+        ICON CRUISE
+   ================================================== -->
 
-    <article
-        id="icon-cruise"
-        class="restaurant reveal"
-    >
+<article
+id="icon-cruise"
+class="restaurant reveal"
+>
 
-        <div class="restaurant-image-wrapper">
+<div class="restaurant-image-wrapper">
 
-            <img
-                class="restaurant-image"
-                src="images/icon/icon-1.webp"
-                alt="ICON CRUISE"
-            >
+<img
+class="restaurant-image"
+src="images/icon/icon-1.webp"
+alt="ICON CRUISE"
+>
 
-        </div>
+</div>
 
 
-        <div class="restaurant-info">
+<div class="restaurant-info">
 
-            <div class="option-number">
-                OPTION 04
-            </div>
+<div class="option-number">
+OPTION 04
+</div>
 
-            <h3>
-                ICON CRUISE
-            </h3>
+<h3>
+ICON CRUISE
+</h3>
 
-            <div class="subtitle">
-                The Main Character Night
-            </div>
+<div class="subtitle">
+The Main Character Night
+</div>
 
-            <p class="restaurant-description">
+<p class="restaurant-description">
 
-                Dinner on the water, city lights all around,
-                and a night that feels bigger than an ordinary dinner.
+Dinner on the water, city lights all around,
+and a night that feels bigger than an ordinary dinner.
 
-                <br><br>
+<br><br>
 
-                If graduation deserves a little drama,
-                this is the option.
+If graduation deserves a little drama,
+this is the option.
 
-            </p>
+</p>
 
-            <div class="mood">
-                Grand · Romantic · Unforgettable
-            </div>
+<div class="mood">
+Grand · Romantic · Unforgettable
+</div>
 
 
-            <div class="feeling-box">
+<div class="feeling-box">
 
-                <div class="feeling-label">
-                    What the night feels like
-                </div>
+<div class="feeling-label">
+What the night feels like
+</div>
 
-                <p>
-                    City lights on the water,
-                    dinner with a view,
-                    and the kind of night you'll probably
-                    remember for a long time.
-                </p>
+<p>
+City lights on the water,
+dinner with a view,
+and the kind of night you'll probably
+remember for a long time.
+</p>
 
-            </div>
+</div>
 
 
-            <img
-                class="restaurant-image-secondary"
-                src="images/icon/icon-2.webp"
-                alt="ICON CRUISE"
-            >
+<img
+class="restaurant-image-secondary"
+src="images/icon/icon-2.webp"
+alt="ICON CRUISE"
+>
 
 
-            <div class="restaurant-details">
+<div class="restaurant-details">
 
 
-                <div class="detail-item">
+<div class="detail-item">
 
-                    <span class="detail-label">
-                        Address
-                    </span>
+<span class="detail-label">
+Address
+</span>
 
-                    <span class="detail-value">
-                        5 Đ. Nguyễn Tất Thành, Xóm Chiếu,
-                        Hồ Chí Minh 700000, Vietnam
-                    </span>
+<span class="detail-value">
+5 Đ. Nguyễn Tất Thành, Xóm Chiếu,
+Hồ Chí Minh 700000, Vietnam
+</span>
 
-                    <a
-                        class="location-button"
-                        href="https://maps.app.goo.gl/NgearxZQYaJzMoat5?g_st=iz"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        View Location ↗
-                    </a>
+<a
+class="location-button"
+href="https://maps.app.goo.gl/NgearxZQYaJzMoat5?g_st=iz"
+target="_blank"
+rel="noopener noreferrer"
+>
+View Location ↗
+</a>
 
-                </div>
+</div>
 
 
-                <div class="detail-item">
+<div class="detail-item">
 
-                    <span class="detail-label">
-                        Opening Hours
-                    </span>
+<span class="detail-label">
+Opening Hours
+</span>
 
-                    <span class="detail-value">
-                        5:00 PM — 11:30 PM
-                    </span>
+<span class="detail-value">
+5:00 PM — 11:30 PM
+</span>
 
-                </div>
+</div>
 
 
-                <div class="detail-item">
+<div class="detail-item">
 
-                    <span class="detail-label">
-                        Rating
-                    </span>
+<span class="detail-label">
+Rating
+</span>
 
-                    <span class="detail-value detail-rating">
-                        ★ 4.8 / 5
-                    </span>
+<span class="detail-value detail-rating">
+★ 4.8 / 5
+</span>
 
-                </div>
+</div>
 
-            </div>
+</div>
 
 
-            <div class="menu-section">
+<div class="menu-section">
 
-                <div class="menu-title">
-                    THE MENU
-                </div>
+<div class="menu-title">
+THE MENU
+</div>
 
-                <div class="menu-note">
-                    Take a look at the full menu before making your choice.
-                </div>
+<div class="menu-note">
+Take a look at the full menu before making your choice.
+</div>
 
-                <a
-                    class="menu-button"
-                    href="images/icon/icon-menu.pdf"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    VIEW MENU ↗
-                </a>
+<a
+class="menu-button"
+href="images/icon/icon-menu.pdf"
+target="_blank"
+rel="noopener noreferrer"
+>
+VIEW MENU ↗
+</a>
 
-            </div>
+</div>
 
-        </div>
+</div>
 
-    </article>
+</article>
 
 
 </section>
@@ -3510,913 +3117,889 @@ body.invitation-locked {
 
 
 <!-- ==================================================
-     DATE & TIME
+    DATE & TIME
 ================================================== -->
 
 <section class="booking-section reveal">
 
-    <div class="save-the-date">
+<div class="save-the-date">
 
-        <div class="save-the-date-line"></div>
+<div class="save-the-date-line"></div>
 
-        <div class="save-the-date-title">
-            Save the date
-        </div>
+<div class="save-the-date-title">
+Save the date
+</div>
 
-    </div>
-
-
-    <h2>
-        When should we celebrate?
-    </h2>
-
-    <p class="booking-description">
-        Pick a date and time for your graduation night.
-    </p>
+</div>
 
 
-    <div class="booking-fields">
+<h2>
+When should we celebrate?
+</h2>
 
-        <div class="booking-field">
-
-            <label for="date">
-                Date
-            </label>
-
-            <input
-                type="date"
-                id="date"
-                required
-            >
-
-        </div>
+<p class="booking-description">
+Pick a date and time for your graduation night.
+</p>
 
 
-        <div class="booking-field">
+<div class="booking-fields">
 
-            <label for="time">
-                Time
-            </label>
+<div class="booking-field">
 
-            <input
-                type="time"
-                id="time"
-                required
-            >
+<label for="date">
+Date
+</label>
 
-        </div>
+<input
+type="date"
+id="date"
+required
+>
 
-    </div>
+</div>
 
 
-    <div class="booking-hint">
-        Don't worry — we can always adjust the details later. ♡
-    </div>
+<div class="booking-field">
+
+<label for="time">
+Time
+</label>
+
+<input
+type="time"
+id="time"
+required
+>
+
+</div>
+
+</div>
+
+
+<div class="booking-hint">
+Don't worry — we can always adjust the details later. ♡
+</div>
 
 </section>
 
 
 
 <!-- ==================================================
-     FINAL CHOICE
+    FINAL CHOICE
 ================================================== -->
 
 <section class="choose-section">
 
-    <div class="choose-small">
-        The final decision
-    </div>
+<div class="choose-small">
+The final decision
+</div>
 
-    <h2>
-        What's your night?
-    </h2>
+<h2>
+What's your night?
+</h2>
 
-    <p class="choose-description">
+<p class="choose-description">
 
-        You've seen the options.
-        <br>
+You've seen the options.
+<br>
 
-        You've picked the date.
-        <br>
+You've picked the date.
+<br>
 
-        Now choose the version of the night you'd like to remember.
+Now choose the version of the night you'd like to remember.
 
-        <br><br>
+<br><br>
 
-        ♡
+♡
 
-    </p>
+</p>
 
 
-    <div class="choice-buttons">
+<div class="choice-buttons">
 
 
-        <button
-            class="choice-button"
-            onclick="chooseRestaurant('ITADAKI', this)"
-        >
-            ITADAKI
-        </button>
+<button
+class="choice-button"
+onclick="chooseRestaurant('ITADAKI', this)"
+>
+ITADAKI
+</button>
 
 
-        <button
-            class="choice-button"
-            onclick="chooseRestaurant('NOIRE', this)"
-        >
-            NOIRE
-        </button>
+<button
+class="choice-button"
+onclick="chooseRestaurant('NOIRE', this)"
+>
+NOIRE
+</button>
 
 
-        <button
-            class="choice-button"
-            onclick="chooseRestaurant('DARCY', this)"
-        >
-            DARCY
-        </button>
+<button
+class="choice-button"
+onclick="chooseRestaurant('DARCY', this)"
+>
+DARCY
+</button>
 
 
-        <button
-            class="choice-button"
-            onclick="chooseRestaurant('ICON CRUISE', this)"
-        >
-            ICON CRUISE
-        </button>
+<button
+class="choice-button"
+onclick="chooseRestaurant('ICON CRUISE', this)"
+>
+ICON CRUISE
+</button>
 
-    </div>
+</div>
 
 
 
-    <!-- ==================================================
-         CONFIRM
-    ================================================== -->
+<!-- ==================================================
+        CONFIRM
+   ================================================== -->
 
-    <div
-        id="confirmArea"
-        class="confirm-area"
-    >
+<div
+id="confirmArea"
+class="confirm-area"
+>
 
-        <div class="confirm-small">
-            Your graduation night
-        </div>
+<div class="confirm-small">
+Your graduation night
+</div>
 
-        <h3>
-            Almost a date. ♡
-        </h3>
+<h3>
+Almost a date. ♡
+</h3>
 
-        <div
-            id="confirmDetails"
-            class="confirm-details"
-        >
-        </div>
+<div
+id="confirmDetails"
+class="confirm-details"
+>
+</div>
 
-        <button
-            class="confirm-button"
-            onclick="confirmNight()"
-        >
-            CONFIRM MY NIGHT ♡
-        </button>
+<button
+class="confirm-button"
+onclick="confirmNight()"
+>
+CONFIRM MY NIGHT ♡
+</button>
 
-        <button
-            class="change-choice"
-            onclick="changeChoice()"
-        >
-            ← Change my choice
-        </button>
+<button
+class="change-choice"
+onclick="changeChoice()"
+>
+← Change my choice
+</button>
 
-    </div>
+</div>
 
 
 
-    <!-- ==================================================
-         SUCCESS
-    ================================================== -->
+<!-- ==================================================
+        SUCCESS
+   ================================================== -->
 
-    <div
-        id="successMessage"
-        class="success-message"
-    >
+<div
+id="successMessage"
+class="success-message"
+>
 
-        <div class="confirm-small">
-            It's official
-        </div>
+<div class="confirm-small">
+It's official
+</div>
 
-        <h3>
-            It's a date. ♡
-        </h3>
+<h3>
+It's a date. ♡
+</h3>
 
-        <p id="successText">
-        </p>
+<p id="successText">
+</p>
 
 
 
-        <!-- DIGITAL TICKET -->
+<!-- DIGITAL TICKET -->
 
-        <div
-            id="ticket"
-            class="ticket"
-        >
+<div
+id="ticket"
+class="ticket"
+>
 
-            <div class="ticket-top">
+<div class="ticket-top">
 
-                <div class="ticket-label">
-                    Graduation Night
-                </div>
+<div class="ticket-label">
+Graduation Night
+</div>
 
-                <div
-                    id="ticketRestaurant"
-                    class="ticket-title"
-                >
-                    ITADAKI
-                </div>
+<div
+id="ticketRestaurant"
+class="ticket-title"
+>
+ITADAKI
+</div>
 
-                <div
-                    id="ticketSubtitle"
-                    class="ticket-subtitle"
-                >
-                    The Omakase Night
-                </div>
+<div
+id="ticketSubtitle"
+class="ticket-subtitle"
+>
+The Omakase Night
+</div>
 
-            </div>
+</div>
 
 
-            <div class="ticket-middle">
+<div class="ticket-middle">
 
-                <div>
+<div>
 
-                    <div class="ticket-detail-label">
-                        Date
-                    </div>
+<div class="ticket-detail-label">
+Date
+</div>
 
-                    <div
-                        id="ticketDate"
-                        class="ticket-detail-value"
-                    >
-                    </div>
+<div
+id="ticketDate"
+class="ticket-detail-value"
+>
+</div>
 
-                </div>
+</div>
 
 
-                <div>
+<div>
 
-                    <div class="ticket-detail-label">
-                        Time
-                    </div>
+<div class="ticket-detail-label">
+Time
+</div>
 
-                    <div
-                        id="ticketTime"
-                        class="ticket-detail-value"
-                    >
-                    </div>
+<div
+id="ticketTime"
+class="ticket-detail-value"
+>
+</div>
 
-                </div>
+</div>
 
-            </div>
+</div>
 
 
-            <div class="ticket-bottom">
+<div class="ticket-bottom">
 
-                <div class="admit">
-                    Admit two
-                </div>
+<div class="admit">
+Admit two
+</div>
 
-                <div class="ticket-heart">
-                    ♡
-                </div>
+<div class="ticket-heart">
+♡
+</div>
 
-            </div>
+</div>
 
-        </div>
+</div>
 
-    </div>
+</div>
 
 </section>
 
 
 
 <!-- ==================================================
-     ONE LAST THING
+    ONE LAST THING
 ================================================== -->
 
 <section class="last-section reveal">
 
-    <div class="section-eyebrow">
-        One last thing
-    </div>
+<div class="section-eyebrow">
+One last thing
+</div>
 
-    <h2 class="letter-title">
-        Before the night begins...
-    </h2>
+<h2 class="letter-title">
+Before the night begins...
+</h2>
 
-    <div class="letter">
+<div class="letter">
 
-        You worked hard for this moment.
+You worked hard for this moment.
 
-        <br><br>
+<br><br>
 
-        So whatever you choose,
-        I hope we don't spend the whole night talking about
-        deadlines, assignments or how tired we are.
+So whatever you choose,
+I hope we don't spend the whole night talking about
+deadlines, assignments or how tired we are.
 
-        <br><br>
+<br><br>
 
-        Tonight is just for celebrating you,
-        laughing too much,
-        eating something good,
-        taking too many pictures,
-        and making one more memory before the next chapter begins.
+Tonight is just for celebrating you,
+laughing too much,
+eating something good,
+taking too many pictures,
+and making one more memory before the next chapter begins.
 
-        <br><br>
+<br><br>
 
-        You deserve a really good night.
+You deserve a really good night.
 
-    </div>
-
-
-    <div class="letter-signature">
-        See you at dinner. ♡
-    </div>
+</div>
 
 
-    <div class="final-line">
-        One graduation · One night · One memory
-    </div>
+<div class="letter-signature">
+See you at dinner. ♡
+</div>
+
+
+<div class="final-line">
+One graduation · One night · One memory
+</div>
 
 </section>
 
 
 
 <!-- ==================================================
-     FOOTER
+    FOOTER
 ================================================== -->
 
 <footer>
-    Made for your graduation night ♡
+Made for your graduation night ♡
 </footer>
 
 
 
 <!-- ==================================================
-     JAVASCRIPT
+    JAVASCRIPT
 ================================================== -->
 
 <script>
 
 
-    /* ==================================================
-       VARIABLES
-    ================================================== */
+/* ==================================================
+      VARIABLES
+   ================================================== */
 
-    let selectedRestaurant = "";
-
-
-
-    /* ==================================================
-       RESTAURANT SUBTITLES
-    ================================================== */
-
-    const restaurantSubtitles = {
-
-        "ITADAKI":
-            "The Omakase Night",
-
-        "NOIRE":
-            "The Mystery Night",
-
-        "DARCY":
-            "The City Lights Night",
-
-        "ICON CRUISE":
-            "The Main Character Night"
-
-    };
+let selectedRestaurant = "";
 
 
 
-    /* ==================================================
-       SET MINIMUM DATE
-    ================================================== */
+/* ==================================================
+      RESTAURANT SUBTITLES
+   ================================================== */
 
-    const dateInput =
-        document.getElementById("date");
+const restaurantSubtitles = {
 
-    const today =
-        new Date();
+"ITADAKI":
+"The Omakase Night",
 
-    const year =
-        today.getFullYear();
+"NOIRE":
+"The Mystery Night",
 
-    const month =
-        String(today.getMonth() + 1)
-            .padStart(2, "0");
+"DARCY":
+"The City Lights Night",
 
-    const day =
-        String(today.getDate())
-            .padStart(2, "0");
+"ICON CRUISE":
+"The Main Character Night"
 
-    dateInput.min =
-        `${year}-${month}-${day}`;
+};
 
 
 
-    /* ==================================================
-       FORMAT DATE
-    ================================================== */
+/* ==================================================
+      SET MINIMUM DATE
+   ================================================== */
 
-    function formatDate(date) {
+const dateInput =
+document.getElementById("date");
 
-        const dateObject =
-            new Date(date + "T00:00:00");
+const today =
+new Date();
 
-        return dateObject.toLocaleDateString(
-            "en-US",
-            {
-                month: "long",
-                day: "numeric",
-                year: "numeric"
-            }
-        );
+const year =
+today.getFullYear();
 
-    }
+const month =
+String(today.getMonth() + 1)
+.padStart(2, "0");
 
+const day =
+String(today.getDate())
+.padStart(2, "0");
 
-
-    /* ==================================================
-       FORMAT TIME
-    ================================================== */
-
-    function formatTime(time) {
-
-        const timeObject =
-            new Date(
-                "1970-01-01T" + time
-            );
-
-        return timeObject.toLocaleTimeString(
-            "en-US",
-            {
-                hour: "numeric",
-                minute: "2-digit"
-            }
-        );
-
-    }
+dateInput.min =
+`${year}-${month}-${day}`;
 
 
 
-    /* ==================================================
-       THIS OR THAT
-    ================================================== */
+/* ==================================================
+      FORMAT DATE
+   ================================================== */
 
-    function showFoodOptions(type) {
+function formatDate(date) {
 
-        const westernOptions =
-            document.getElementById("westernOptions");
+const dateObject =
+new Date(date + "T00:00:00");
 
-        const japaneseOptions =
-            document.getElementById("japaneseOptions");
+return dateObject.toLocaleDateString(
+"en-US",
+{
+month: "long",
+day: "numeric",
+year: "numeric"
+}
+);
 
-
-        /* Hide both */
-    const westernOptions =
-        document.getElementById("westernOptions");
-
-        westernOptions.classList.remove("active");
-    const japaneseOptions =
-        document.getElementById("japaneseOptions");
-
-        japaneseOptions.classList.remove("active");
-    const roundTwoTitle =
-        document.getElementById("roundTwoTitle");
-
-
-        /* Show Western */
-    westernOptions.classList.remove("active");
-    japaneseOptions.classList.remove("active");
-
-        if (type === "western") {
-
-            westernOptions.classList.add("active");
-    if (type === "western") {
-
-            setTimeout(function () {
-        westernOptions.classList.add("active");
-
-                westernOptions.scrollIntoView({
-                    behavior: "smooth",
-                    block: "center"
-                });
-
-            }, 100);
-
-        }
-        roundTwoTitle.textContent =
-            "So... Western it is.";
-
-    }
-
-        /* Show Japanese */
-
-        if (type === "japanese") {
-    if (type === "japanese") {
-
-            japaneseOptions.classList.add("active");
-        japaneseOptions.classList.add("active");
-
-            setTimeout(function () {
-        roundTwoTitle.textContent =
-            "So... Japanese it is.";
-
-                japaneseOptions.scrollIntoView({
-                    behavior: "smooth",
-                    block: "center"
-                });
-    }
-
-            }, 100);
-
-        }
-
-    }
-    document.querySelector(".round-two")
-        .scrollIntoView({
-            behavior: "smooth",
-            block: "start"
-        });
 }
 
 
 
-    /* ==================================================
-       CHOOSE RESTAURANT
-    ================================================== */
-
-    function chooseRestaurant(name, button) {
-
-        const date =
-            document.getElementById("date").value;
-
-        const time =
-            document.getElementById("time").value;
-
-
-        /* Check date */
-
-        if (!date) {
-
-            alert(
-                "Please choose a date first. ♡"
-            );
-
-            dateInput.focus();
-
-            return;
-
-        }
-
-
-        /* Check time */
-
-        if (!time) {
-
-            alert(
-                "Please choose a time first. ♡"
-            );
-
-            document
-                .getElementById("time")
-                .focus();
-
-            return;
-
-        }
-
-
-        /* Save restaurant */
-
-        selectedRestaurant =
-            name;
-
-
-        /* Remove previous selection */
-
-        document
-            .querySelectorAll(".choice-button")
-            .forEach(function (btn) {
-
-                btn.classList.remove("selected");
-
-            });
-
-
-        /* Highlight selected button */
-
-        button.classList.add("selected");
-
-
-        /* Format */
-
-        const formattedDate =
-            formatDate(date);
-
-        const formattedTime =
-            formatTime(time);
-
-
-        /* Show confirmation */
-
-        const confirmArea =
-            document.getElementById(
-                "confirmArea"
-            );
-
-        const confirmDetails =
-            document.getElementById(
-                "confirmDetails"
-            );
-
-
-        confirmDetails.innerHTML =
-
-            "📅 <strong>" +
-            formattedDate +
-            "</strong>" +
-
-            "<br>" +
-
-            "🕰 <strong>" +
-            formattedTime +
-            "</strong>" +
-
-            "<br>" +
-
-            "🍽 <strong>" +
-            name +
-            "</strong>";
-
-
-        confirmArea.style.display =
-            "block";
-
-
-        /* Hide old success */
-
-        document
-            .getElementById("successMessage")
-            .style.display = "none";
-
-
-        /* Scroll */
-
-        confirmArea.scrollIntoView({
-            behavior: "smooth",
-            block: "center"
-        });
-
-    }
-
-
-
-    /* ==================================================
-       CHANGE CHOICE
-    ================================================== */
-
-    function changeChoice() {
-
-        document
-            .getElementById("confirmArea")
-            .style.display = "none";
-
-
-        document
-            .querySelectorAll(".choice-button")
-            .forEach(function (btn) {
-
-                btn.classList.remove("selected");
-
-            });
-
-
-        selectedRestaurant = "";
-
-    }
-
-
-
-    /* ==================================================
-       CONFIRM NIGHT
-    ================================================== */
-
-    function confirmNight() {
-
-        const date =
-            document.getElementById("date").value;
-
-        const time =
-            document.getElementById("time").value;
-
-
-        /* Safety check */
-
-        if (
-            !date ||
-            !time ||
-            !selectedRestaurant
-        ) {
-
-            alert(
-                "Please choose your date, time and restaurant. ♡"
-            );
-
-            return;
-
-        }
-
-
-        /* Format */
-
-        const formattedDate =
-            formatDate(date);
-
-        const formattedTime =
-            formatTime(time);
-
-
-        /* Hide confirmation */
-
-        document
-            .getElementById("confirmArea")
-            .style.display = "none";
-
-
-        /* Show success */
-
-        const message =
-            document.getElementById(
-                "successMessage"
-            );
-
-        const text =
-            document.getElementById(
-                "successText"
-            );
-
-
-        text.innerHTML =
-
-            "You chose <strong>" +
-            selectedRestaurant +
-            "</strong>." +
-
-            "<br><br>" +
-
-            "📅 " +
-            formattedDate +
-
-            "<br>" +
-
-            "🕰 " +
-            formattedTime +
-
-            "<br><br>" +
-
-            "Now just show up " +
-            "and let us celebrate you. ♡";
-
-
-        message.style.display =
-            "block";
-
-
-
-        /* ==================================================
-           DIGITAL TICKET
-        ================================================== */
-
-        document
-            .getElementById("ticketRestaurant")
-            .textContent =
-            selectedRestaurant;
-
-
-        document
-            .getElementById("ticketSubtitle")
-            .textContent =
-            restaurantSubtitles[
-                selectedRestaurant
-            ];
-
-
-        document
-            .getElementById("ticketDate")
-            .textContent =
-            formattedDate;
-
-
-        document
-            .getElementById("ticketTime")
-            .textContent =
-            formattedTime;
-
-
-        document
-            .getElementById("ticket")
-            .style.display =
-            "block";
-
-
-        /* Scroll */
-
-        message.scrollIntoView({
-            behavior: "smooth",
-            block: "center"
-        });
-
-
-        /* Current data */
-
-        console.log({
-
-            date: date,
-
-            time: time,
-
-            restaurant:
-                selectedRestaurant
-
-        });
-
-    }
-
-
-
-    /* ==================================================
-       SCROLL REVEAL
-    ================================================== */
-
-    const revealElements =
-        document.querySelectorAll(".reveal");
-
-
-    const observer =
-        new IntersectionObserver(
-
-            function (entries) {
-
-                entries.forEach(
-                    function (entry) {
-
-                        if (
-                            entry.isIntersecting
-                        ) {
-
-                            entry.target
-                                .classList
-                                .add("visible");
-
-                        }
-
-                    }
-                );
-
-            },
-
-            {
-                threshold: 0.12
-            }
-
-        );
-
-
-    revealElements.forEach(
-        function (element) {
-
-            observer.observe(element);
-
-        }
-    );
 /* ==================================================
-   OPEN INVITATION
+      FORMAT TIME
+   ================================================== */
+
+function formatTime(time) {
+
+const timeObject =
+new Date(
+"1970-01-01T" + time
+);
+
+return timeObject.toLocaleTimeString(
+"en-US",
+{
+hour: "numeric",
+minute: "2-digit"
+}
+);
+
+}
+
+
+
+/* ==================================================
+      THIS OR THAT
+   ================================================== */
+
+function showFoodOptions(type) {
+
+const westernOptions =
+document.getElementById("westernOptions");
+
+const japaneseOptions =
+document.getElementById("japaneseOptions");
+
+
+/* Hide both */
+
+westernOptions.classList.remove("active");
+
+japaneseOptions.classList.remove("active");
+
+
+/* Show Western */
+
+if (type === "western") {
+
+westernOptions.classList.add("active");
+
+setTimeout(function () {
+
+westernOptions.scrollIntoView({
+behavior: "smooth",
+block: "center"
+});
+
+}, 100);
+
+}
+
+
+/* Show Japanese */
+
+if (type === "japanese") {
+
+japaneseOptions.classList.add("active");
+
+setTimeout(function () {
+
+japaneseOptions.scrollIntoView({
+behavior: "smooth",
+block: "center"
+});
+
+}, 100);
+
+}
+
+}
+
+
+
+/* ==================================================
+      CHOOSE RESTAURANT
+   ================================================== */
+
+function chooseRestaurant(name, button) {
+
+const date =
+document.getElementById("date").value;
+
+const time =
+document.getElementById("time").value;
+
+
+/* Check date */
+
+if (!date) {
+
+alert(
+"Please choose a date first. ♡"
+);
+
+dateInput.focus();
+
+return;
+
+}
+
+
+/* Check time */
+
+if (!time) {
+
+alert(
+"Please choose a time first. ♡"
+);
+
+document
+.getElementById("time")
+.focus();
+
+return;
+
+}
+
+
+/* Save restaurant */
+
+selectedRestaurant =
+name;
+
+
+/* Remove previous selection */
+
+document
+.querySelectorAll(".choice-button")
+.forEach(function (btn) {
+
+btn.classList.remove("selected");
+
+});
+
+
+/* Highlight selected button */
+
+button.classList.add("selected");
+
+
+/* Format */
+
+const formattedDate =
+formatDate(date);
+
+const formattedTime =
+formatTime(time);
+
+
+/* Show confirmation */
+
+const confirmArea =
+document.getElementById(
+"confirmArea"
+);
+
+const confirmDetails =
+document.getElementById(
+"confirmDetails"
+);
+
+
+confirmDetails.innerHTML =
+
+"📅 <strong>" +
+formattedDate +
+"</strong>" +
+
+"<br>" +
+
+"🕰 <strong>" +
+formattedTime +
+"</strong>" +
+
+"<br>" +
+
+"🍽 <strong>" +
+name +
+"</strong>";
+
+
+confirmArea.style.display =
+"block";
+
+
+/* Hide old success */
+
+document
+.getElementById("successMessage")
+.style.display = "none";
+
+
+/* Scroll */
+
+confirmArea.scrollIntoView({
+behavior: "smooth",
+block: "center"
+});
+
+}
+
+
+
+/* ==================================================
+      CHANGE CHOICE
+   ================================================== */
+
+function changeChoice() {
+
+document
+.getElementById("confirmArea")
+.style.display = "none";
+
+
+document
+.querySelectorAll(".choice-button")
+.forEach(function (btn) {
+
+btn.classList.remove("selected");
+
+});
+
+
+selectedRestaurant = "";
+
+}
+
+
+
+/* ==================================================
+      CONFIRM NIGHT
+   ================================================== */
+
+function confirmNight() {
+
+const date =
+document.getElementById("date").value;
+
+const time =
+document.getElementById("time").value;
+
+
+/* Safety check */
+
+if (
+!date ||
+!time ||
+!selectedRestaurant
+) {
+
+alert(
+"Please choose your date, time and restaurant. ♡"
+);
+
+return;
+
+}
+
+
+/* Format */
+
+const formattedDate =
+formatDate(date);
+
+const formattedTime =
+formatTime(time);
+
+
+/* Hide confirmation */
+
+document
+.getElementById("confirmArea")
+.style.display = "none";
+
+
+/* Show success */
+
+const message =
+document.getElementById(
+"successMessage"
+);
+
+const text =
+document.getElementById(
+"successText"
+);
+
+
+text.innerHTML =
+
+"You chose <strong>" +
+selectedRestaurant +
+"</strong>." +
+
+"<br><br>" +
+
+"📅 " +
+formattedDate +
+
+"<br>" +
+
+"🕰 " +
+formattedTime +
+
+"<br><br>" +
+
+"Now just show up " +
+"and let us celebrate you. ♡";
+
+
+message.style.display =
+"block";
+
+
+
+/* ==================================================
+          DIGITAL TICKET
+       ================================================== */
+
+document
+.getElementById("ticketRestaurant")
+.textContent =
+selectedRestaurant;
+
+
+document
+.getElementById("ticketSubtitle")
+.textContent =
+restaurantSubtitles[
+selectedRestaurant
+];
+
+
+document
+.getElementById("ticketDate")
+.textContent =
+formattedDate;
+
+
+document
+.getElementById("ticketTime")
+.textContent =
+formattedTime;
+
+
+document
+.getElementById("ticket")
+.style.display =
+"block";
+
+
+/* Scroll */
+
+message.scrollIntoView({
+behavior: "smooth",
+block: "center"
+});
+
+
+/* Current data */
+
+console.log({
+
+date: date,
+
+time: time,
+
+restaurant:
+selectedRestaurant
+
+});
+
+}
+
+
+
+/* ==================================================
+      SCROLL REVEAL
+   ================================================== */
+
+const revealElements =
+document.querySelectorAll(".reveal");
+
+
+const observer =
+new IntersectionObserver(
+
+function (entries) {
+
+entries.forEach(
+function (entry) {
+
+if (
+entry.isIntersecting
+) {
+
+entry.target
+.classList
+.add("visible");
+
+}
+
+}
+);
+
+},
+
+{
+threshold: 0.12
+}
+
+);
+
+
+revealElements.forEach(
+function (element) {
+
+observer.observe(element);
+
+}
+);
+/* ==================================================
+  OPEN INVITATION
 ================================================== */
 
 document.body.classList.add("invitation-locked");
 
 const openButton =
-    document.getElementById("openInvitation");
+document.getElementById("openInvitation");
 
 const openingScreen =
-    document.getElementById("openingScreen");
+document.getElementById("openingScreen");
 
 openButton.addEventListener("click", function () {
 
-    openingScreen.classList.add("hide");
+openingScreen.classList.add("hide");
 
-    document.body.classList.remove("invitation-locked");
+document.body.classList.remove("invitation-locked");
 
-    setTimeout(function () {
+setTimeout(function () {
 
-        openingScreen.style.display = "none";
+openingScreen.style.display = "none";
 
-    }, 900);
+}, 900);
 
 });
 </script>
@@ -4425,3 +4008,4 @@ openButton.addEventListener("click", function () {
 </body>
 
 </html>
+```
