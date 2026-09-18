@@ -1014,9 +1014,10 @@ color: #777;
 }
 
 #selectedRestaurant .restaurant {
-    display: block;
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
 }
-
 #selectedRestaurant .restaurant-image-wrapper {
     width: 100%;
 }
@@ -3647,28 +3648,35 @@ block: "center"
 }
 
 function showRestaurant(id) {
-
     const restaurant = document.getElementById(id);
     const container = document.getElementById("selectedRestaurant");
 
-    if (!restaurant || !container) return;
+    if (!restaurant || !container) {
+        console.log("Restaurant not found:", id);
+        return;
+    }
 
-    // Xóa option đang hiển thị trước đó
+    // Xóa nội dung đang hiện
     container.innerHTML = "";
 
-    // Clone toàn bộ nội dung restaurant
+    // Copy restaurant được chọn
     const clone = restaurant.cloneNode(true);
 
-    // Đổi ID để không bị trùng ID trong HTML
+    // Xóa ID để tránh duplicate ID
     clone.removeAttribute("id");
 
-    // Hiện nội dung
+    // Xóa animation/reveal có thể làm nó invisible
     clone.classList.remove("reveal");
-    clone.style.display = "block";
 
-    // Đưa vào khu vực preview
+    // Ép hiện
+    clone.style.display = "block";
+    clone.style.opacity = "1";
+    clone.style.visibility = "visible";
+
+    // Hiện ngay dưới Round 02
     container.appendChild(clone);
 }
+
 /* ==================================================
       CHOOSE RESTAURANT
    ================================================== */
