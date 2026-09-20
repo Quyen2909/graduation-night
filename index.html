@@ -3472,7 +3472,16 @@ block: "center"
 
 }
 
+/* ==================================================
+   RESTAURANT SELECTION
+================================================== */
+
+let selectedWestern = null;
+let selectedJapanese = null;
+
+
 function showRestaurant(id) {
+
     const restaurant = document.getElementById(id);
     const container = document.getElementById("selectedRestaurant");
 
@@ -3481,25 +3490,76 @@ function showRestaurant(id) {
         return;
     }
 
-    // Xóa nội dung đang hiện
+
+    /* ------------------------------------------
+       Remember selection by category
+    ------------------------------------------ */
+
+    if (id === "darcy" || id === "icon-cruise") {
+
+        selectedWestern = id;
+
+    }
+
+    if (id === "itadaki" || id === "noire") {
+
+        selectedJapanese = id;
+
+    }
+
+
+    /* ------------------------------------------
+       Re-render selected restaurants
+    ------------------------------------------ */
+
     container.innerHTML = "";
 
-    // Copy restaurant được chọn
-    const clone = restaurant.cloneNode(true);
 
-    // Xóa ID để tránh duplicate ID
-    clone.removeAttribute("id");
+    /* Western selection */
 
-    // Xóa animation/reveal có thể làm nó invisible
-    clone.classList.remove("reveal");
+    if (selectedWestern) {
 
-    // Ép hiện
-    clone.style.display = "block";
-    clone.style.opacity = "1";
-    clone.style.visibility = "visible";
+        const westernRestaurant =
+            document.getElementById(selectedWestern);
 
-    // Hiện ngay dưới Round 02
-    container.appendChild(clone);
+        const westernClone =
+            westernRestaurant.cloneNode(true);
+
+        westernClone.removeAttribute("id");
+
+        westernClone.classList.remove("reveal");
+
+        westernClone.style.display = "block";
+        westernClone.style.opacity = "1";
+        westernClone.style.visibility = "visible";
+
+        container.appendChild(westernClone);
+
+    }
+
+
+    /* Japanese selection */
+
+    if (selectedJapanese) {
+
+        const japaneseRestaurant =
+            document.getElementById(selectedJapanese);
+
+        const japaneseClone =
+            japaneseRestaurant.cloneNode(true);
+
+        japaneseClone.removeAttribute("id");
+
+        japaneseClone.classList.remove("reveal");
+
+        japaneseClone.style.display = "block";
+        japaneseClone.style.opacity = "1";
+        japaneseClone.style.visibility = "visible";
+
+        container.appendChild(japaneseClone);
+
+    }
+
 }
 
 /* ==================================================
