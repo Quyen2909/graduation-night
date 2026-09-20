@@ -959,10 +959,24 @@ color: #666;
 /* ==================================================
           RESTAURANTS
        ================================================== */
+/* ==================================================
+   RESTAURANTS
+================================================== */
+
 .restaurants {
   background: #000;
   color: #fff;
+  width: 100%;
 }
+
+.restaurants-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 120px 20px 40px;
+}
+
+
+/* TEXT */
 
 .restaurants h3,
 .restaurants .subtitle,
@@ -970,108 +984,156 @@ color: #666;
 .restaurants .detail-label,
 .restaurants .detail-value {
   color: #fff;
-} 
-  
-.restaurants {
-max-width: 1200px;
-margin: auto;
-padding: 120px 20px 40px;
 }
 
+
 .restaurant {
-margin-bottom: 170px;
-scroll-margin-top: 40px;
+  margin-bottom: 170px;
+  scroll-margin-top: 40px;
 }
 
 .restaurant-image-wrapper {
-width: 100%;
-overflow: hidden;
+  width: 100%;
+  overflow: hidden;
 }
 
 .restaurant-image {
-width: 100%;
-height: 620px;
-display: block;
-object-fit: cover;
-transition: transform 0.7s ease;
+  width: 100%;
+  height: 620px;
+  display: block;
+  object-fit: cover;
+  transition: transform 0.7s ease;
 }
 
 .restaurant-image-wrapper:hover .restaurant-image {
-transform: scale(1.015);
+  transform: scale(1.015);
 }
 
 .restaurant-image-secondary {
-width: 100%;
-height: 420px;
-display: block;
-object-fit: cover;
-margin-top: 55px;
-transition: transform 0.7s ease;
+  width: 100%;
+  height: 420px;
+  display: block;
+  object-fit: cover;
+  margin-top: 55px;
+  transition: transform 0.7s ease;
 }
 
 .restaurant-image-secondary:hover {
-transform: scale(1.01);
+  transform: scale(1.01);
 }
 
 .restaurant-info {
-padding: 35px 5px 0;
+  padding: 35px 5px 0;
 }
 
 .option-number {
-font-size: 11px;
-font-weight: 500;
-letter-spacing: 2.5px;
-color: #999;
-margin-bottom: 12px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 2.5px;
+  margin-bottom: 12px;
 }
 
 .restaurant h3 {
-font-size: clamp(48px, 5.5vw, 68px);
-font-weight: 500;
-margin: 0;
-line-height: 0.95;
-letter-spacing: -0.5px;
+  font-size: clamp(48px, 5.5vw, 68px);
+  font-weight: 500;
+  margin: 0;
+  line-height: 0.95;
+  letter-spacing: -0.5px;
 }
 
 .subtitle {
-font-size: 23px;
-font-weight: 400;
-font-style: italic;
-margin-top: 12px;
-color: #444;
+  font-size: 23px;
+  font-weight: 400;
+  font-style: italic;
+  margin-top: 12px;
 }
 
 .restaurant-description {
-max-width: 720px;
-font-size: 14px;
-line-height: 1.9;
-color: #666;
-margin-top: 25px;
+  max-width: 720px;
+  font-size: 14px;
+  line-height: 1.9;
+  color: #aaa;
+  margin-top: 25px;
 }
 
 .mood {
-margin-top: 18px;
-font-size: 10px;
-font-weight: 500;
-letter-spacing: 2px;
-text-transform: uppercase;
-color: #777;
+  margin-top: 18px;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #777;
 }
 
-#selectedRestaurant {
-    width: 100%;
-    margin-top: 60px;
+
+/* ==================================================
+   RESTAURANT DETAILS
+================================================== */
+
+.restaurant-details {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 25px;
+
+  margin-top: 40px;
+  padding: 28px 0;
+
+  border-top: 1px solid #555;
+  border-bottom: 1px solid #555;
 }
 
-#selectedRestaurant .restaurant {
-    display: block !important;
-    opacity: 1 !important;
-    visibility: visible !important;
-}
-#selectedRestaurant .restaurant-image-wrapper {
-    width: 100%;
+.detail-item {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
 }
 
+.detail-label {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.detail-value {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.7;
+}
+
+.detail-rating {
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+
+.location-button {
+  display: inline-block;
+  width: fit-content;
+
+  margin-top: 12px;
+  padding: 9px 15px;
+
+  border: 1px solid #777;
+
+  color: #fff;
+  text-decoration: none;
+
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+
+  transition:
+    background 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.location-button:hover {
+  background: #fff;
+  color: #000;
+  border-color: #fff;
+}
 /* ==================================================
           FEELING BOX
        ================================================== */
@@ -1103,131 +1165,6 @@ color: #333;
 }
 
 
-/* ==================================================
-          RESTAURANT DETAILS
-       ================================================== */
-
-.restaurant-details {
-display: grid;
-grid-template-columns: repeat(3, minmax(0, 1fr));
-gap: 25px;
-
-margin-top: 40px;
-padding: 28px 0;
-
-border-top: 1px solid #d7d0c7;
-border-bottom: 1px solid #d7d0c7;
-}
-
-.detail-item {
-display: flex;
-flex-direction: column;
-gap: 7px;
-}
-
-.detail-label {
-font-size: 10px;
-font-weight: 500;
-letter-spacing: 2px;
-color: #999;
-text-transform: uppercase;
-}
-
-.detail-value {
-font-size: 14px;
-font-weight: 400;
-line-height: 1.7;
-color: #333;
-}
-
-.detail-rating {
-font-size: 14px;
-letter-spacing: 1px;
-}
-
-.location-button {
-display: inline-block;
-width: fit-content;
-
-margin-top: 12px;
-padding: 9px 15px;
-
-border: 1px solid #bbb;
-
-color: #444;
-text-decoration: none;
-
-font-size: 10px;
-font-weight: 500;
-letter-spacing: 1.5px;
-text-transform: uppercase;
-
-transition:
-background 0.25s ease,
-color 0.25s ease,
-border-color 0.25s ease;
-}
-
-.location-button:hover {
-background: #222;
-color: white;
-border-color: #222;
-}
-
-
-/* ==================================================
-          MENU
-       ================================================== */
-
-.menu-section {
-margin-top: 50px;
-padding-top: 30px;
-border-top: 1px solid #d7d0c7;
-}
-
-.menu-title {
-font-size: 10px;
-font-weight: 500;
-letter-spacing: 2.5px;
-text-transform: uppercase;
-margin-bottom: 8px;
-}
-
-.menu-note {
-font-size: 13px;
-color: #777;
-margin-bottom: 22px;
-}
-
-.menu-button {
-display: inline-block;
-
-margin-top: 5px;
-padding: 12px 21px;
-
-border: 1px solid #222;
-
-color: #222;
-text-decoration: none;
-
-font-size: 10px;
-font-weight: 500;
-letter-spacing: 1.5px;
-text-transform: uppercase;
-
-transition:
-background 0.25s ease,
-color 0.25s ease;
-}
-
-.menu-button:hover {
-background: #222;
-color: white;
-}
-
-.restaurants {
-    display: none;
-}
 
 /* ==================================================
           SAVE THE DATE
@@ -2561,7 +2498,7 @@ Unforgettable.
 
 <section class="restaurants">
 
-
+<div class="restaurants-inner">
 <!-- ==================================================
         ITADAKI
    ================================================== -->
@@ -3005,7 +2942,7 @@ Rating
 
 </article>
 
-
+</div>
 </section>
 
 
