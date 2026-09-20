@@ -3369,29 +3369,6 @@ String(today.getDate())
 dateInput.min =
 `${year}-${month}-${day}`;
 
-let selectedAsianWestern = null;
-let selectedJapanese = null;
-  if (category === "asian-western") {
-    selectedAsianWestern = restaurant;
-}
-
-if (category === "japanese") {
-    selectedJapanese = restaurant;
-}
-  function renderSelectedRestaurants() {
-
-    selectedRestaurant.innerHTML = "";
-
-    if (selectedAsianWestern) {
-        selectedRestaurant.innerHTML +=
-            createRestaurantHTML(selectedAsianWestern);
-    }
-
-    if (selectedJapanese) {
-        selectedRestaurant.innerHTML +=
-            createRestaurantHTML(selectedJapanese);
-    }
-}
 
 /* ==================================================
       FORMAT DATE
