@@ -715,6 +715,20 @@ bottom: 0;
     object-fit: cover;
     display: block;
 }
+
+  .itadaki-images {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.itadaki-images .restaurant-image {
+    width: 100%;
+    aspect-ratio: 2 / 3;
+    object-fit: cover;
+    display: block;
+}
+  
 .food-options {
 display: none;
 
@@ -2545,21 +2559,11 @@ id="itadaki"
 class="restaurant reveal"
 >
 
-<div class="restaurant-image-wrapper">
-
-<img
-class="restaurant-image"
-src="images/itadaki/itadaki-1.jpg"
-alt="ITADAKI"
->
-
-</div>
-
 
 <div class="restaurant-info">
 
 <div class="option-number">
-OPTION 01
+OPTION 03
 </div>
 
 <h3>
@@ -2567,44 +2571,34 @@ ITADAKI
 </h3>
 
 <div class="subtitle">
-The Omakase Night
+Omakase
 </div>
 
-<p class="restaurant-description">
+  <div class="restaurant-image-wrapper itadaki-images">
 
-An intimate evening for people who appreciate
-beautiful food, thoughtful details and a slower pace.
+    <img
+    class="restaurant-image"
+    src="images/itadaki/itadaki-3.jpg"
+    alt="ITADAKI 3"
+    >
 
-<br><br>
+    <img
+    class="restaurant-image"
+    src="images/itadaki/itadaki-4.jpg"
+    alt="ITADAKI 4"
+    >
 
-This is the night for sitting close, talking for hours,
-and letting the food become part of the celebration.
-
-</p>
-
-<div class="mood">
-Intimate · Elegant · Food-focused
-</div>
-
-
-<div class="feeling-box">
-
-<div class="feeling-label">
-What the night feels like
-</div>
-
-<p>
-Slow conversations, beautiful plates,
-a few glasses of something good,
-and nowhere else we need to be.
-</p>
+    <img
+    class="restaurant-image"
+    src="images/itadaki/itadaki-5.jpg"
+    alt="ITADAKI 5"
+    >
 
 </div>
-
 
 <img
 class="restaurant-image-secondary"
-src="images/itadaki/itadaki-2.jpg"
+src="images/itadaki/itadaki-1.jpg"
 alt="ITADAKI interior"
 >
 
