@@ -3477,17 +3477,92 @@ block: "center"
 }
 
 /* ==================================================
+   THIS OR THAT
+================================================== */
+
+function showFoodOptions(type) {
+
+    const westernOptions =
+        document.getElementById("westernOptions");
+
+    const japaneseOptions =
+        document.getElementById("japaneseOptions");
+
+    const selectedRestaurant =
+        document.getElementById("selectedRestaurant");
+
+
+    /* ------------------------------------------
+       Hide both Round 2 options
+    ------------------------------------------ */
+
+    westernOptions.classList.remove("active");
+    japaneseOptions.classList.remove("active");
+
+
+    /* ------------------------------------------
+       Clear previous restaurant information
+       when changing category
+    ------------------------------------------ */
+
+    selectedRestaurant.innerHTML = "";
+
+
+    /* ------------------------------------------
+       Show Asian-Western
+    ------------------------------------------ */
+
+    if (type === "western") {
+
+        westernOptions.classList.add("active");
+
+        setTimeout(function () {
+
+            westernOptions.scrollIntoView({
+                behavior: "smooth",
+                block: "center"
+            });
+
+        }, 100);
+
+    }
+
+
+    /* ------------------------------------------
+       Show Japanese
+    ------------------------------------------ */
+
+    if (type === "japanese") {
+
+        japaneseOptions.classList.add("active");
+
+        setTimeout(function () {
+
+            japaneseOptions.scrollIntoView({
+                behavior: "smooth",
+                block: "center"
+            });
+
+        }, 100);
+
+    }
+
+}
+
+
+
+/* ==================================================
    RESTAURANT SELECTION
 ================================================== */
 
-let selectedWestern = null;
-let selectedJapanese = null;
-
-
 function showRestaurant(id) {
 
-    const restaurant = document.getElementById(id);
-    const container = document.getElementById("selectedRestaurant");
+    const restaurant =
+        document.getElementById(id);
+
+    const container =
+        document.getElementById("selectedRestaurant");
+
 
     if (!restaurant || !container) {
         console.log("Restaurant not found:", id);
@@ -3496,69 +3571,44 @@ function showRestaurant(id) {
 
 
     /* ------------------------------------------
-       Remember selection by category
-    ------------------------------------------ */
-
-    if (id === "darcy" || id === "icon-cruise") {
-        selectedWestern = id;
-    }
-
-    if (id === "itadaki" || id === "noire") {
-        selectedJapanese = id;
-    }
-
-
-    /* ------------------------------------------
-       Re-render selected restaurants
+       Clear previous restaurant
     ------------------------------------------ */
 
     container.innerHTML = "";
 
 
-    /* Western */
+    /* ------------------------------------------
+       Copy selected restaurant
+    ------------------------------------------ */
 
-    if (selectedWestern) {
-
-        const westernRestaurant =
-            document.getElementById(selectedWestern);
-
-        const westernClone =
-            westernRestaurant.cloneNode(true);
-
-        westernClone.removeAttribute("id");
-        westernClone.classList.remove("reveal");
-
-        westernClone.style.display = "block";
-        westernClone.style.opacity = "1";
-        westernClone.style.visibility = "visible";
-
-        container.appendChild(westernClone);
-    }
+    const clone =
+        restaurant.cloneNode(true);
 
 
-    /* Japanese */
+    /* Remove duplicate ID */
 
-    if (selectedJapanese) {
+    clone.removeAttribute("id");
 
-        const japaneseRestaurant =
-            document.getElementById(selectedJapanese);
 
-        const japaneseClone =
-            japaneseRestaurant.cloneNode(true);
+    /* Remove reveal animation */
 
-        japaneseClone.removeAttribute("id");
-        japaneseClone.classList.remove("reveal");
+    clone.classList.remove("reveal");
 
-        japaneseClone.style.display = "block";
-        japaneseClone.style.opacity = "1";
-        japaneseClone.style.visibility = "visible";
 
-        container.appendChild(japaneseClone);
-    }
+    /* Force visible */
+
+    clone.style.display = "block";
+    clone.style.opacity = "1";
+    clone.style.visibility = "visible";
+
+
+    /* Add selected restaurant */
+
+    container.appendChild(clone);
 
 
     /* ------------------------------------------
-       Scroll to selected result
+       Scroll to restaurant information
     ------------------------------------------ */
 
     setTimeout(function () {
@@ -3571,8 +3621,6 @@ function showRestaurant(id) {
     }, 100);
 
 }
-  
-
 /* ==================================================
       CHOOSE RESTAURANT
    ================================================== */
