@@ -963,14 +963,22 @@ color: #666;
   margin: auto;
   padding: 120px 20px 40px;
 }
-  #selectedRestaurant {
-  width: 100%;
+#selectedRestaurant {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
   margin-top: 60px;
+
   background: #000;
   color: #fff;
-  padding: 60px 50px;
+
+  padding: 60px max(20px, calc((100vw - 1200px) / 2));
   box-sizing: border-box;
 }
+  #selectedRestaurant .restaurant {
+  max-width: 1200px;
+  margin: 0 auto 170px;
+}
+  
 #selectedRestaurant h3,
 #selectedRestaurant .subtitle,
 #selectedRestaurant .option-number,
@@ -3361,7 +3369,29 @@ String(today.getDate())
 dateInput.min =
 `${year}-${month}-${day}`;
 
+let selectedAsianWestern = null;
+let selectedJapanese = null;
+  if (category === "asian-western") {
+    selectedAsianWestern = restaurant;
+}
 
+if (category === "japanese") {
+    selectedJapanese = restaurant;
+}
+  function renderSelectedRestaurants() {
+
+    selectedRestaurant.innerHTML = "";
+
+    if (selectedAsianWestern) {
+        selectedRestaurant.innerHTML +=
+            createRestaurantHTML(selectedAsianWestern);
+    }
+
+    if (selectedJapanese) {
+        selectedRestaurant.innerHTML +=
+            createRestaurantHTML(selectedJapanese);
+    }
+}
 
 /* ==================================================
       FORMAT DATE
