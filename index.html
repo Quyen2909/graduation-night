@@ -3500,15 +3500,11 @@ function showRestaurant(id) {
     ------------------------------------------ */
 
     if (id === "darcy" || id === "icon-cruise") {
-
         selectedWestern = id;
-
     }
 
     if (id === "itadaki" || id === "noire") {
-
         selectedJapanese = id;
-
     }
 
 
@@ -3519,7 +3515,7 @@ function showRestaurant(id) {
     container.innerHTML = "";
 
 
-    /* Western selection */
+    /* Western */
 
     if (selectedWestern) {
 
@@ -3530,7 +3526,6 @@ function showRestaurant(id) {
             westernRestaurant.cloneNode(true);
 
         westernClone.removeAttribute("id");
-
         westernClone.classList.remove("reveal");
 
         westernClone.style.display = "block";
@@ -3538,11 +3533,10 @@ function showRestaurant(id) {
         westernClone.style.visibility = "visible";
 
         container.appendChild(westernClone);
-
     }
 
 
-    /* Japanese selection */
+    /* Japanese */
 
     if (selectedJapanese) {
 
@@ -3553,7 +3547,6 @@ function showRestaurant(id) {
             japaneseRestaurant.cloneNode(true);
 
         japaneseClone.removeAttribute("id");
-
         japaneseClone.classList.remove("reveal");
 
         japaneseClone.style.display = "block";
@@ -3561,10 +3554,24 @@ function showRestaurant(id) {
         japaneseClone.style.visibility = "visible";
 
         container.appendChild(japaneseClone);
-
     }
 
+
+    /* ------------------------------------------
+       Scroll to selected result
+    ------------------------------------------ */
+
+    setTimeout(function () {
+
+        container.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+
+    }, 100);
+
 }
+  
 
 /* ==================================================
       CHOOSE RESTAURANT
