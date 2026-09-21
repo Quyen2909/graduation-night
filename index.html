@@ -3832,51 +3832,6 @@ function confirmNight() {
 }
 
 
-/* ==================================================
-          DIGITAL TICKET
-       ================================================== */
-
-document
-.getElementById("ticketRestaurant")
-.textContent =
-selectedRestaurant;
-
-
-document
-.getElementById("ticketSubtitle")
-.textContent =
-restaurantSubtitles[
-selectedRestaurant
-];
-
-
-document
-.getElementById("ticketDate")
-.textContent =
-formattedDate;
-
-
-document
-.getElementById("ticketTime")
-.textContent =
-formattedTime;
-
-
-document
-.getElementById("ticket")
-.style.display =
-"block";
-
-
-/* Scroll */
-
-message.scrollIntoView({
-behavior: "smooth",
-block: "center"
-});
-
-
-
 
 /* ==================================================
       SCROLL REVEAL
