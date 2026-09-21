@@ -2978,6 +2978,10 @@ Rating
     DATE & TIME
 ================================================== -->
 
+<!-- ==================================================
+    DATE & TIME
+================================================== -->
+
 <section class="booking-section reveal">
 
 <div class="save-the-date">
@@ -2999,6 +3003,30 @@ When should we celebrate?
 Pick a date and time for your graduation night.
 </p>
 
+
+<!-- EMAIL -->
+
+<div class="booking-fields">
+
+<div class="booking-field booking-field-full">
+
+<label for="email">
+Your email
+</label>
+
+<input
+type="email"
+id="email"
+placeholder="Enter your email"
+required
+>
+
+</div>
+
+</div>
+
+
+<!-- DATE & TIME -->
 
 <div class="booking-fields">
 
@@ -3035,7 +3063,7 @@ required
 
 
 <div class="booking-hint">
-Don't worry — we can always adjust the details later. ♡
+Your confirmation will be sent to this email. ♡
 </div>
 
 </section>
@@ -3284,7 +3312,7 @@ let selectedRestaurant = "";
    ================================================== */
 
 /* Paste your deployed Apps Script Web App URL here. */
-const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxKTADH97C52IFZykc1J9582Pmqo4vuU7SpmpylngVNDWiWTsA_lJ6hLUgxLg1Gun2mZQ/exec";
+const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwjHcBxRmn9fkY96hWrGmxxKJiCqCe_rP2KVd7LdvRo-ktu8AuPlbZ8FKYFCGmdmGBXug/exec";
 
 /* ==================================================
       RESTAURANT SUBTITLES
@@ -3684,7 +3712,19 @@ selectedRestaurant = "";
 ================================================== */
 
 function confirmNight() {
-
+ const email = document.getElementById("email").value.trim();
+  if (!date || !time || !selectedRestaurant || !email) {
+    alert("Please choose your date, time, restaurant and enter your email. ♡");
+    return;
+}
+  const payload = {
+    name: "HIEU SONG",
+    email: email,
+    choice: selectedRestaurant + " | " + formattedDate + " | " + formattedTime,
+    date: date,
+    time: time,
+    restaurant: selectedRestaurant
+};
     const date =
         document.getElementById("date").value;
 
