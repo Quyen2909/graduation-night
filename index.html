@@ -1730,6 +1730,26 @@ font-size: 20px;
 }
 
 
+/* Small-screen typography */
+
+.opening-content {
+    padding: 30px 20px;
+}
+
+.opening-name {
+    max-width: 100%;
+    font-size: 24px;
+    letter-spacing: 4px;
+}
+
+.cover-content {
+    width: 100%;
+}
+
+.cover h1 span {
+    white-space: normal;
+}
+
 /* Intro */
 
 .intro {
@@ -1854,6 +1874,55 @@ gap: 40px 20px;
 font-size: 27px;
 }
 
+
+/* Restaurant image galleries */
+
+/* DARCY: keep the three-image composition on desktop */
+.darcy-images {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+/* ICON CRUISE: keep the three-column composition on desktop */
+.icon-images {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+/* Restaurant galleries — mobile */
+
+.itadaki-images {
+    grid-template-columns: 1fr;
+    gap: 10px;
+}
+
+.itadaki-images .restaurant-image {
+    width: 100%;
+    aspect-ratio: 2 / 3;
+    height: auto;
+}
+
+.darcy-images {
+    grid-template-columns: 1fr;
+    gap: 10px;
+}
+
+.darcy-images .restaurant-image {
+    height: 420px;
+}
+
+.noire-images {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+}
+
+.noire-images .restaurant-image {
+    height: 240px;
+}
+
+.icon-images {
+    height: 420px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5px;
+}
 
 /* Restaurants */
 
@@ -1987,6 +2056,7 @@ grid-template-columns: 1fr;
 .choice-button {
 font-size: 10px;
 letter-spacing: 1.8px;
+min-height: 52px;
 }
 
 
@@ -2006,6 +2076,10 @@ font-size: 13px;
 
 
 /* Ticket */
+
+.ticket {
+    width: 100%;
+}
 
 .ticket-top {
 padding: 35px 25px 30px;
@@ -2084,7 +2158,7 @@ WELCOME TO
 </div>
 
 <h1>
-<span>HIEU SONG' S</span>
+<span>HIEU SONG'S</span>
 <span>GRADUATION NIGHT</span>
 </h1>
 
@@ -2133,7 +2207,7 @@ Now it's our turn to celebrate you.
 
 <br><br>
 
-<strong>So… where are we celebrating?<strong>
+<strong>So… where are we celebrating?</strong>
 </p>
 
 </div>
@@ -2157,7 +2231,7 @@ Aukiee, now you get to choose.
 We picked a few places we think you'd like.
 <br><br>
 
-<strong>You pick the one, and we'll take care of the rest. 🤍<strong>
+<strong>You pick the one, and we'll take care of the rest. 🤍</strong>
 
 </p>
 
@@ -3205,6 +3279,13 @@ Made for your graduation night ♡
 
 let selectedRestaurant = "";
 
+/* ==================================================
+      GOOGLE APPS SCRIPT WEB APP
+   ================================================== */
+
+/* Paste your deployed Apps Script Web App URL here. */
+const APPS_SCRIPT_URL = "PASTE_YOUR_APPS_SCRIPT_WEB_APP_URL_HERE";
+
 
 
 /* ==================================================
@@ -3298,63 +3379,6 @@ minute: "2-digit"
 }
 
 
-
-/* ==================================================
-      THIS OR THAT
-   ================================================== */
-
-function showFoodOptions(type) {
-
-const westernOptions =
-document.getElementById("westernOptions");
-
-const japaneseOptions =
-document.getElementById("japaneseOptions");
-
-
-/* Hide both */
-
-westernOptions.classList.remove("active");
-
-japaneseOptions.classList.remove("active");
-
-
-/* Show Western */
-
-if (type === "western") {
-
-westernOptions.classList.add("active");
-
-setTimeout(function () {
-
-westernOptions.scrollIntoView({
-behavior: "smooth",
-block: "center"
-});
-
-}, 100);
-
-}
-
-
-/* Show Japanese */
-
-if (type === "japanese") {
-
-japaneseOptions.classList.add("active");
-
-setTimeout(function () {
-
-japaneseOptions.scrollIntoView({
-behavior: "smooth",
-block: "center"
-});
-
-}, 100);
-
-}
-
-}
 
 /* ==================================================
    THIS OR THAT
@@ -3787,18 +3811,52 @@ block: "center"
 });
 
 
-/* Current data */
+/* ==================================================
+      SEND CONFIRMATION TO GOOGLE APPS SCRIPT
+   ================================================== */
 
-console.log({
+const payload = {
+    name: "HIEU SONG",
+    choice:
+        selectedRestaurant +
+        " | " +
+        formattedDate +
+        " | " +
+        formattedTime,
+    date: date,
+    time: time,
+    restaurant: selectedRestaurant
+};
 
-date: date,
+if (
+    APPS_SCRIPT_URL &&
+    !APPS_SCRIPT_URL.includes("PASTE_YOUR_APPS_SCRIPT")
+) {
 
-time: time,
+    fetch(APPS_SCRIPT_URL, {
+        method: "POST",
+        mode: "no-cors",
+        headers: {
+            "Content-Type": "text/plain;charset=utf-8"
+        },
+        body: JSON.stringify(payload)
+    })
+    .then(function () {
+        console.log("Confirmation sent to Google Apps Script.");
+    })
+    .catch(function (error) {
+        console.error("Could not send confirmation:", error);
+    });
 
-restaurant:
-selectedRestaurant
+} else {
 
-});
+    console.warn(
+        "Apps Script URL has not been configured yet."
+    );
+
+}
+
+console.log(payload);
 
 }
 
