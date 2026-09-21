@@ -3682,89 +3682,154 @@ selectedRestaurant = "";
 
 
 /* ==================================================
-      CONFIRM NIGHT
-   ================================================== */
+   CONFIRM NIGHT
+================================================== */
 
 function confirmNight() {
 
-const date =
-document.getElementById("date").value;
+    const date =
+        document.getElementById("date").value;
 
-const time =
-document.getElementById("time").value;
+    const time =
+        document.getElementById("time").value;
 
 
-/* Safety check */
+    /* Safety check */
 
-if (
-!date ||
-!time ||
-!selectedRestaurant
-) {
+    if (
+        !date ||
+        !time ||
+        !selectedRestaurant
+    ) {
 
-alert(
-"Please choose your date, time and restaurant. ♡"
-);
+        alert(
+            "Please choose your date, time and restaurant. ♡"
+        );
 
-return;
+        return;
+
+    }
+
+
+    /* Format */
+
+    const formattedDate =
+        formatDate(date);
+
+    const formattedTime =
+        formatTime(time);
+
+
+    /* ==================================================
+       SEND CONFIRMATION TO GOOGLE APPS SCRIPT
+    ================================================== */
+
+    const payload = {
+
+        name: "HIEU SONG",
+
+        choice:
+            selectedRestaurant +
+            " | " +
+            formattedDate +
+            " | " +
+            formattedTime,
+
+        date: date,
+
+        time: time,
+
+        restaurant: selectedRestaurant
+
+    };
+
+
+    if (APPS_SCRIPT_URL) {
+
+        fetch(APPS_SCRIPT_URL, {
+
+            method: "POST",
+
+            headers: {
+                "Content-Type": "text/plain;charset=utf-8"
+            },
+
+            body: JSON.stringify(payload)
+
+        })
+        .then(function () {
+
+            console.log(
+                "Confirmation sent to Google Apps Script."
+            );
+
+        })
+        .catch(function (error) {
+
+            console.error(
+                "Could not send confirmation:",
+                error
+            );
+
+        });
+
+    } else {
+
+        console.warn(
+            "Apps Script URL has not been configured."
+        );
+
+    }
+
+
+    console.log("Payload:", payload);
+
+
+    /* ==================================================
+       HIDE CONFIRMATION
+    ================================================== */
+
+    document
+        .getElementById("confirmArea")
+        .style.display = "none";
+
+
+    /* ==================================================
+       SHOW SUCCESS
+    ================================================== */
+
+    const message =
+        document.getElementById("successMessage");
+
+    const text =
+        document.getElementById("successText");
+
+
+    text.innerHTML =
+
+        "You chose <strong>" +
+        selectedRestaurant +
+        "</strong>." +
+
+        "<br><br>" +
+
+        "📅 " +
+        formattedDate +
+
+        "<br>" +
+
+        "🕰 " +
+        formattedTime +
+
+        "<br><br>" +
+
+        "Now just show up " +
+        "and let us celebrate you. ♡";
+
+
+    message.style.display = "block";
 
 }
-
-
-/* Format */
-
-const formattedDate =
-formatDate(date);
-
-const formattedTime =
-formatTime(time);
-
-
-/* Hide confirmation */
-
-document
-.getElementById("confirmArea")
-.style.display = "none";
-
-
-/* Show success */
-
-const message =
-document.getElementById(
-"successMessage"
-);
-
-const text =
-document.getElementById(
-"successText"
-);
-
-
-text.innerHTML =
-
-"You chose <strong>" +
-selectedRestaurant +
-"</strong>." +
-
-"<br><br>" +
-
-"📅 " +
-formattedDate +
-
-"<br>" +
-
-"🕰 " +
-formattedTime +
-
-"<br><br>" +
-
-"Now just show up " +
-"and let us celebrate you. ♡";
-
-
-message.style.display =
-"block";
-
 
 
 /* ==================================================
@@ -3810,55 +3875,6 @@ behavior: "smooth",
 block: "center"
 });
 
-
-/* ==================================================
-      SEND CONFIRMATION TO GOOGLE APPS SCRIPT
-   ================================================== */
-
-const payload = {
-    name: "HIEU SONG",
-    choice:
-        selectedRestaurant +
-        " | " +
-        formattedDate +
-        " | " +
-        formattedTime,
-    date: date,
-    time: time,
-    restaurant: selectedRestaurant
-};
-
-if (
-    APPS_SCRIPT_URL &&
-    !APPS_SCRIPT_URL.includes("https://script.google.com/macros/s/AKfycbyPTH44qKogU3a62u_qo2yxQYPqxWwm4L7pPeMaqMrKY3XSZGDFyTL2hK36faY_DdVM/exec")
-) {
-
-    fetch(APPS_SCRIPT_URL, {
-        method: "POST",
-        mode: "no-cors",
-        headers: {
-            "Content-Type": "text/plain;charset=utf-8"
-        },
-        body: JSON.stringify(payload)
-    })
-    .then(function () {
-        console.log("Confirmation sent to Google Apps Script.");
-    })
-    .catch(function (error) {
-        console.error("Could not send confirmation:", error);
-    });
-
-} else {
-
-    console.warn(
-        "Apps Script URL has not been configured yet."
-    );
-
-}
-
-console.log(payload);
-
-}
 
 
 
